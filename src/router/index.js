@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '../views/home.vue'
 import Choose from '../views/choose.vue'
+
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
       path: '/',
-      name: 'choose',
-      component: Choose
+      redirect: '/home'
     },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
+
     {
       path: '/choose',
       name: 'choose',
@@ -66,4 +73,6 @@ export default new Router({
 
     }
   ]
+
+
 })
