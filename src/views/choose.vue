@@ -11,9 +11,13 @@
         <div class="refresh"></div>
       </div>
     </div>
-    <div class="main"></div>
+    <div class="main">
+      <div class="piece chosen" v-for="(piece, index) in pieces" :key="piece.index">
+        <img :src='piece.url'>
+      </div>
+    </div>
     <div class="showpic_shadow">
-      <div class="showpic">长按可看3s原图</div>
+      <div class="showpic" @click="showPic">长按可看3s原图</div>
     </div>
   </div>
 </template>
@@ -22,12 +26,28 @@
 // 因为图还没出来，先把first的内容写在这
 export default {
   data() {
-    return {};
+    return {
+      pieces: [
+        {
+          url: require('../assets/img/game/one/pie.png')
+        },
+        {
+          url: require('../assets/img/game/one/pie.png')
+        },
+        {
+          url: require('../assets/img/game/one/pie.png')
+        },
+        {
+          url: require('../assets/img/game/one/pie.png')
+        },
+      ]
+    };
   },
   methods: {
     toHome() {
       this.$router.push("/");
-    }
+    },
+    showPic: {}
   }
 };
 </script>
@@ -43,7 +63,7 @@ export default {
   .header {
     width: 95%;
     height: 140px;
-    margin: 0 auto 66px 25px;
+    margin: 0 auto 24px 25px;
     display: inline-flex;
     justify-content: space-between;
     .back_shadow {
@@ -95,6 +115,32 @@ export default {
       }
     }
   }
+  .main {
+    width: 750px;
+    height: 700px;
+
+    padding: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    .piece{
+      width: 328px;
+      height: 306px;
+      box-shadow: 2px 2px 24px #f3a98f;
+      margin: 14px 14px 0 14px;
+      border-bottom: 7px solid #a6492b;
+      img{
+        width: 328px;
+      height: 300px;
+        border: 5px solid #f38251;
+      }
+    }
+    .chosen{
+      border-bottom: 7px solid #da8f43;
+      img{
+        border: 5px solid #fef1ba;
+      }
+    }
+  }
   .showpic_shadow {
     width: 560px;
     height: 173px;
@@ -113,7 +159,7 @@ export default {
       background-size: contain;
       text-align: center;
       line-height: 107px;
-      font-family: 'Cotton';
+      font-family: "Cotton";
       font-size: 50px;
       color: #fffcad;
     }
