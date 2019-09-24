@@ -1,13 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {
-  isContext
-} from 'vm';
+
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    firstId : 0,
     time: {
       minute: 0,
       second: 0,
@@ -30,14 +29,14 @@ export default new Vuex.Store({
       time = setInterval(function () {
         that.timer()
       }, 50);
-      time = () => {
-        that.timer()
-      }
+      // time = () => {
+      //   that.timer()
+      // }
     },
     //停止
     stop() {
       var that = this
-      clearInterval(intt);
+      clearInterval(time);
       that.setData({
         minute: 0,
         second: 0,
@@ -69,8 +68,6 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    // time = setInterval(function () {
-    //   context.commit('time')
-    // }, 50)
+
   }
 })
