@@ -4,3 +4,10 @@
     font-style: normal;
     src: url('./Tanuki.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: "Cotton";
+    font-weight: normal;
+    font-style: normal;
+    src: url('./Cotton.ttf') format('truetype');
+}
