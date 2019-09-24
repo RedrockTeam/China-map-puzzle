@@ -101,7 +101,7 @@
   height: 206px;
   background: url("../assets/img/ranking/result.png");
   background-size: cover;
-  padding-top: 40px;
+  padding-top: 30px;
 }
 .score div {
   margin-top: 20px;
@@ -119,8 +119,8 @@
   padding-top: 20px;
   margin: 0 auto;
   width: 250px;
-  margin-left: 50px;
-  margin-top: 10px;
+  margin-left: 90px;
+  margin-top: 20px;
 }
 
 .clock,
@@ -139,9 +139,8 @@
   background-size: cover;
 }
 .list {
-  height: 520px;
+  height: 460px;
   overflow: auto;
-  margin-top: 20px;
 }
 ::-webkit-scrollbar {
   display: none;

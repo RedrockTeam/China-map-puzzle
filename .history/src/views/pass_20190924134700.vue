@@ -106,7 +106,7 @@
   width: 337px;
   height: 140px;
   background-size: 100%;
-  margin-top: -5px;
+  margin-top: -10px;
 }
 </style>
 

@@ -40,11 +40,6 @@
           <span class="nickname">这是我的昵称</span>
           <span class="time">10s</span>
         </p>
-        <p class="list_item">
-          <span class="normal">4</span>
-          <span class="nickname">这是我的昵称</span>
-          <span class="time">10s</span>
-        </p>
       </div>
     </div>
     <div class="line"></div>
@@ -63,7 +58,7 @@
 }
 .head {
   display: flex;
-  margin-top: 60px;
+  margin-top: 100px;
   margin-left: 50px;
 }
 
@@ -79,7 +74,7 @@
   width: 260px;
   height: 200px;
   background-size: 100%;
-  margin-left: -40px;
+  margin-left: -20px;
 }
 .front {
   background: url("../assets/img/ranking/front.png");
@@ -93,15 +88,15 @@
   width: 650px;
   height: 850px;
   background: #ffae72;
-  margin: -15px auto 0;
+  margin: 0 auto;
 }
 
 .score {
   width: 617px;
-  height: 206px;
+  height: 256px;
   background: url("../assets/img/ranking/result.png");
   background-size: cover;
-  padding-top: 40px;
+  padding-top: 80px;
 }
 .score div {
   margin-top: 20px;
@@ -119,8 +114,8 @@
   padding-top: 20px;
   margin: 0 auto;
   width: 250px;
-  margin-left: 50px;
-  margin-top: 10px;
+  margin-left: 90px;
+  margin-bottom: 20px;
 }
 
 .clock,
@@ -137,14 +132,6 @@
 .grade {
   background: url("../assets/img/ranking/list.png") no-repeat;
   background-size: cover;
-}
-.list {
-  height: 520px;
-  overflow: auto;
-  margin-top: 20px;
-}
-::-webkit-scrollbar {
-  display: none;
 }
 .list_item {
   background: url("../assets/img/ranking/box.png");
@@ -191,12 +178,10 @@
 }
 
 .line {
-  width: 570px;
+  width: 557px;
   height: 36px;
   background: url("../assets/img/ranking/line.png");
   background-size: cover;
-  margin-left: 100px;
-  margin-top: -50px;
 }
 </style>
 

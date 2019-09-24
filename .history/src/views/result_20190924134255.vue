@@ -139,9 +139,8 @@
   background-size: cover;
 }
 .list {
-  height: 520px;
+  height: 460px;
   overflow: auto;
-  margin-top: 20px;
 }
 ::-webkit-scrollbar {
   display: none;

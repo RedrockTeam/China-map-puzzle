@@ -21,7 +21,7 @@ export default new Router({
     {
       path: '/choose',
       name: 'choose',
-      component: Choose,
+      component: Pass,
       children: [{
         path: 'first',
         name: 'first',

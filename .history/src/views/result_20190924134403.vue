@@ -139,7 +139,7 @@
   background-size: cover;
 }
 .list {
-  height: 520px;
+  height: 560px;
   overflow: auto;
   margin-top: 20px;
 }

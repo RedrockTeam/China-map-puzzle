@@ -1,16 +1,13 @@
 <template>
-  <!-- <div class="main">
+  <div class="main">
     <div class="btn">
-      <img class="one" v-if="isShow" src="./assets/img/home/home_btn1.png" @click="startJoin" />
-      <img class="two" v-if="!isShow" src="./assets/img/home/home_btn2.png" />
+      <!-- <img class="one" v-if="isShow" src="./assets/img/home/home_btn1.png" @click="startJoin" />
+      <img class="two" v-if="!isShow" src="./assets/img/home/home_btn2.png" />-->
     </div>
     <div class="msg">
       <p>点两块交换位置</p>
       <p>用最短时间完成拼图</p>
     </div>
-  </div>-->
-  <div id="app">
-    <router-view />
   </div>
 </template>
 

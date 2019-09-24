@@ -97,16 +97,16 @@
 }
 .list {
   background: url("../assets/img/pass/left.png");
-  width: 272px;
-  height: 105px;
+  width: 340px;
+  height: 125px;
   background-size: 100%;
 }
 .begin {
   background: url("../assets/img/pass/right.png");
-  width: 337px;
-  height: 140px;
+  width: 340px;
+  height: 125px;
   background-size: 100%;
-  margin-top: -5px;
+  margin-top: -20px;
 }
 </style>
 

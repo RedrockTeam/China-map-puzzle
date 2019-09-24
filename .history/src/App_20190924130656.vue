@@ -9,9 +9,6 @@
       <p>用最短时间完成拼图</p>
     </div>
   </div>-->
-  <div id="app">
-    <router-view />
-  </div>
 </template>
 
 // <script>

@@ -119,7 +119,7 @@
   padding-top: 20px;
   margin: 0 auto;
   width: 250px;
-  margin-left: 50px;
+  margin-left: 90px;
   margin-top: 10px;
 }
 
@@ -139,9 +139,8 @@
   background-size: cover;
 }
 .list {
-  height: 520px;
+  height: 460px;
   overflow: auto;
-  margin-top: 20px;
 }
 ::-webkit-scrollbar {
   display: none;
