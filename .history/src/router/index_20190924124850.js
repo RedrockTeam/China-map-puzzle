@@ -1,34 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/home.vue'
 import Choose from '../views/choose.vue'
-import Result from '../views/result.vue'
-import Pass from '../views/pass.vue'
-
+import result from '../views/result.vue'
+import pass from '../views/pass.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
     path: '/',
-    redirect: '/home'
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home,
+    name: 'choose',
+    component: Choose
   },
   {
     path: '/pass',
     name: 'pass',
-    component: Pass,
+    component: pass
   },
   {
     path: '/result',
     name: 'result',
-    component: Result,
+    component: result
   },
-
   {
     path: '/choose',
     name: 'choose',
@@ -85,6 +78,4 @@ export default new Router({
 
   }
   ]
-
-
 })

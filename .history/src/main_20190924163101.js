@@ -5,7 +5,7 @@ import store from './store'
 import axios from 'axios'
 
 import './assets/styles/common.css'
-import './assets/font/font.css'
+// import './assets/font/font.css'
 
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false

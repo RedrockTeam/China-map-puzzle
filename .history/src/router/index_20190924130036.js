@@ -1,34 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/home.vue'
 import Choose from '../views/choose.vue'
 import Result from '../views/result.vue'
 import Pass from '../views/pass.vue'
 
-
 Vue.use(Router)
 
 export default new Router({
-  routes: [{
-    path: '/',
-    redirect: '/home'
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home,
-  },
-  {
+  routes: [
+    {{
+      path: '/pass',
+      name: 'pass',
+      component: Pass
+    },
+
+    }
+    {
     path: '/pass',
     name: 'pass',
-    component: Pass,
+    component: Pass
   },
   {
     path: '/result',
     name: 'result',
-    component: Result,
+    component: Result
   },
-
   {
     path: '/choose',
     name: 'choose',
@@ -85,6 +81,4 @@ export default new Router({
 
   }
   ]
-
-
 })

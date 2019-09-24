@@ -21,7 +21,7 @@ export default new Router({
   {
     path: '/pass',
     name: 'pass',
-    component: Pass,
+    component: Press,
   },
   {
     path: '/result',

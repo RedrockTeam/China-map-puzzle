@@ -15,3 +15,7 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+// // axios的全局配置baseURL、超时时间、header
+// axios.defaults.baseURL = 'https://wx.redrock.team'
+// axios.defaults.timeout = 5000
+// axios.defaults.header.post['Content-type'] = 'application/json'

@@ -18,16 +18,6 @@ export default new Router({
     name: 'home',
     component: Home,
   },
-  {
-    path: '/pass',
-    name: 'pass',
-    component: Pass,
-  },
-  {
-    path: '/result',
-    name: 'result',
-    component: Result,
-  },
 
   {
     path: '/choose',
