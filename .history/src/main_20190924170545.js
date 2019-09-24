@@ -11,8 +11,6 @@ import './assets/font/font.css'
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
 
-ApiService.init()
-
 new Vue({
   router,
   store,
