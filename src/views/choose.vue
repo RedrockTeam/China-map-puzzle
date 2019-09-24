@@ -43,11 +43,19 @@ export default {
       ]
     };
   },
+  mounted(){
+    this.$store.commit('start');
+  },
   methods: {
     toHome() {
       this.$router.push("/");
     },
-    showPic: {}
+    showPic(){},
+    over(){
+      this.$store.commit('stop');
+      // store.timecount把时间传给后端
+      this.$router.push("/choose/first/rank");
+    }
   }
 };
 </script>
