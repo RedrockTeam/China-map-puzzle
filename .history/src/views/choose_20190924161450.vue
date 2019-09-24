@@ -12,8 +12,8 @@
       </div>
     </div>
     <div class="main">
-      <div class="piece chosen" v-for="(piece, index) in pieces" :key="index">
-        <img :src="piece.url" />
+      <div class="piece chosen" v-for="(piece, index) in pieces" :key="piece.index">
+        <img :src='piece.url'>
       </div>
     </div>
     <div class="showpic_shadow">
@@ -29,30 +29,30 @@ export default {
     return {
       pieces: [
         {
-          url: require("../assets/img/game/one/pie.png")
+          url: require('../assets/img/game/one/pie.png')
         },
         {
-          url: require("../assets/img/game/one/pie.png")
+          url: require('../assets/img/game/one/pie.png')
         },
         {
-          url: require("../assets/img/game/one/pie.png")
+          url: require('../assets/img/game/one/pie.png')
         },
         {
-          url: require("../assets/img/game/one/pie.png")
-        }
+          url: require('../assets/img/game/one/pie.png')
+        },
       ]
     };
   },
-  mounted() {
-    this.$store.commit("start");
+  mounted(){
+    this.$store.commit('start');
   },
   methods: {
     toHome() {
       this.$router.push("/");
     },
-    showPic() {},
-    over() {
-      this.$store.commit("stop");
+    showPic(){},
+    over(){
+      this.$store.commit('stop');
       // store.timecount把时间传给后端
       this.$router.push("/choose/first/rank");
     }
@@ -130,21 +130,21 @@ export default {
     padding: 26px;
     display: flex;
     flex-wrap: wrap;
-    .piece {
+    .piece{
       width: 328px;
       height: 306px;
       box-shadow: 2px 2px 24px #f3a98f;
       margin: 14px 14px 0 14px;
       border-bottom: 7px solid #a6492b;
-      img {
+      img{
         width: 328px;
-        height: 300px;
+      height: 300px;
         border: 5px solid #f38251;
       }
     }
-    .chosen {
+    .chosen{
       border-bottom: 7px solid #da8f43;
-      img {
+      img{
         border: 5px solid #fef1ba;
       }
     }

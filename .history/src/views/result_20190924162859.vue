@@ -158,7 +158,7 @@
   display: inline-block;
   width: 81px;
   height: 82px;
-  margin: 15px 35px;
+  margin: 15px 30px;
 }
 .first .icon {
   background: url("../assets/img/ranking/first.png");
@@ -178,7 +178,7 @@
   font-weight: bold;
   display: inline-block;
   margin-top: 30px;
-  font-family: Tanuki;
+  font-family: Cotton;
 }
 .time,
 .normal {

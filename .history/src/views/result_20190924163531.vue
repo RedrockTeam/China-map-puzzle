@@ -158,7 +158,7 @@
   display: inline-block;
   width: 81px;
   height: 82px;
-  margin: 15px 35px;
+  margin: 15px 30px;
 }
 .first .icon {
   background: url("../assets/img/ranking/first.png");
@@ -189,6 +189,7 @@
   margin-top: 20px;
   color: #ff7b5c;
   font-size: 50px;
+  margin-left: -10px;
 }
 
 .line {
