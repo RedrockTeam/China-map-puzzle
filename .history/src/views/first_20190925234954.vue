@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { SET_THIRD } from "../store/type/mutations";
+import { SET_FIRST } from "../store/type/mutations";
 export default {
   data() {
     return {
@@ -39,24 +39,7 @@ export default {
       firstY: null,
       number: 0,
       time: 0,
-      info: [
-        [0, 0],
-        [80, 0],
-        [80 * 2, 0],
-        [80 * 3, 0],
-        [0, 80],
-        [80, 80],
-        [80 * 2, 80],
-        [80 * 3, 80],
-        [0, 80 * 2],
-        [80, 80 * 2],
-        [80 * 2, 80 * 2],
-        [80 * 3, 80 * 2],
-        [0, 80 * 3],
-        [80, 80 * 3],
-        [80 * 2, 80 * 3],
-        [80 * 3, 80 * 3]
-      ]
+      info: [[0, 0], [180, 0], [0, 170], [180, 170]]
     };
   },
   mounted() {
@@ -70,9 +53,9 @@ export default {
       obj[`${index}`] = true;
       return obj;
     },
-
     moveImage() {
       let pics = this.$refs.main.children;
+
       let firstX, firstY, firstIndex, firstPic, secondPic;
       let number = this.number;
       let isSuccess = this.isSuccess;
@@ -82,7 +65,7 @@ export default {
           this.startX = this.offsetLeft;
           this.startY = this.offsetTop;
           this.style.transition = "none";
-
+          console.log(number);
           if (number == 0) {
             firstX = this.startX;
             firstY = this.startY;
@@ -103,9 +86,7 @@ export default {
             secondPic.style.top = firstY + "px";
             secondPic.setAttribute("data-index", firstIndex);
             number = 0;
-            if (isSuccess() == true) {
-              alert("true");
-            }
+            isSuccess();
           }
         });
       }
@@ -114,15 +95,16 @@ export default {
 
     random() {
       let pics = this.$refs.main.children;
-      let arr = [];
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 1; i++) {
         //随机打乱
-        let a = Math.floor(Math.random() * 16);
-        let b = Math.floor(Math.random() * 16);
-        if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
-          arr.push(a);
-          arr.push(b);
-          this.$options.methods.change(a, b, pics);
+        let a = Math.floor(Math.random() * 4);
+        let b = Math.floor(Math.random() * 4);
+        if (a != b) {
+          if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
+            arr.push(a);
+            arr.push(b);
+            this.$options.methods.change(a, b, pics);
+          }
         }
       }
     },
@@ -140,10 +122,10 @@ export default {
       bEle.style.top = _top + "px";
       var _index;
       _index = aEle.getAttribute("data-index");
-
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
+
     isSuccess() {
       let pics = this.$refs.main.children;
 
@@ -151,10 +133,9 @@ export default {
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
-
-      if (str == "0123456789101112131415") {
-        this.$router.push("/result?pass=3");
-        this.$store.commit(SET_THIRD);
+      if (str == "0123") {
+        this.$store.commit(SET_FIRST);
+        this.$router.push("/result?pass=1");
 
         return true;
       }
@@ -228,21 +209,41 @@ export default {
     }
   }
   .main {
+    width: 750px;
     height: 700px;
     position: relative;
     padding: 26px;
-    left: 30px;
 
     .piece {
-      width: 150px;
-      height: 135px;
+      width: 328px;
+      height: 306px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
-      background: url("../assets/img/button/map.jpg") no-repeat;
+      background: url("../assets/img/button/map.jpg");
       transition: all 0.5s ease 0s;
       position: absolute;
     }
+    // .first {
+    //   background-size: 200%;
+    //   background-position-x: 0;
+    // }
 
+    // .second {
+    //   background-position-x: 328px;
+    //   background-size: 200%;
+    //   left: 380px;
+    // }
+    // .third {
+    //   background-position: 0 306px;
+    //   background-size: 200%;
+    //   top: 350px;
+    // }
+    // .four {
+    //   background-position: 328px 306px;
+    //   background-size: 200%;
+    //   top: 350px;
+    //   left: 380px;
+    // }
     .chosen {
       border-bottom: 7px solid #da8f43;
     }

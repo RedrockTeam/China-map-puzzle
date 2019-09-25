@@ -62,6 +62,7 @@ export default {
   mounted() {
     this.random();
     this.moveImage();
+    this.getTime();
   },
 
   methods: {
@@ -73,6 +74,10 @@ export default {
 
     moveImage() {
       let pics = this.$refs.main.children;
+      let picWidth = pics[0].offsetWidth;
+      let picHeight = pics[0].offsetHeight;
+      let boxWidth = this.$refs.main.offsetWidth;
+      let boxHeight = this.$refs.main.offsetHeight;
       let firstX, firstY, firstIndex, firstPic, secondPic;
       let number = this.number;
       let isSuccess = this.isSuccess;
@@ -114,14 +119,11 @@ export default {
 
     random() {
       let pics = this.$refs.main.children;
-      let arr = [];
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 2; i++) {
         //随机打乱
         let a = Math.floor(Math.random() * 16);
         let b = Math.floor(Math.random() * 16);
-        if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
-          arr.push(a);
-          arr.push(b);
+        if (a != b) {
           this.$options.methods.change(a, b, pics);
         }
       }
@@ -147,7 +149,7 @@ export default {
     isSuccess() {
       let pics = this.$refs.main.children;
 
-      let str = "";
+      var str = "";
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
@@ -155,10 +157,22 @@ export default {
       if (str == "0123456789101112131415") {
         this.$router.push("/result?pass=3");
         this.$store.commit(SET_THIRD);
-
         return true;
       }
       return false;
+    },
+    getTime() {
+      let isSuccess = this.isSuccess;
+      var time = this.time;
+      function add() {
+        time++;
+        console.log(time);
+        if (isSuccess() == true) {
+          console.log(time);
+          clearInterval(timer);
+        }
+      }
+      var timer = setInterval(add, 1000);
     }
   }
 };

@@ -15,9 +15,9 @@
       <div
         :class="setClass(index)"
         ref="pic"
+        :data-index="index"
         v-for="(value,index) of info"
         :key="index"
-        :data-index="index"
         :style="{
           left:value[0] + 'px',
           top:value[1] +'px'
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { SET_THIRD } from "../store/type/mutations";
+import { SET_SECOND } from "../store/type/mutations";
 export default {
   data() {
     return {
@@ -41,27 +41,21 @@ export default {
       time: 0,
       info: [
         [0, 0],
-        [80, 0],
-        [80 * 2, 0],
-        [80 * 3, 0],
-        [0, 80],
-        [80, 80],
-        [80 * 2, 80],
-        [80 * 3, 80],
-        [0, 80 * 2],
-        [80, 80 * 2],
-        [80 * 2, 80 * 2],
-        [80 * 3, 80 * 2],
-        [0, 80 * 3],
-        [80, 80 * 3],
-        [80 * 2, 80 * 3],
-        [80 * 3, 80 * 3]
+        [115, 0],
+        [115 * 2, 0],
+        [0, 110],
+        [115, 110],
+        [115 * 2, 110],
+        [0, 110 * 2],
+        [115, 110 * 2],
+        [115 * 2, 110 * 2]
       ]
     };
   },
   mounted() {
-    this.random();
+    this.numRandom();
     this.moveImage();
+    this.getTime();
   },
 
   methods: {
@@ -70,9 +64,20 @@ export default {
       obj[`${index}`] = true;
       return obj;
     },
-
+    getTime() {
+      let time = this.time;
+      function add() {
+        time++;
+      }
+      let timer = setInterval(add, 1000);
+      return 4;
+    },
     moveImage() {
       let pics = this.$refs.main.children;
+      let picWidth = pics[0].offsetWidth;
+      let picHeight = pics[0].offsetHeight;
+      let boxWidth = this.$refs.main.offsetWidth;
+      let boxHeight = this.$refs.main.offsetHeight;
       let firstX, firstY, firstIndex, firstPic, secondPic;
       let number = this.number;
       let isSuccess = this.isSuccess;
@@ -82,7 +87,6 @@ export default {
           this.startX = this.offsetLeft;
           this.startY = this.offsetTop;
           this.style.transition = "none";
-
           if (number == 0) {
             firstX = this.startX;
             firstY = this.startY;
@@ -103,58 +107,55 @@ export default {
             secondPic.style.top = firstY + "px";
             secondPic.setAttribute("data-index", firstIndex);
             number = 0;
-            if (isSuccess() == true) {
-              alert("true");
-            }
+            isSuccess();
           }
         });
       }
       return pics;
     },
-
-    random() {
+    numRandom() {
       let pics = this.$refs.main.children;
-      let arr = [];
-      for (var i = 0; i < 20; i++) {
+      for (let i = 0; i < 2; i++) {
         //随机打乱
-        let a = Math.floor(Math.random() * 16);
-        let b = Math.floor(Math.random() * 16);
-        if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
-          arr.push(a);
-          arr.push(b);
+        let a = Math.floor(Math.random() * 9);
+        let b = Math.floor(Math.random() * 9);
+        if (a != b) {
           this.$options.methods.change(a, b, pics);
         }
       }
     },
     change(a, b, pics) {
-      var aEle = pics[a];
-      var bEle = pics[b];
+      let aEle = pics[a];
+      let bEle = pics[b];
+      console.log(pics[a], pics[b]);
+      console.log(pics);
 
-      var _left;
+      let _left;
       _left = aEle.offsetLeft;
       aEle.style.left = bEle.offsetLeft + "px";
       bEle.style.left = _left + "px";
-      var _top;
+
+      let _top;
       _top = aEle.offsetTop;
       aEle.style.top = bEle.offsetTop + "px";
       bEle.style.top = _top + "px";
-      var _index;
-      _index = aEle.getAttribute("data-index");
 
+      let _index;
+      _index = aEle.getAttribute("data-index");
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
     isSuccess() {
       let pics = this.$refs.main.children;
-
-      let str = "";
+      var str = "";
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
-
-      if (str == "0123456789101112131415") {
-        this.$router.push("/result?pass=3");
-        this.$store.commit(SET_THIRD);
+      if (str == "012345678") {
+        this.$router.push("/result?pass=2");
+        this.$store.commit(SET_SECOND);
+        console.log(this.getTime());
+        clearInterval(this.getTime());
 
         return true;
       }
@@ -228,14 +229,14 @@ export default {
     }
   }
   .main {
+    width: 750px;
     height: 700px;
     position: relative;
     padding: 26px;
-    left: 30px;
 
     .piece {
-      width: 150px;
-      height: 135px;
+      width: 210px;
+      height: 205px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
       background: url("../assets/img/button/map.jpg") no-repeat;

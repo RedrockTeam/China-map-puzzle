@@ -115,7 +115,7 @@ export default {
     random() {
       let pics = this.$refs.main.children;
       let arr = [];
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 2; i++) {
         //随机打乱
         let a = Math.floor(Math.random() * 16);
         let b = Math.floor(Math.random() * 16);

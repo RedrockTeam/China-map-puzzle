@@ -15,9 +15,9 @@
       <div
         :class="setClass(index)"
         ref="pic"
+        :data-index="index"
         v-for="(value,index) of info"
         :key="index"
-        :data-index="index"
         :style="{
           left:value[0] + 'px',
           top:value[1] +'px'
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { SET_THIRD } from "../store/type/mutations";
+import { SET_FOURTH } from "../store/type/mutations";
 export default {
   data() {
     return {
@@ -41,21 +41,30 @@ export default {
       time: 0,
       info: [
         [0, 0],
-        [80, 0],
-        [80 * 2, 0],
-        [80 * 3, 0],
-        [0, 80],
-        [80, 80],
-        [80 * 2, 80],
-        [80 * 3, 80],
-        [0, 80 * 2],
-        [80, 80 * 2],
-        [80 * 2, 80 * 2],
-        [80 * 3, 80 * 2],
-        [0, 80 * 3],
-        [80, 80 * 3],
-        [80 * 2, 80 * 3],
-        [80 * 3, 80 * 3]
+        [70, 0],
+        [70 * 2, 0],
+        [70 * 3, 0],
+        [70 * 4, 0],
+        [0, 60],
+        [70, 60],
+        [70 * 2, 60],
+        [70 * 3, 60],
+        [70 * 4, 60],
+        [0, 60 * 2],
+        [70, 60 * 2],
+        [70 * 2, 60 * 2],
+        [70 * 3, 60 * 2],
+        [70 * 4, 60 * 2],
+        [0, 60 * 3],
+        [70, 60 * 3],
+        [70 * 2, 60 * 3],
+        [70 * 3, 60 * 3],
+        [70 * 4, 60 * 3],
+        [0, 60 * 4],
+        [70, 60 * 4],
+        [70 * 2, 60 * 4],
+        [70 * 3, 60 * 4],
+        [70 * 4, 60 * 4]
       ]
     };
   },
@@ -104,7 +113,6 @@ export default {
             secondPic.setAttribute("data-index", firstIndex);
             number = 0;
             if (isSuccess() == true) {
-              alert("true");
             }
           }
         });
@@ -114,48 +122,50 @@ export default {
 
     random() {
       let pics = this.$refs.main.children;
-      let arr = [];
-      for (var i = 0; i < 20; i++) {
+      for (let i = 0; i < 5; i++) {
         //随机打乱
-        let a = Math.floor(Math.random() * 16);
-        let b = Math.floor(Math.random() * 16);
-        if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
-          arr.push(a);
-          arr.push(b);
+        let a = Math.floor(Math.random() * 25);
+        let b = Math.floor(Math.random() * 25);
+        if (a != b) {
           this.$options.methods.change(a, b, pics);
         }
       }
     },
     change(a, b, pics) {
-      var aEle = pics[a];
-      var bEle = pics[b];
+      let aEle = pics[a];
+      let bEle = pics[b];
+      console.log(a, b);
 
-      var _left;
+      let _left;
       _left = aEle.offsetLeft;
       aEle.style.left = bEle.offsetLeft + "px";
       bEle.style.left = _left + "px";
-      var _top;
+
+      let _top;
       _top = aEle.offsetTop;
       aEle.style.top = bEle.offsetTop + "px";
       bEle.style.top = _top + "px";
-      var _index;
-      _index = aEle.getAttribute("data-index");
 
+      let _index;
+      _index = aEle.getAttribute("data-index");
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
     isSuccess() {
       let pics = this.$refs.main.children;
-
+      let timer = setInterval(() => {
+        this.time++;
+      }, 1000);
+      console.log(this.time);
       let str = "";
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
 
-      if (str == "0123456789101112131415") {
-        this.$router.push("/result?pass=3");
-        this.$store.commit(SET_THIRD);
-
+      if (str == "0123456789101112131415161718192021222324") {
+        this.$router.push("/result?pass=4");
+        this.$store.commit(SET_FOURTH);
+        clearInterval(timer);
         return true;
       }
       return false;
@@ -234,8 +244,8 @@ export default {
     left: 30px;
 
     .piece {
-      width: 150px;
-      height: 135px;
+      width: 120px;
+      height: 105px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
       background: url("../assets/img/button/map.jpg") no-repeat;
