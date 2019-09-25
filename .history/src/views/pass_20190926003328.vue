@@ -25,7 +25,7 @@
           src="../assets/img/pass/lock.png"
         />
       </div>
-      <div>
+      <div @click="startThird">
         <img
           class="third"
           v-if="this.third =='unlock' "

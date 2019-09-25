@@ -215,8 +215,6 @@ export default {
         this.$router.push("/third");
       } else if (pass == 3) {
         this.$router.push("/four");
-      } else {
-        return false;
       }
     }
   }

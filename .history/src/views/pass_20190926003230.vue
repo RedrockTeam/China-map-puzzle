@@ -25,19 +25,9 @@
           src="../assets/img/pass/lock.png"
         />
       </div>
-      <div>
-        <img
-          class="third"
-          v-if="this.third =='unlock' "
-          src="../assets/img/pass/third.png"
-          @click="startThird"
-        />
-        <img
-          class="third"
-          v-if="this.third =='success' "
-          src="../assets/img/pass/thirdpass.png"
-          @click="startThird"
-        />
+      <div @click="startThird">
+        <img class="third" v-if="this.third =='unlock' " src="../assets/img/pass/third.png" />
+        <img class="third" v-if="this.third =='success' " src="../assets/img/pass/thirdpass.png" />
         <img
           class="third"
           v-if="this.third =='lock'"
@@ -45,19 +35,9 @@
           src="../assets/img/pass/lock.png"
         />
       </div>
-      <div>
-        <img
-          class="four"
-          v-if="this.forth=='unlock' "
-          src="../assets/img/pass/four.png"
-          @click="startFour"
-        />
-        <img
-          class="third"
-          v-if="this.forth =='success' "
-          src="../assets/img/pass/forthpass.png"
-          @click="startFour"
-        />
+      <div @click="startFour">
+        <img class="four" v-if="this.forth=='unlock' " src="../assets/img/pass/four.png" />
+        <img class="third" v-if="this.forth =='success' " src="../assets/img/pass/forthpass.png" />
         <img
           class="four"
           v-if="this.forth =='lock'"

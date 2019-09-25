@@ -208,16 +208,7 @@ export default {
       this.$router.push("/pass");
     },
     toNext() {
-      let pass = this.$route.query.pass; // 当前路由参数
-      if (pass == 1) {
-        this.$router.push("/second");
-      } else if (pass == 2) {
-        this.$router.push("/third");
-      } else if (pass == 3) {
-        this.$router.push("/four");
-      } else {
-        return false;
-      }
+      this.$route.params.pass;
     }
   }
 };

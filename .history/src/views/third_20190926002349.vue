@@ -65,9 +65,6 @@ export default {
   },
 
   methods: {
-    toPass() {
-      this.$router.push("/pass");
-    },
     setClass(index) {
       let obj = { piece: true };
       obj[`${index}`] = true;
