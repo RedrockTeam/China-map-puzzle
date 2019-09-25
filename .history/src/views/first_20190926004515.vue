@@ -60,15 +60,9 @@ export default {
     },
     showPic() {
       let showPic = this.$refs.showPic;
-      let map = this.$refs.map;
       console.log(showPic);
-      showPic.addEventListener("click", function() {
-        console.log("查看原图");
-        console.log(map.style);
-
-        let timer = setTimeout(function() {
-          map.style.display = "block";
-        }, 3000);
+      showPic.addEventListener("touchstart", function() {
+        timer = setTimeout(function() {}, 1000);
       });
     },
     moveImage() {
@@ -291,13 +285,7 @@ export default {
     }
   }
   .map {
-    width: 741px;
-    height: 624px;
-    background: url("../assets/img/button/dialog.png");
-    position: absolute;
-    top: 160px;
-    background-size: cover;
-    display: hidden;
+    background: url("../assets/img/button/bigPicture.png");
   }
 }
 </style>

@@ -27,7 +27,6 @@
     <div class="showpic_shadow">
       <div class="showpic" ref="showPic">长按可看3s原图</div>
     </div>
-    <div ref="map" class="map"></div>
   </div>
 </template>
 
@@ -46,7 +45,6 @@ export default {
   mounted() {
     this.random();
     this.moveImage();
-    this.showPic();
   },
 
   methods: {
@@ -57,19 +55,6 @@ export default {
       let obj = { piece: true };
       obj[`${index}`] = true;
       return obj;
-    },
-    showPic() {
-      let showPic = this.$refs.showPic;
-      let map = this.$refs.map;
-      console.log(showPic);
-      showPic.addEventListener("click", function() {
-        console.log("查看原图");
-        console.log(map.style);
-
-        let timer = setTimeout(function() {
-          map.style.display = "block";
-        }, 3000);
-      });
     },
     moveImage() {
       let pics = this.$refs.main.children;
@@ -289,15 +274,6 @@ export default {
       font-size: 50px;
       color: #fffcad;
     }
-  }
-  .map {
-    width: 741px;
-    height: 624px;
-    background: url("../assets/img/button/dialog.png");
-    position: absolute;
-    top: 160px;
-    background-size: cover;
-    display: hidden;
   }
 }
 </style>

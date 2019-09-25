@@ -68,7 +68,7 @@ export default {
 
         let timer = setTimeout(function() {
           map.style.display = "block";
-        }, 3000);
+        }, 1000);
       });
     },
     moveImage() {

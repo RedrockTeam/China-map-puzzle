@@ -64,11 +64,9 @@ export default {
       console.log(showPic);
       showPic.addEventListener("click", function() {
         console.log("查看原图");
-        console.log(map.style);
-
         let timer = setTimeout(function() {
-          map.style.display = "block";
-        }, 3000);
+          map.style.display = "hidden";
+        }, 1000);
       });
     },
     moveImage() {
@@ -297,7 +295,7 @@ export default {
     position: absolute;
     top: 160px;
     background-size: cover;
-    display: hidden;
+    // display: hidden;
   }
 }
 </style>
