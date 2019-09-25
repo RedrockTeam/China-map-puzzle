@@ -18,12 +18,12 @@
       <div @click="startThird">
         <img class="third" v-if="this.third =='unlock' " src="../assets/img/pass/third.png" />
         <img class="third" v-if="this.third =='success' " src="../assets/img/pass/thirdpass.png" />
-        <img class="third" v-if="this.third =='lock'" src="../assets/img/pass/lock.png" />
+        <img class="third" v-else src="../assets/img/pass/lock.png" />
       </div>
       <div @click="startFour">
         <img class="four" v-if="this.forth=='unlock' " src="../assets/img/pass/four.png" />
         <img class="third" v-if="this.forth =='success' " src="../assets/img/pass/forthpass.png" />
-        <img class="four" v-if="this.forth =='lock'" src="../assets/img/pass/lock.png" />
+        <img class="four" v-else src="../assets/img/pass/lock.png" />
       </div>
     </div>
 
