@@ -146,7 +146,7 @@ export default {
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
-    //判断是否成功
+    //判断是否
     isSuccess() {
       let pics = this.$refs.main.children;
 
@@ -235,7 +235,6 @@ export default {
     position: relative;
     padding: 26px;
 
-    //不能改变其margin 会导致移动错位
     .piece {
       width: 328px;
       height: 306px;
