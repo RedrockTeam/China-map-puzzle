@@ -128,13 +128,14 @@ export default {
 </script>
 <style lang="scss" scoped>
 .game {
-  width: 750px;
-  height: 1208px;
-  background-image: url("../assets/img/common/bg.jpg");
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  background-size: contain;
-  padding-top: 66px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url("../assets/img/pass/background.png");
+  background-size: cover;
+  overflow: hidden;
   .header {
     width: 95%;
     height: 140px;

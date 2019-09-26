@@ -12,6 +12,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "postcss-retina": "^1.2.0",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.4",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
     "webpack": "^4.40.2"
