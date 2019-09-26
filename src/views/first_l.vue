@@ -15,9 +15,9 @@
       <div
         :class="setClass(index)"
         ref="pic"
-        :data-index="index"
         v-for="(value,index) of info"
         :key="index"
+        :data-index="index"
         :style="{
           left:value[0] + 'px',
           top:value[1] +'px'
@@ -25,13 +25,14 @@
       >{{index}}</div>
     </div>
     <div class="showpic_shadow">
-      <div class="showpic">长按可看3s原图</div>
+      <div class="showpic" ref="showPic">长按可看3s原图</div>
     </div>
+    <div ref="map" class="map"></div>
   </div>
 </template>
 
 <script>
-import { SET_FOURTH } from "../store/type/mutations";
+import { SET_FIRST } from "../store/type/mutations";
 export default {
   data() {
     return {
@@ -39,38 +40,13 @@ export default {
       firstY: null,
       number: 0,
       time: 0,
-      info: [
-        [0, 0],
-        [70, 0],
-        [70 * 2, 0],
-        [70 * 3, 0],
-        [70 * 4, 0],
-        [0, 60],
-        [70, 60],
-        [70 * 2, 60],
-        [70 * 3, 60],
-        [70 * 4, 60],
-        [0, 60 * 2],
-        [70, 60 * 2],
-        [70 * 2, 60 * 2],
-        [70 * 3, 60 * 2],
-        [70 * 4, 60 * 2],
-        [0, 60 * 3],
-        [70, 60 * 3],
-        [70 * 2, 60 * 3],
-        [70 * 3, 60 * 3],
-        [70 * 4, 60 * 3],
-        [0, 60 * 4],
-        [70, 60 * 4],
-        [70 * 2, 60 * 4],
-        [70 * 3, 60 * 4],
-        [70 * 4, 60 * 4]
-      ]
+      info: [[0, 0], [180, 0], [0, 170], [180, 170]]
     };
   },
   mounted() {
     this.random();
     this.moveImage();
+    this.showPic();
   },
 
   methods: {
@@ -82,9 +58,23 @@ export default {
       obj[`${index}`] = true;
       return obj;
     },
+    showPic() {
+      let showPic = this.$refs.showPic;
+      let map = this.$refs.map;
+      console.log(showPic);
+      showPic.addEventListener("click", function() {
+        console.log("查看原图");
+        console.log(map.style);
 
+        let timer = setTimeout(function() {
+          map.style.display = "block";
+        }, 3000);
+      });
+    },
+    //移动图片
     moveImage() {
       let pics = this.$refs.main.children;
+
       let firstX, firstY, firstIndex, firstPic, secondPic;
       let number = this.number;
       let isSuccess = this.isSuccess;
@@ -94,7 +84,7 @@ export default {
           this.startX = this.offsetLeft;
           this.startY = this.offsetTop;
           this.style.transition = "none";
-
+          console.log(number);
           if (number == 0) {
             firstX = this.startX;
             firstY = this.startY;
@@ -122,13 +112,14 @@ export default {
       return pics;
     },
 
+    //打乱图片
     random() {
       let pics = this.$refs.main.children;
       let arr = [];
-      for (let i = 0; i < 30; i++) {
+      for (var i = 0; i < 1; i++) {
         //随机打乱
-        let a = Math.floor(Math.random() * 25);
-        let b = Math.floor(Math.random() * 25);
+        let a = Math.floor(Math.random() * 4);
+        let b = Math.floor(Math.random() * 4);
         if (a != b) {
           if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
             arr.push(a);
@@ -139,25 +130,23 @@ export default {
       }
     },
     change(a, b, pics) {
-      let aEle = pics[a];
-      let bEle = pics[b];
-      console.log(a, b);
+      var aEle = pics[a];
+      var bEle = pics[b];
 
-      let _left;
+      var _left;
       _left = aEle.offsetLeft;
       aEle.style.left = bEle.offsetLeft + "px";
       bEle.style.left = _left + "px";
-
-      let _top;
+      var _top;
       _top = aEle.offsetTop;
       aEle.style.top = bEle.offsetTop + "px";
       bEle.style.top = _top + "px";
-
-      let _index;
+      var _index;
       _index = aEle.getAttribute("data-index");
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
+    //判断是否成功
     isSuccess() {
       let pics = this.$refs.main.children;
 
@@ -165,10 +154,9 @@ export default {
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
-
-      if (str == "0123456789101112131415161718192021222324") {
-        this.$router.push("/result?pass=4");
-        this.$store.commit(SET_FOURTH);
+      if (str == "0123") {
+        this.$store.commit(SET_FIRST);
+        this.$router.push("/result?pass=1");
 
         return true;
       }
@@ -242,25 +230,55 @@ export default {
     }
   }
   .main {
+    width: 750px;
     height: 700px;
     position: relative;
     padding: 26px;
-    left: 30px;
 
+    //不能改变其margin 会导致移动错位
     .piece {
-      width: 120px;
-      height: 105px;
+      width: 328px;
+      height: 306px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
-      background: url("../assets/img/common/map.png") no-repeat;
+      background: url("../assets/img/button/map.jpg");
       transition: all 0.5s ease 0s;
       position: absolute;
     }
+    // .first {
+    //   background-size: 200%;
+    //   background-position-x: 0;
+    // }
 
+    // .second {
+    //   background-position-x: 328px;
+    //   background-size: 200%;
+    //   left: 380px;
+    // }
+    // .third {
+    //   background-position: 0 306px;
+    //   background-size: 200%;
+    //   top: 350px;
+    // }
+    // .four {
+    //   background-position: 328px 306px;
+    //   background-size: 200%;
+    //   top: 350px;
+    //   left: 380px;
+    // }
     .chosen {
       border-bottom: 7px solid #da8f43;
     }
   }
+  .showpic_shadow {
+    width: 560px;
+    height: 173px;
+    margin: 60px auto auto 154px;
+    background-image: url("../assets/img/game/showpic_sbg.jpg");
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: contain;
+
   .showpic_shadow {
     width: 560px;
     height: 173px;
@@ -279,10 +297,20 @@ export default {
       background-size: contain;
       text-align: center;
       line-height: 107px;
-      font-family: "Cotton";
+      // font-family: "Cotton";
       font-size: 50px;
       color: #fffcad;
     }
+  }
+  }
+  .map {
+    width: 741px;
+    height: 624px;
+    background: url("../assets/img/button/dialog.png");
+    position: absolute;
+    top: 160px;
+    background-size: cover;
+    display: hidden;
   }
 }
 </style>

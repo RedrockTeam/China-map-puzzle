@@ -10,9 +10,8 @@ export default new Vuex.Store({
 
   modules: {
     result
-
+  },
   state: {
-    firstId : 0,
     time: {
       minute: 0,
       second: 0,

@@ -239,7 +239,7 @@ export default {
       height: 135px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
-      background: url("../assets/img/button/map.jpg") no-repeat;
+      background: url("../assets/img/common/map.png") no-repeat;
       transition: all 0.5s ease 0s;
       position: absolute;
     }

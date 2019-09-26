@@ -1,0 +1,114 @@
+.game {
+    width: 750px;
+    height: 1208px;
+    background-image: url("../assets/img/common/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: contain;
+    padding-top: 66px;
+    text-align: center;
+
+    .header {
+        width: 95%;
+        height: 140px;
+        margin: 0 auto 24px 25px;
+        display: inline-flex;
+        justify-content: space-between;
+
+        .back_shadow {
+            width: 125px;
+            height: 139px;
+            background-image: url("../assets/img/common/btn_sbg.jpg");
+            background-repeat: no-repeat;
+            background-position: 0% 0%;
+            background-size: contain;
+
+            .back {
+                width: 92px;
+                height: 95px;
+                background-image: url("../assets/img/common/back.png");
+                background-repeat: no-repeat;
+                background-position: 0% 0%;
+                background-size: contain;
+            }
+        }
+
+        .title {
+            width: 240px;
+            height: 96px;
+            background-image: url("../assets/img/game/title_bg.jpg");
+            background-repeat: no-repeat;
+            background-position: 0% 0%;
+            background-size: contain;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 54px;
+                height: 17px;
+            }
+        }
+
+        .refresh_shadow {
+            width: 125px;
+            height: 139px;
+            background-image: url("../assets/img/common/btn_sbg.jpg");
+            background-repeat: no-repeat;
+            background-position: 0% 0%;
+            background-size: contain;
+
+            .refresh {
+                width: 92px;
+                height: 95px;
+                background-image: url("../assets/img/common/refresh.png");
+                background-repeat: no-repeat;
+                background-position: 0% 0%;
+                background-size: contain;
+            }
+        }
+    }
+
+    .main {
+        width: 680px;
+        height: 618px;
+        margin: 38px auto;
+        display: inline-flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .piece {
+
+
+            box-shadow: 2px 2px 24px #f3a98f;
+            margin: 3px 6px;
+            border-bottom: 7px solid #da8f43;
+
+            background-image: url("../assets/img/common/map.png");
+            background-repeat: no-repeat;
+            background-size: 656px 598px; 
+            // background-size: 200%; //200%
+            // background-origin: padding-box;//设置背景图片的位置从padding（内边距）开始放置
+
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -ms-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+
+            .img {
+
+                border: 5px solid #fef1ba;
+            }
+        }
+
+        .chosen {
+            border-bottom: 7px solid #a6492b;
+
+            .img {
+                border: 5px solid #f38251;
+            }
+        }
+    }
+}

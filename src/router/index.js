@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from '../views/home.vue'
 import Result from '../views/result.vue'
 import Pass from '../views/pass.vue'
-import Button from '../components/dialog.vue'
 import First from '../views/first.vue'
 import Second from '../views/second.vue'
 import Third from '../views/third.vue'
@@ -32,11 +31,6 @@ export default new Router({
     component: Result,
   },
   {
-    path: '/button',
-    name: 'button',
-    component: Button,
-  },
-  {
     path: '/first',
     name: 'first',
     component: First
@@ -55,8 +49,7 @@ export default new Router({
     path: '/four',
     name: 'four',
     component: Four
-  }
-
+  },
 
 
   ]

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { SET_FOURTH } from "../store/type/mutations";
+import { SET_SECOND } from "../store/type/mutations";
 export default {
   data() {
     return {
@@ -41,35 +41,19 @@ export default {
       time: 0,
       info: [
         [0, 0],
-        [70, 0],
-        [70 * 2, 0],
-        [70 * 3, 0],
-        [70 * 4, 0],
-        [0, 60],
-        [70, 60],
-        [70 * 2, 60],
-        [70 * 3, 60],
-        [70 * 4, 60],
-        [0, 60 * 2],
-        [70, 60 * 2],
-        [70 * 2, 60 * 2],
-        [70 * 3, 60 * 2],
-        [70 * 4, 60 * 2],
-        [0, 60 * 3],
-        [70, 60 * 3],
-        [70 * 2, 60 * 3],
-        [70 * 3, 60 * 3],
-        [70 * 4, 60 * 3],
-        [0, 60 * 4],
-        [70, 60 * 4],
-        [70 * 2, 60 * 4],
-        [70 * 3, 60 * 4],
-        [70 * 4, 60 * 4]
+        [115, 0],
+        [115 * 2, 0],
+        [0, 110],
+        [115, 110],
+        [115 * 2, 110],
+        [0, 110 * 2],
+        [115, 110 * 2],
+        [115 * 2, 110 * 2]
       ]
     };
   },
   mounted() {
-    this.random();
+    this.numRandom();
     this.moveImage();
   },
 
@@ -82,7 +66,6 @@ export default {
       obj[`${index}`] = true;
       return obj;
     },
-
     moveImage() {
       let pics = this.$refs.main.children;
       let firstX, firstY, firstIndex, firstPic, secondPic;
@@ -94,7 +77,6 @@ export default {
           this.startX = this.offsetLeft;
           this.startY = this.offsetTop;
           this.style.transition = "none";
-
           if (number == 0) {
             firstX = this.startX;
             firstY = this.startY;
@@ -122,13 +104,13 @@ export default {
       return pics;
     },
 
-    random() {
+    numRandom() {
       let pics = this.$refs.main.children;
       let arr = [];
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 10; i++) {
         //随机打乱
-        let a = Math.floor(Math.random() * 25);
-        let b = Math.floor(Math.random() * 25);
+        let a = Math.floor(Math.random() * 9);
+        let b = Math.floor(Math.random() * 9);
         if (a != b) {
           if (-1 == arr.indexOf(a) && -1 == arr.indexOf(b)) {
             arr.push(a);
@@ -141,7 +123,6 @@ export default {
     change(a, b, pics) {
       let aEle = pics[a];
       let bEle = pics[b];
-      console.log(a, b);
 
       let _left;
       _left = aEle.offsetLeft;
@@ -158,17 +139,16 @@ export default {
       aEle.setAttribute("data-index", bEle.getAttribute("data-index"));
       bEle.setAttribute("data-index", _index);
     },
+
     isSuccess() {
       let pics = this.$refs.main.children;
-
       let str = "";
       for (var i = 0; i < pics.length; i++) {
         str += pics[i].getAttribute("data-index");
       }
-
-      if (str == "0123456789101112131415161718192021222324") {
-        this.$router.push("/result?pass=4");
-        this.$store.commit(SET_FOURTH);
+      if (str == "012345678") {
+        this.$router.push("/result?pass=2");
+        this.$store.commit(SET_SECOND);
 
         return true;
       }
@@ -242,14 +222,14 @@ export default {
     }
   }
   .main {
+    width: 750px;
     height: 700px;
     position: relative;
     padding: 26px;
-    left: 30px;
 
     .piece {
-      width: 120px;
-      height: 105px;
+      width: 210px;
+      height: 205px;
       box-shadow: 2px 2px 24px #f3a98f;
       border-bottom: 7px solid #a6492b;
       background: url("../assets/img/common/map.png") no-repeat;

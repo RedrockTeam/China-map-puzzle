@@ -22,7 +22,7 @@ import {
 
 const initialState = {
     first: 'unlock',
-    second: 'lock',
+    second: 'unlock',
     third: 'lock',
     forth: 'lock'
 
