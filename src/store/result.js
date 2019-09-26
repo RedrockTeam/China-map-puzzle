@@ -53,11 +53,7 @@ const mutations = {
     [SET_FOURTH](state) {
         state.forth = 'success'
         console.log('forthguan')
-
-
     }
-
-
 }
 
 

@@ -64,7 +64,7 @@ export default {
         console.log(this.firstId);
         this.firstId = id;
         console.log(this.firstId);
-        this.$store.state.change_flag = true;
+        this.change_flag = true;
         console.log(this.change_flag);
       } else {
         let func = require("../assets/js/puzzle.js");
