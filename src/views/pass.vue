@@ -79,16 +79,16 @@ export default {
   computed: {
     //通关状态显示不同的图片
     first() {
-      return this.$store.state.result.first;
+      return this.$store.state.result.first_flag;
     },
     second() {
-      return this.$store.state.result.second;
+      return this.$store.state.result.second_flag;
     },
     third() {
-      return this.$store.state.result.third;
+      return this.$store.state.result.third_flag;
     },
     forth() {
-      return this.$store.state.result.forth;
+      return this.$store.state.result.forth_flag;
     }
   },
 
@@ -119,13 +119,12 @@ export default {
 <style scoped>
 .bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  width: 750px;
   height: 100%;
-  width: 100%;
-  background: url("../assets/img/pass/background.png");
-  background-size: cover;
-  overflow: hidden;
+  background-image: url("../assets/img/common/bg.jpg");
+  background-repeat: repeat-y;
+  background-position: 0% 0%;
+  background-size: 100% auto;
 }
 .head,
 .end {

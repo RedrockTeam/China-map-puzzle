@@ -21,10 +21,10 @@ import {
 
 
 const initialState = {
-    first: 'unlock',
-    second: 'unlock',
-    third: 'lock',
-    forth: 'lock'
+    first_flag: 'unlock',
+    second_flag: 'unlock',
+    third_flag: 'unlock',
+    forth_flag: 'unlock'
 
 }
 
@@ -33,25 +33,25 @@ const state = { ...initialState }
 const mutations = {
 
     [SET_FIRST](state) {
-        state.first = 'success',
-            state.second = 'unlock',
+        state.first_flag = 'success',
+            state.second_flag = 'unlock',
             console.log('yiguan')
 
     },
     [SET_SECOND](state) {
-        state.second = 'success',
-            state.third = 'unlock'
+        state.second_flag = 'success',
+            state.third_flag = 'unlock'
         console.log('erguan')
 
     },
     [SET_THIRD](state) {
-        state.third = 'success',
-            state.forth = 'unlock'
+        state.third_flag = 'success',
+            state.forth_flag = 'unlock'
         console.log('sanguan')
 
     },
     [SET_FOURTH](state) {
-        state.forth = 'success'
+        state.forth_flag = 'success'
         console.log('forthguan')
     }
 }

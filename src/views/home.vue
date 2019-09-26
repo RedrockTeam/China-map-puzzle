@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import request from "../network/request.js";
 export default {
   data() {
     return {
@@ -32,8 +31,8 @@ export default {
 <style lang="scss" scoped>
 .main {
   width: 750px;
-  height: 1206px;
-  background-image: url("../assets/img/home/home_bg.jpg");
+  height: 1207px;
+  background-image: url("../assets/img/home/home_bg2.jpg");
   background-repeat: no-repeat;
   background-position: 0% 0%;
   background-size: contain;

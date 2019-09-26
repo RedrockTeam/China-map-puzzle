@@ -13,20 +13,23 @@ export default new Vuex.Store({
   },
   state: {
     time: 0,
+    timer: function(){},
   },
   mutations: {
     // 开始
     start(state) {
       //时间重置
-      clearInterval(state.timer);
-      setInterval(function () {
+      clearInterval(timer);
+       var _timer = setInterval(function () {
         state.time++;
-        console.log(state.time)
+        // console.log(state.time)
       }, 1000);
+      state.timer = _timer
+      console.log(state.timer)
       
     },
     //停止
-    stop() {
+    stop(state) {
       clearInterval(state.timer);
       state.time = 0
       console.log(state.time)

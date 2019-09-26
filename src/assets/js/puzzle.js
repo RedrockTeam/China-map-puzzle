@@ -56,12 +56,15 @@ var initPuzzle = function initPuzzle(num) {
             }
         }
     }
+
+    // 打乱一下顺序
+
     console.log('initing')
 }
 
 
 // 移动拼图,传入的四个参数分别为第二次点击的拼图块的id，第一次点击的拼图块的firstId,拼图的行列数num，关卡的状态flag
-var move = function move(id, firstId, num, _flag) {
+var move = function move(id, firstId, num, SET_) {
     console.log('changing')
     // 找到存储的数据为firstId的位置
     for (var m = 0; m < num; m++) {
@@ -98,7 +101,13 @@ var move = function move(id, firstId, num, _flag) {
         for (var j = 0; j < num; j++, k++) { //二维长度为num
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
             if (chart[i][j] = k) {
-                _flag = 'finished';
+                
+                this.$store.commit(SET_);
+                this.$store.commit("stop");
+                // this.stop();
+                // this.$store.time把时间传给后端
+                this.$router.push("/result?pass="+num-1);
+
             }
         }
     }

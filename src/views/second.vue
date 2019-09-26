@@ -5,7 +5,7 @@
         <div class="back" @click="toHome"></div>
       </div>
       <div class="title">
-        <img src="../assets/img/game/one.png" />
+        <img src="../assets/img/game/two.png" />
       </div>
       <div class="refresh_shadow">
         <div class="refresh"></div>
@@ -96,14 +96,18 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/game.scss";
 .game {
+    .header {
+    .title {
+      img {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  }
   .main {
     .piece {
       width: 208px;
       height: 196px;
-      .img {
-        width: 208px;
-        height: 189px;
-      }
     }
   }
 }
