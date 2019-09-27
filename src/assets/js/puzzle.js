@@ -1,6 +1,7 @@
 // 传入的参数为拼图的行列数num
 var chart = new Array();
 var d_direct = new Array();
+
 var initPuzzle = function initPuzzle(num) {
 
     console.log('initing')
@@ -31,7 +32,7 @@ var initPuzzle = function initPuzzle(num) {
     for (var i = 0; i < num; i++) {
         for (var j = 0; j < num; j++) {
             var id = chart[i][j];
-            d_direct[id] = new Array(); //以每个拼图块的顺序号做为下标建立数组，存其可交换的位置
+            d_direct[id] = new Array(4); //以每个拼图块的顺序号做为下标建立数组，存其可交换的位置
 
             //拼图块可交换位置不多于4个
             // 按上下左右的顺序存，每个方向需判断是否存在可交换的
@@ -103,8 +104,7 @@ var move = function move(id, firstId, num, SET_) {
             if (chart[i][j] = k) {
 
                 this.$store.commit(SET_);
-                this.$store.commit("stop");
-                // this.stop();
+                this.stop();
                 // this.$store.time把时间传给后端
                 this.$router.push("/result?pass=" + num - 1);
 

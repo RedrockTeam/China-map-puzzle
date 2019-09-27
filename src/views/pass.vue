@@ -1,7 +1,7 @@
 <template>
   <div class="bg">
     <div class="head">
-      <div class="back" @click="toHome"></div>
+      <back-button></back-button>
       <div class="title"></div>
     </div>
 
@@ -93,9 +93,6 @@ export default {
   },
 
   methods: {
-    toHome() {
-      this.$router.push("/home");
-    },
     startFirst() {
       this.$router.push("/first");
     },
@@ -134,18 +131,12 @@ export default {
   margin-top: 120px;
   margin-left: 55px;
 }
-.back {
-  width: 93px;
-  height: 97px;
-  background: url("../assets/img/pass/back.png");
-  background-size: cover;
-}
 .title {
   width: 307px;
   height: 95px;
   background: url("../assets/img/pass/title.png");
   background-size: 100%;
-  margin-left: -40px;
+  margin-left: 40px;
 }
 
 .body {

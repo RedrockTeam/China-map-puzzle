@@ -44,11 +44,10 @@ export default {
   mounted() {
     let func = require("../assets/js/puzzle.js");
     func.initPuzzle(2);
-    // this.$store.commit("start");
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.$store.commit("stop"));
+    window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
