@@ -1,23 +1,23 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-// import JwtService from "@/common/service/jwt";
-//import { API } from "@/common/config";    后端url
+import { API } from "@/common/config";    //后端url
 
 const ApiService = {
     init() {
         Vue.use(VueAxios, axios)
-        //this.setHeader()
+        Vue.axios.defaults.baseURL = API
+        this.setHeader()
 
     },
     //每次发送请求时 把获得的token放在请求头里
-    // setHeader() {
-    //     Vue.axios.defaults.headers.common[
-    //         "Authorization"
-    //     ] = `Token ${JwtService.getToken()}`;
-    // },
+    setHeader() {
+        Vue.axios.defaults.headers.common[
+            "Authorization"
+        ] = `Token ${window.localStorage.getItem(id_token)}`;
+    },
 
-    //    封装axios
+    // 封装axios
 
     get(resource) {
         return Vue.axios.get(resource).catch(error => {
@@ -46,15 +46,15 @@ const ApiService = {
 
 export default ApiService;
 
-export const ResultService = {
-    getFirstAnswer(params) {
-        return ApiService.post(`answer`, params)
-    },
+// export const ResultService = {
+//     getFirstAnswer(params) {
+//         return ApiService.post(`answer`, params)
+//     },
 
-    getOldAnswer() {
-        return ApiService.post(`answered`)
-    }
-}
+//     getOldAnswer() {
+//         return ApiService.post(`answered`)
+//     }
+// }
 
 
 

@@ -11,38 +11,18 @@
         <div>
           <p>
             <span class="clock"></span>
-            <span class="word">我的时间：</span>
+            <span class="word">我的时间：{{}}</span>
           </p>
           <p>
             <i class="grade"></i>
-            <span class="word">我的成绩：</span>
+            <span class="word">我的成绩：{{}}</span>
           </p>
         </div>
       </div>
       <div class="list">
-        <p class="list_item first">
+        <p class="list_item" v-for="item in items" :key="item.index" :class="'rank'+item.index">
           <span class="icon"></span>
-          <span class="nickname">这是我的昵称</span>
-          <span class="time">10s</span>
-        </p>
-        <p class="list_item second">
-          <span class="icon"></span>
-          <span class="nickname">这是我的昵称</span>
-          <span class="time">10s</span>
-        </p>
-        <p class="list_item third">
-          <span class="icon"></span>
-          <span class="nickname">这是我的昵称</span>
-          <span class="time">10s</span>
-        </p>
-        <p class="list_item">
-          <span class="normal">4</span>
-          <span class="nickname">这是我的昵称</span>
-          <span class="time">10s</span>
-        </p>
-        <p class="list_item">
-          <span class="normal">4</span>
-          <span class="nickname">这是我的昵称</span>
+          <span class="nickname">{{item.name}}</span>
           <span class="time">10s</span>
         </p>
       </div>
@@ -50,7 +30,32 @@
     <div class="line"></div>
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
 
+    }
+  },
+  methods: {
+    toHome() {
+      this.$router.push("/pass");
+    },
+    toNext() {
+      let pass = this.$route.query.pass; // 当前路由参数
+      if (pass == 1) {
+        this.$router.push("/second");
+      } else if (pass == 2) {
+        this.$router.push("/third");
+      } else if (pass == 3) {
+        this.$router.push("/four");
+      } else {
+        return false;
+      }
+    }
+  }
+};
+</script>
 <style>
 .bg {
   position: absolute;
@@ -160,15 +165,15 @@
   height: 82px;
   margin: 15px 35px;
 }
-.first .icon {
+.rank1 .icon {
   background: url("../assets/img/ranking/first.png");
   background-size: cover;
 }
-.second .icon {
+.rank2 .icon {
   background: url("../assets/img/ranking/second.png");
   background-size: cover;
 }
-.third .icon {
+.rank3 .icon {
   background: url("../assets/img/ranking/third.png");
   background-size: cover;
 }
@@ -201,24 +206,3 @@
 }
 </style>
 
-<script>
-export default {
-  methods: {
-    toHome() {
-      this.$router.push("/pass");
-    },
-    toNext() {
-      let pass = this.$route.query.pass; // 当前路由参数
-      if (pass == 1) {
-        this.$router.push("/second");
-      } else if (pass == 2) {
-        this.$router.push("/third");
-      } else if (pass == 3) {
-        this.$router.push("/four");
-      } else {
-        return false;
-      }
-    }
-  }
-};
-</script>

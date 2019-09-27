@@ -1,1 +1,1 @@
-export const API = ''
+export const API = 'http://awesomeblog.natapp1.cc'

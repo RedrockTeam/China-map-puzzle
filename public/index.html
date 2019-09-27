@@ -7,6 +7,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <title>puzzle-game</title>
+  <script>
+    const token = document.location.hash.split('#/?token=')[1]
+    if ((!localStorage.getItem('id_token')) && !token) {
+      window.location.href = 'https://wx.redrock.team/magicloop/rushb?b=http://awesomeblog.natapp1.cc&scope=student'
+    }
+    if (token && token.length) {
+      document.location.hash = '#/'
+      localStorage.setItem('id_token', token)
+    }
+
+  </script>
 </head>
 
 <body>
@@ -16,6 +27,7 @@
   <div id="app"></div>
   <!-- built files will be auto injected -->
 
-  
- </body>
+
+</body>
+
 </html>

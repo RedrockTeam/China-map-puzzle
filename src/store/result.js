@@ -2,16 +2,16 @@ import {
     SET_FIRST,
     SET_SECOND,
     SET_THIRD,
-    SET_FOURTH
+    SET_FOURTH,
+    CHECK_MINE,
 } from './type/mutations'
 
 import {
-
-
+    ACHECK_MINE,
 } from './type/actions'
 
 import {
-    ResultService,
+    ApiService,
 
 } from '../common/service/api.js'
 
@@ -26,7 +26,9 @@ const initialState = {
 
 }
 
-const state = { ...initialState }
+const state = {
+    ...initialState
+}
 
 const mutations = {
 
@@ -51,17 +53,34 @@ const mutations = {
     [SET_FOURTH](state) {
         state.forth_flag = 'success'
         console.log('forthguan')
+    },
+    [CHECK_MINE](state, payload) {
+        if (payload == 1) {
+            state.first_flag = 'success';
+            state.second_flag = 'unlock';
+        } else if (payload == 2) {
+            state.first_flag = 'success';
+            state.second_flag = 'success';
+            state.third_flag = 'unlock'
+        } else if (payload == 3) {
+            state.first_flag = 'success';
+            state.second_flag = 'success';
+            state.third_flag = 'success';
+            state.forth_flag = 'unlock'
+        } else if (payload == 4) {
+            state.first_flag = 'success';
+            state.second_flag = 'success';
+            state.third_flag = 'success';
+            state.forth_flag = 'success'
+        }
+
     }
 }
-
-
-
-
-
-
-const getters = {
-
-
+const actions = {
+    async [ACHECK_MINE](context) {
+        let passNum = ApiService.get(`/getMy`).length
+        context.commit(CHECK_MINE, passNum)
+    }
 }
 
 
@@ -69,5 +88,6 @@ const getters = {
 export default {
     state,
     mutations,
-    getters
+    getters,
+    actions,
 }

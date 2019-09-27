@@ -41,7 +41,9 @@ export default {
       num: 2
     };
   },
+  computed() {
 
+  },
   mounted() {
     this.refresh();
     this.start();
@@ -88,22 +90,23 @@ export default {
         func.move(id, this.firstId, 2);
         console.log("have changed");
         this.change_flag = false;
-        console.log(this.change_flag)
+        console.log(this.change_flag);
         this.activeName = null;
         var chart = func.chart;
-        // for (var i = 0, k = 0; i < this.num; i++) {
-        //   //一维长度为num
-        //   for (var j = 0; j < this.num; j++, k++) {
-        //     //二维长度为num
-        //     // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-        //     if ((chart[i][j] = k)) {
-        //       this.$store.commit(SET_FIRST);
-        //       this.stop();
-        //       // this.$store.time把时间传给后端
-        //       this.$router.push("/result?pass=" + this.num - 1);
-        //     }
-        //   }
-        // }
+        for (var i = 0, k = 0; i < this.num; i++) {
+          //一维长度为num
+          for (var j = 0; j < this.num; j++, k++) {
+            //二维长度为num
+            // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
+            if ((chart[i][j] = k)) {
+              this.$store.commit(SET_FIRST);
+              this.stop();
+              // this.time把时间传给后端
+              this.$.dispatch(APOST_GRADE,this.time)
+              this.$router.push("/result?pass=" + this.num - 1);
+            }
+          }
+        }
       }
     }
   },
