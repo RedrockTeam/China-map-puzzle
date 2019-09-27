@@ -97,7 +97,8 @@ export default {
 }
 .dialogCon {
   width: 100%;
-  height: 1208px;
+  // height: 1208px;
+  height: 100%;
 
   background-color: rgba($color: #dd8e5e, $alpha: 0.4);
   position: absolute;

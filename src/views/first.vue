@@ -37,13 +37,13 @@ export default {
       change_flag: false,
       activeName: null,
       time: 0,
-      timer: null
+      timer: null,
+      num: 2
     };
   },
 
   mounted() {
-    let func = require("../assets/js/puzzle.js");
-    func.initPuzzle(2);
+    this.refresh();
     this.start();
 
     // 监听离开页面则停止计时
@@ -53,6 +53,9 @@ export default {
     refresh() {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(2);
+      //交换0 1 3 打乱顺序
+      // func.move(0, 1, 2);
+      // func.move(1, 3, 2);
     },
 
     // 开始
@@ -82,9 +85,25 @@ export default {
         this.change_flag = true;
       } else {
         let func = require("../assets/js/puzzle.js");
-        func.move(id, this.firstId, 2, SET_FIRST);
+        func.move(id, this.firstId, 2);
         console.log("have changed");
         this.change_flag = false;
+        console.log(this.change_flag)
+        this.activeName = null;
+        var chart = func.chart;
+        // for (var i = 0, k = 0; i < this.num; i++) {
+        //   //一维长度为num
+        //   for (var j = 0; j < this.num; j++, k++) {
+        //     //二维长度为num
+        //     // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
+        //     if ((chart[i][j] = k)) {
+        //       this.$store.commit(SET_FIRST);
+        //       this.stop();
+        //       // this.$store.time把时间传给后端
+        //       this.$router.push("/result?pass=" + this.num - 1);
+        //     }
+        //   }
+        // }
       }
     }
   },
