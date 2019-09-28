@@ -38,7 +38,33 @@ import { APOST_GRADE } from "../store/type/actions";
 export default {
   data() {
     return {
-      pieces: [{}, {}, {}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
+      pieces: [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ],
       firstId: null,
       change_flag: false,
       finish_flag: false,
@@ -53,19 +79,19 @@ export default {
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.stop());
+    // window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(5);
       // 随机打乱
-      for(var i=0;i<10;i++){
-        var a = Math.floor(Math.random()*25);
-        var b = Math.floor(Math.random()*25);
-        var c = Math.floor(Math.random()*25);
-        func.move(a,b,5);
-        func.move(a,c,5);
+      for (var i = 0; i < 10; i++) {
+        var a = Math.floor(Math.random() * 25);
+        var b = Math.floor(Math.random() * 25);
+        var c = Math.floor(Math.random() * 25);
+        func.move(a, b, 5);
+        func.move(a, c, 5);
       }
     },
 
@@ -74,7 +100,6 @@ export default {
       //时间重置
       if (this.timer) {
         clearInterval(this.timer);
- 
       }
       let _timer = setInterval(() => {
         this.time++;
@@ -98,25 +123,24 @@ export default {
         this.activeName = null;
         var chart = func.chart;
         // 判断是否完成拼图
-      
+
         for (var i = 0, k = 0; i < this.num; i++) {
           //一维长度为num
           for (var j = 0; j < this.num; j++, k++) {
             //二维长度为num
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            this.finish_flag = (chart[i][j] == k);
+            this.finish_flag = chart[i][j] == k;
           }
         }
         if (this.finish_flag) {
-              console.log("成功了")
-              this.$store.commit(SET_FIRST);
-              this.stop();
-              console.log(this.time)
-              // this.time把时间传给后端
-              this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
-              this.$router.push("/result?pass=" + this.num - 1);
-            }
-      
+          console.log("成功了");
+          this.$store.commit(SET_FIRST);
+          this.stop();
+          console.log(this.time);
+          // this.time把时间传给后端
+          this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+          this.$router.push("/result?pass=" + this.num - 1);
+        }
       }
     }
   },
@@ -128,7 +152,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/game.scss";
 .game {
-      .header {
+  .header {
     .title {
       img {
         width: 54px;
@@ -141,8 +165,8 @@ export default {
       width: 118px;
       height: 114px;
       .img {
-          width: 100%;
-          height: 100%;
+        width: 100%;
+        height: 100%;
         // width: 114px;
         // height: 103px;
       }

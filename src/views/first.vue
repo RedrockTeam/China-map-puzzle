@@ -52,7 +52,7 @@ export default {
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.stop());
+    // window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
@@ -71,19 +71,21 @@ export default {
     // 开始
     start() {
       //时间重置
+      console.log("调用函数");
       if (this.timer) {
         clearInterval(this.timer);
         console.log(this.timer);
       }
       let _timer = setInterval(() => {
         this.time++;
-        // console.log(this.time); // 作用域问题导致之前this指代有问题
+        console.log(this.time); // 作用域问题导致之前this指代有问题
       }, 1000);
       this.timer = _timer;
     },
     //停止
     stop() {
-      //console.log(this.time); 获得此时的花费时间
+      console.log(this.time);
+      // 获得此时的花费时间;
       clearInterval(this.timer);
       this.time = 0;
     },

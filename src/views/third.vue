@@ -52,7 +52,7 @@ export default {
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.stop());
+    // window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
