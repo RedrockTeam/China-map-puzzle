@@ -6,7 +6,7 @@
     </div>
 
     <div class="body">
-      <div @click="startFirst">
+      <div @click="checked('first')">
         <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
         <img class="first" v-else src="../assets/img/pass/firstpass.png" />
       </div>
@@ -15,9 +15,14 @@
           v-if="this.second =='unlock' "
           class="second"
           src="../assets/img/pass/second.png"
-          @click="startSecond"
+          @click="checked('second')"
         />
-        <img v-if="this.second =='success' " class="second" src="../assets/img/pass/secondpass.png" />
+        <img
+          v-if="this.second =='success' "
+          class="second"
+          src="../assets/img/pass/secondpass.png"
+          @click="checked('second')"
+        />
         <img
           v-if="this.second =='lock'"
           class="second"
@@ -30,13 +35,13 @@
           class="third"
           v-if="this.third =='unlock' "
           src="../assets/img/pass/third.png"
-          @click="startThird"
+          @click="checked('third')"
         />
         <img
           class="third"
           v-if="this.third =='success' "
           src="../assets/img/pass/thirdpass.png"
-          @click="startThird"
+          @click="checked('third')"
         />
         <img
           class="third"
@@ -50,13 +55,13 @@
           class="four"
           v-if="this.forth=='unlock' "
           src="../assets/img/pass/four.png"
-          @click="startFour"
+          @click="checked('forth')"
         />
         <img
           class="third"
           v-if="this.forth =='success' "
           src="../assets/img/pass/forthpass.png"
-          @click="startFour"
+          @click="checked('forth')"
         />
         <img
           class="four"
@@ -68,13 +73,14 @@
     </div>
 
     <div class="end">
-      <div class="list"></div>
-      <div class="begin"></div>
+      <div class="list" @click="toRankList"></div>
+      <div class="begin" @click="toBegin"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { SET_CURRENT_PASS } from "../store/type/mutations";
 export default {
   computed: {
     //通关状态显示不同的图片
@@ -89,24 +95,35 @@ export default {
     },
     forth() {
       return this.$store.state.result.forth_flag;
+    },
+    current_pass() {
+      return this.$store.state.pass.current_pass;
+    },
+    default_pass() {
+      return this.$store.state.result.default_pass;
     }
   },
-    mounted(){
-    this.$store.dispatch(ACHECK_MINE)
+  mounted() {
+    this.$store.dispatch(ACHECK_MINE);
   },
 
   methods: {
-    startFirst() {
-      this.$router.push("/first");
+    checked(params) {
+      this.$store.commit(SET_CURRENT_PASS, params);
     },
-    startSecond() {
-      this.$router.push("/second");
+    toBegin() {
+      if (this.current_pass == null) {
+        this.$router.push(`/${this.default_pass}`);
+      } else {
+        this.$router.push(`/${this.current_pass}`);
+      }
     },
-    startThird() {
-      this.$router.push("/third");
-    },
-    startFour() {
-      this.$router.push("/four");
+    toRankList() {
+      if (this.current_pass == null) {
+        this.$router.push(`/result?pass=${this.default_pass}`);
+      } else {
+        this.$router.push(`/result?pass=${this.current_pass}`);
+      }
     }
   },
   mounted() {

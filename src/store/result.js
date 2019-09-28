@@ -19,9 +19,10 @@ import {
 
 const initialState = {
     first_flag: 'unlock',
-    second_flag: 'unlock',
-    third_flag: 'unlock',
-    forth_flag: 'unlock',
+    second_flag: 'lock',
+    third_flag: 'lock',
+    forth_flag: 'lock',
+    default_pass: 'four'
 
 
 }
@@ -34,25 +35,29 @@ const mutations = {
 
     [SET_FIRST](state) {
         state.first_flag = 'success',
-            state.second_flag = 'unlock',
-            console.log('yiguan')
+            state.second_flag = 'unlock'
+        state.default_pass = 'second'
 
     },
     [SET_SECOND](state) {
         state.second_flag = 'success',
             state.third_flag = 'unlock'
-        console.log('erguan')
+        state.default_pass = 'third'
+
 
     },
     [SET_THIRD](state) {
         state.third_flag = 'success',
             state.forth_flag = 'unlock'
-        console.log('sanguan')
+        state.default_pass = 'four'
+
 
     },
     [SET_FOURTH](state) {
-        state.forth_flag = 'success'
-        console.log('forthguan')
+        state.forth_flag = 'success',
+            state.default_pass = 'four'
+
+
     },
     [CHECK_MINE](state, payload) {
         if (payload == 1) {
