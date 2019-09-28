@@ -69,7 +69,7 @@ var initPuzzle = function initPuzzle(num) {
 // 移动拼图,传入的四个参数分别为第二次点击的拼图块的id，第一次点击的拼图块的firstId,拼图的行列数num，关卡的状态flag
 var move = function move(id, firstId, num) {
 
-    var first_id_pos;
+    let first_id_pos;
     // 找到存储的数据为firstId的位置
     for (var m = 0; m < num; m++) {
         for (var n = 0; n < num; n++)
@@ -81,7 +81,7 @@ var move = function move(id, firstId, num) {
             }
 
     }
-    var id_pos;
+    let id_pos;
     // 找到存储的数据为id的位置
     for (var i = 0; i < num; i++) {
         for (var j = 0; j < num; j++)

@@ -52,9 +52,14 @@ export default {
     refresh() {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(3);
-      //交换0 1 3 打乱顺序
-      // func.move(0, 1, 3);
-      // func.move(1, 3, 3);
+      // 随机打乱
+      for(var i=0;i<10;i++){
+        var a = Math.floor(Math.random()*9);
+        var b = Math.floor(Math.random()*9);
+        var c = Math.floor(Math.random()*9);
+        func.move(a,b,3);
+        func.move(a,c,3);
+      }
     },
 
     // 开始
