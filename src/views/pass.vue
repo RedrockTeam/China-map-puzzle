@@ -4,82 +4,8 @@
       <back-button></back-button>
       <div class="title"></div>
     </div>
-    <!-- <div class="beautify">
-      <div class="center"> -->
-        <div class="body">
-          <div @click="startFirst">
-            <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
-            <img class="first" v-else src="../assets/img/pass/firstpass.png" />
-          </div>
-          <div>
-            <img
-              v-if="this.second =='unlock' "
-              class="second"
-              src="../assets/img/pass/second.png"
-              @click="startSecond"
-            />
-            <img
-              v-if="this.second =='success' "
-              class="second"
-              src="../assets/img/pass/secondpass.png"
-            />
-            <img
-              v-if="this.second =='lock'"
-              class="second"
-              v-on:click.prevent.self
-              src="../assets/img/pass/lock.png"
-            />
-          </div>
-          <div>
-            <img
-              class="third"
-              v-if="this.third =='unlock' "
-              src="../assets/img/pass/third.png"
-              @click="startThird"
-            />
-            <img
-              class="third"
-              v-if="this.third =='success' "
-              src="../assets/img/pass/thirdpass.png"
-              @click="startThird"
-            />
-            <img
-              class="third"
-              v-if="this.third =='lock'"
-              v-on:click.self.prevent
-              src="../assets/img/pass/lock.png"
-            />
-          </div>
-          <div>
-            <img
-              class="four"
-              v-if="this.forth=='unlock' "
-              src="../assets/img/pass/four.png"
-              @click="startFour"
-            />
-            <img
-              class="third"
-              v-if="this.forth =='success' "
-              src="../assets/img/pass/forthpass.png"
-              @click="startFour"
-            />
-            <img
-              class="four"
-              v-if="this.forth =='lock'"
-              v-on:click.self.prevent
-              src="../assets/img/pass/lock.png"
-            />
-          </div>
-        </div>
 
-<<<<<<< HEAD
-        <div class="end">
-          <div class="mylist"></div>
-          <div class="begin"></div>
-        </div>
-      <!-- </div>
-    </div> -->
-=======
+
     <div class="body">
       <div @click="checked('first')">
         <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
@@ -151,7 +77,6 @@
       <div class="list" @click="toRankList"></div>
       <div class="begin" @click="toBegin"></div>
     </div>
->>>>>>> 0fa9e882878cf010042efc08f2d9671bfa1bb5a5
   </div>
 </template>
 
