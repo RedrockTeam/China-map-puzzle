@@ -29,7 +29,7 @@
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
 import { SET_FIRST, POST_GRADE } from "../store/type/mutations";
-import { ASET_FIRST, APOST_GRADE } from "../store/type/actions";
+import { APOST_GRADE } from "../store/type/actions";
 export default {
   data() {
     return {

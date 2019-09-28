@@ -29,62 +29,84 @@
 <script>
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
+import { SET_SECOND, POST_GRADE } from "../store/type/mutations";
+import { APOST_GRADE } from "../store/type/actions";
 export default {
   data() {
     return {
-      pieces: [{}, {}, {}, {}, {}, {}, {}, {}, {}],
+      pieces: [{}, {}, {}, {},{}, {}, {}, {},{}],
       firstId: null,
-      change_flag: false
+      change_flag: false,
+      activeName: null,
+      time: 0,
+      timer: null,
+      num: 3
     };
   },
-
   mounted() {
-    this.init();
-    // this.$store.commit("start");
+    this.refresh();
+    this.start();
+
+    // 监听离开页面则停止计时
+    window.addEventListener("unload", this.stop());
   },
   methods: {
-    toHome() {
-      this.$router.push("/");
+    refresh() {
+      let func = require("../assets/js/puzzle.js");
+      func.initPuzzle(3);
+      //交换0 1 3 打乱顺序
+      // func.move(0, 1, 3);
+      // func.move(1, 3, 3);
     },
-    over() {
-      // this.$store.commit("stop");
-      // store.timecount把时间传给后端
-      this.$router.push("/choose/first/rank");
+
+    // 开始
+    start() {
+      //时间重置
+      console.log("调用函数");
+      if (this.timer) {
+        clearInterval(this.timer);
+        console.log(this.timer);
+      }
+      let _timer = setInterval(() => {
+        this.time++;
+        // console.log(this.time); // 作用域问题导致之前this指代有问题
+      }, 1000);
+      this.timer = _timer;
     },
-    init() {
-      let fun = require("../assets/js/puzzle.js");
-      // console.log(fun.puzzle)
-      fun.initPuzzle(3);
+    //停止
+    stop() {
+      //console.log(this.time); 获得此时的花费时间
+      clearInterval(this.timer);
+      this.time = 0;
     },
     clickChange(id) {
-      console.log(id);
-      console.log(this.firstId);
+      this.activeName = id;
       if (this.change_flag == false) {
-        console.log(this.change_flag);
-        console.log(this.firstId);
         this.firstId = id;
-        console.log(this.firstId);
         this.change_flag = true;
-        console.log(this.change_flag);
       } else {
         let func = require("../assets/js/puzzle.js");
-        console.log(
-          id,
-          this.firstId,
-          2,
-          this.$store.state.first_flag,
-          this.chart,
-          this.d_direct
-        );
-        func.move(
-          id,
-          this.firstId,
-          2,
-          this.$store.state.first_flag,
-          this.chart,
-          this.d_direct
-        );
+        func.move(id, this.firstId, 3);
+        console.log("have changed");
         this.change_flag = false;
+        console.log(this.change_flag);
+        this.activeName = null;
+        var chart = func.chart;
+        // 判断是否完成拼图
+        // for (var i = 0, k = 0; i < this.num; i++) {
+        //   //一维长度为num
+        //   for (var j = 0; j < this.num; j++, k++) {
+        //     //二维长度为num
+        //     // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
+        //     if ((chart[i][j] = k)) {
+        //       this.$store.commit(SET_SECOND);
+        //       this.stop();
+        //       // this.time把时间传给后端
+        //       this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+        //       this.$router.push("/result?pass=" + this.num - 1);
+        //     }
+        //   }
+        // }
       }
     }
   },

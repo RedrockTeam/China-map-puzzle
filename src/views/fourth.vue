@@ -5,7 +5,7 @@
         <div class="back" @click="toHome"></div>
       </div>
       <div class="title">
-        <img src="../assets/img/game/three.png" />
+        <img src="../assets/img/game/four.png" />
       </div>
       <div class="refresh_shadow">
         <div class="refresh"></div>
@@ -29,18 +29,18 @@
 <script>
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
-import { SET_THIRD, POST_GRADE } from "../store/type/mutations";
+import { SET_FOURTH, POST_GRADE } from "../store/type/mutations";
 import { APOST_GRADE } from "../store/type/actions";
 export default {
   data() {
     return {
-      pieces: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+      pieces: [{}, {}, {}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
       firstId: null,
       change_flag: false,
       activeName: null,
       time: 0,
       timer: null,
-      num: 4
+      num: 5
     };
   },
   mounted() {
@@ -53,10 +53,10 @@ export default {
   methods: {
     refresh() {
       let func = require("../assets/js/puzzle.js");
-      func.initPuzzle(4);
+      func.initPuzzle(5);
       //交换0 1 3 打乱顺序
-      // func.move(0, 1, 4);
-      // func.move(1, 3, 4);
+      // func.move(0, 1, 5);
+      // func.move(1, 3, 5);
     },
 
     // 开始
@@ -86,7 +86,7 @@ export default {
         this.change_flag = true;
       } else {
         let func = require("../assets/js/puzzle.js");
-        func.move(id, this.firstId, 4);
+        func.move(id, this.firstId, 5);
         console.log("have changed");
         this.change_flag = false;
         console.log(this.change_flag);
@@ -99,10 +99,10 @@ export default {
         //     //二维长度为num
         //     // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
         //     if ((chart[i][j] = k)) {
-        //       this.$store.commit(SET_THIRD);
+        //       this.$store.commit(SET_FOURTH);
         //       this.stop();
         //       // this.time把时间传给后端
-        //       this.$store.dispatch(APOST_GRADE, { level: 3, time: this.time });
+        //       this.$store.dispatch(APOST_GRADE, { level: 4, time: this.time });
         //       this.$router.push("/result?pass=" + this.num - 1);
         //     }
         //   }
@@ -118,18 +118,24 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/game.scss";
 .game {
-  .header {
+      .header {
     .title {
       img {
         width: 54px;
-        height: 53px;
+        height: 57px;
       }
     }
   }
   .main {
     .piece {
-      width: 148px;
-      height: 144px;
+      width: 118px;
+      height: 114px;
+      .img {
+          width: 100%;
+          height: 100%;
+        // width: 114px;
+        // height: 103px;
+      }
     }
   }
 }

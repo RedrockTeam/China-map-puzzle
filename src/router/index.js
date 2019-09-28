@@ -6,7 +6,7 @@ import Pass from '../views/pass.vue'
 import First from '../views/first.vue'
 import Second from '../views/second.vue'
 import Third from '../views/third.vue'
-import Four from '../views/forth.vue'
+import Four from '../views/fourth.vue'
 
 Vue.use(Router)
 
