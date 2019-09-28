@@ -11,7 +11,7 @@ import {
 } from './type/actions'
 
 import {
-    ApiService,
+    ResultService,
 
 } from '../common/service/api.js'
 
@@ -78,7 +78,7 @@ const mutations = {
 }
 const actions = {
     async [ACHECK_MINE](context) {
-        let passNum = ApiService.get(`/getMy`).length
+        let passNum = ResultService.myget(`/getMy`).length
         context.commit(CHECK_MINE, passNum)
     }
 }

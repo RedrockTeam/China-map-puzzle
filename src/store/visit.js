@@ -6,7 +6,7 @@ import {
 } from './type/actions'
 
 import {
-    ApiService,
+    ResultService,
 
 } from '../common/service/api.js'
 import {
@@ -41,19 +41,19 @@ const mutations = {
 const actions = {
     // 提交本人通关信息
     async [APOST_GRADE](context, payload) {
-        let m = ApiService.post('/success', payload.level, payload.time)
+        let m = ResultService.myPost('/success', payload.level, payload.time)
         context.commit(POST_GRADE)
         // payload.success()
     },
     // 得到排行榜
     async [ACHECK_RANK](context, level) {
-        let rankMsg = ApiService.post('/get', level)
+        let rankMsg = ResultService.mySpecialPost('/get', level)
         context.commit(CHECK_RANK, rankMsg)
     },
     // 得到本人成绩排名
     async [ACHECK_MYGRADE](context, level) {
-        let myTime = ApiService.get(`/getMy`)[level - 1].Second;
-        let myRank = ApiService.get(`/getMy`)[level - 1].rank;
+        let myTime = ResultService.get(`/getMy`)[level - 1].Second;
+        let myRank = ResultService.get(`/getMy`)[level - 1].rank;
         context.commit(CHECK_MINE, {myTime,myRank})
     }
 }

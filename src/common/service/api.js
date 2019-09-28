@@ -46,15 +46,19 @@ const ApiService = {
 
 export default ApiService;
 
-// export const ResultService = {
-//     getFirstAnswer(params) {
-//         return ApiService.post(`answer`, params)
-//     },
+export const ResultService = {
+    myPost(params) {
+        return ApiService.post(`answer`, params)
+    },
 
-//     getOldAnswer() {
-//         return ApiService.post(`answered`)
-//     }
-// }
+    mySpecialPost() {
+        return ApiService.post(`answered`)
+    },
+    myGet(){
+        return ApiService.get('geturl')
+    }
+
+}
 
 
 
