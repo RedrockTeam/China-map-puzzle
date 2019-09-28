@@ -1,14 +1,12 @@
 <template>
   <div class="game">
     <div class="header">
-      <div class="back_shadow">
-        <div class="back" @click="toHome"></div>
-      </div>
+      <back-button></back-button>
       <div class="title">
         <img src="../assets/img/game/four.png" />
       </div>
       <div class="refresh_shadow">
-        <div class="refresh"></div>
+        <div class="refresh" @click="refresh"></div>
       </div>
     </div>
     <div class="main">
@@ -18,6 +16,7 @@
         :key="piece.index"
         :id="'d'+index"
         @click="clickChange(index)"
+        :class="{chosen: index === activeName}"
       >
         <div class="img"></div>
       </div>
