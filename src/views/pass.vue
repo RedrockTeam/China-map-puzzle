@@ -72,16 +72,91 @@
           </div>
         </div>
 
+<<<<<<< HEAD
         <div class="end">
           <div class="mylist"></div>
           <div class="begin"></div>
         </div>
       <!-- </div>
     </div> -->
+=======
+    <div class="body">
+      <div @click="checked('first')">
+        <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
+        <img class="first" v-else src="../assets/img/pass/firstpass.png" />
+      </div>
+      <div>
+        <img
+          v-if="this.second =='unlock' "
+          class="second"
+          src="../assets/img/pass/second.png"
+          @click="checked('second')"
+        />
+        <img
+          v-if="this.second =='success' "
+          class="second"
+          src="../assets/img/pass/secondpass.png"
+          @click="checked('second')"
+        />
+        <img
+          v-if="this.second =='lock'"
+          class="second"
+          v-on:click.prevent.self
+          src="../assets/img/pass/lock.png"
+        />
+      </div>
+      <div>
+        <img
+          class="third"
+          v-if="this.third =='unlock' "
+          src="../assets/img/pass/third.png"
+          @click="checked('third')"
+        />
+        <img
+          class="third"
+          v-if="this.third =='success' "
+          src="../assets/img/pass/thirdpass.png"
+          @click="checked('third')"
+        />
+        <img
+          class="third"
+          v-if="this.third =='lock'"
+          v-on:click.self.prevent
+          src="../assets/img/pass/lock.png"
+        />
+      </div>
+      <div>
+        <img
+          class="four"
+          v-if="this.forth=='unlock' "
+          src="../assets/img/pass/four.png"
+          @click="checked('forth')"
+        />
+        <img
+          class="third"
+          v-if="this.forth =='success' "
+          src="../assets/img/pass/forthpass.png"
+          @click="checked('forth')"
+        />
+        <img
+          class="four"
+          v-if="this.forth =='lock'"
+          v-on:click.self.prevent
+          src="../assets/img/pass/lock.png"
+        />
+      </div>
+    </div>
+
+    <div class="end">
+      <div class="list" @click="toRankList"></div>
+      <div class="begin" @click="toBegin"></div>
+    </div>
+>>>>>>> 0fa9e882878cf010042efc08f2d9671bfa1bb5a5
   </div>
 </template>
 
 <script>
+import { SET_CURRENT_PASS } from "../store/type/mutations";
 export default {
   computed: {
     //通关状态显示不同的图片
@@ -96,6 +171,12 @@ export default {
     },
     forth() {
       return this.$store.state.result.forth_flag;
+    },
+    current_pass() {
+      return this.$store.state.pass.current_pass;
+    },
+    default_pass() {
+      return this.$store.state.result.default_pass;
     }
   },
   mounted() {
@@ -103,17 +184,22 @@ export default {
   },
 
   methods: {
-    startFirst() {
-      this.$router.push("/first");
+    checked(params) {
+      this.$store.commit(SET_CURRENT_PASS, params);
     },
-    startSecond() {
-      this.$router.push("/second");
+    toBegin() {
+      if (this.current_pass == null) {
+        this.$router.push(`/${this.default_pass}`);
+      } else {
+        this.$router.push(`/${this.current_pass}`);
+      }
     },
-    startThird() {
-      this.$router.push("/third");
-    },
-    startFour() {
-      this.$router.push("/four");
+    toRankList() {
+      if (this.current_pass == null) {
+        this.$router.push(`/result?pass=${this.default_pass}`);
+      } else {
+        this.$router.push(`/result?pass=${this.current_pass}`);
+      }
     }
   },
   mounted() {
