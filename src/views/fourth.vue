@@ -9,21 +9,26 @@
         <div class="refresh" @click="refresh"></div>
       </div>
     </div>
-    <div class="main">
-      <div
-        class="piece"
-        v-for="(piece, index) in pieces"
-        :key="piece.index"
-        :id="'d'+index"
-        @click="clickChange(index)"
-        :class="{chosen: index === activeName}"
-      >
-        <div class="img"></div>
+    <div class="beautify">
+      <div class="center">
+        <div class="main">
+          <div
+            class="piece"
+            v-for="(piece, index) in pieces"
+            :key="piece.index"
+            :id="'d'+index"
+            @click="clickChange(index)"
+            :class="{chosen: index === activeName}"
+          >
+            <div class="img"></div>
+          </div>
+        </div>
+        <show-pic></show-pic>
       </div>
     </div>
-    <show-pic></show-pic>
   </div>
 </template>
+
 
 <script>
 import "../assets/js/puzzle.js";

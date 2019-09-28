@@ -9,19 +9,23 @@
         <div class="refresh" @click="refresh"></div>
       </div>
     </div>
-    <div class="main">
-      <div
-        class="piece"
-        v-for="(piece, index) in pieces"
-        :key="piece.index"
-        :id="'d'+index"
-        @click="clickChange(index)"
-        :class="{chosen: index === activeName}"
-      >
-        <div class="img"></div>
+    <div class="beautify">
+      <div class="center">
+        <div class="main">
+          <div
+            class="piece"
+            v-for="(piece, index) in pieces"
+            :key="piece.index"
+            :id="'d'+index"
+            @click="clickChange(index)"
+            :class="{chosen: index === activeName}"
+          >
+            <div class="img"></div>
+          </div>
+        </div>
+        <show-pic></show-pic>
       </div>
     </div>
-    <show-pic></show-pic>
   </div>
 </template>
 
@@ -55,12 +59,12 @@ export default {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(2);
       // 随机打乱
-      for(var i=0;i<5;i++){
-        var a = Math.floor(Math.random()*4);
-        var b = Math.floor(Math.random()*4);
-        var c = Math.floor(Math.random()*4);
-        func.move(a,b,2);
-        func.move(a,c,2);
+      for (var i = 0; i < 5; i++) {
+        var a = Math.floor(Math.random() * 4);
+        var b = Math.floor(Math.random() * 4);
+        var c = Math.floor(Math.random() * 4);
+        func.move(a, b, 2);
+        func.move(a, c, 2);
       }
     },
 
@@ -99,25 +103,25 @@ export default {
         this.activeName = null;
         var chart = func.chart;
         // 判断是否完成拼图
-        console.log(chart)
+        console.log(chart);
         for (var i = 0, k = 0; i < this.num; i++) {
           //一维长度为num
           for (var j = 0; j < this.num; j++, k++) {
             //二维长度为num
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            this.finish_flag = (chart[i][j] == k);
+            this.finish_flag = chart[i][j] == k;
           }
         }
-        console.log(this.finish_flag)
+        console.log(this.finish_flag);
         if (this.finish_flag) {
-              console.log("成功了")
-              this.$store.commit(SET_FIRST);
-              this.stop();
-              console.log(this.time)
-              // this.time把时间传给后端
-              this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
-              this.$router.push("/result?pass=" + this.num - 1);
-            }
+          console.log("成功了");
+          this.$store.commit(SET_FIRST);
+          this.stop();
+          console.log(this.time);
+          // this.time把时间传给后端
+          this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+          this.$router.push("/result?pass=" + this.num - 1);
+        }
       }
     }
   },

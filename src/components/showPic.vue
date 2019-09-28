@@ -3,10 +3,9 @@
     <div class="showpic_shadow">
       <div
         class="showpic"
-        @ontouchstart="gtouchstart()"
-        @ontouchmove="gtouchmove()"
-        @ontouchend="gtouchend()"
-        @click="showPic"
+        @touchstart="gtouchstart()"
+        @touchmove="gtouchmove()"
+        @touchend="gtouchend()"
       >
         <!-- 暂时加点击事件 -->
         
@@ -40,7 +39,7 @@ export default {
     //开始按
     gtouchstart() {
       console.log(this.timeOutEvent)
-      this.timeOutEvent = setTimeout(() => longPress(), 500); //这里设置定时器，定义长按500毫秒触发长按事件
+      this.timeOutEvent = setTimeout(() => this.longPress(), 500); //这里设置定时器，定义长按500毫秒触发长按事件
       return false;
     },
     //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
