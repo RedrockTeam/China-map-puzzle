@@ -41,9 +41,6 @@ export default {
       num: 2
     };
   },
-  computed() {
-
-  },
   mounted() {
     this.refresh();
     this.start();
@@ -102,7 +99,7 @@ export default {
               this.$store.commit(SET_FIRST);
               this.stop();
               // this.time把时间传给后端
-              this.$.dispatch(APOST_GRADE,this.time)
+              this.$.dispatch(APOST_GRADE,{level:2,time:this.time})
               this.$router.push("/result?pass=" + this.num - 1);
             }
           }

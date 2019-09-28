@@ -91,7 +91,7 @@ export default {
       return this.$store.state.result.forth_flag;
     }
   },
-    created(){
+    mounted(){
     this.$store.dispatch(ACHECK_MINE)
   },
 

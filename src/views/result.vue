@@ -11,19 +11,20 @@
         <div>
           <p>
             <span class="clock"></span>
-            <span class="word">我的时间：{{}}</span>
+            <span class="word">我的时间：{{$store.myTime}}</span>
           </p>
           <p>
             <i class="grade"></i>
-            <span class="word">我的成绩：{{}}</span>
+            <span class="word">我的成绩：{{$store.myRank}}</span>
           </p>
         </div>
       </div>
       <div class="list">
+        <!-- 这样可以吗 -->
         <p class="list_item" v-for="item in items" :key="item.index" :class="'rank'+item.index">
           <span class="icon"></span>
-          <span class="nickname">{{item.name}}</span>
-          <span class="time">10s</span>
+          <span class="nickname">{{item.Nickname}}</span>
+          <span class="time">{{item.Second}}</span>
         </p>
       </div>
     </div>
@@ -32,9 +33,27 @@
 </template>
 <script>
 export default {
-  data(){
-    return{
-
+  data() {
+    return {
+      items: this.$store.rankList
+    };
+  },
+  mounted() {
+    let pass = this.$route.query.pass; // 当前路由参数
+    if (pass == 1) {
+      this.$store.dispatch(ACHECK_RANK, 1);
+      this.$store.dispatch(ACHECK_MYGRADE,1)
+    } else if (pass == 2) {
+      this.$store.dispatch(ACHECK_RANK, 2);
+      this.$store.dispatch(ACHECK_MYGRADE,2)
+    } else if (pass == 3) {
+      this.$store.dispatch(ACHECK_RANK, 3);
+      this.$store.dispatch(ACHECK_MYGRADE,3)
+    } else if (pass == 4) {
+      this.$store.dispatch(ACHECK_RANK, 4);
+      this.$store.dispatch(ACHECK_MYGRADE,4)
+    } else {
+      return false;
     }
   },
   methods: {
