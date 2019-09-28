@@ -4,7 +4,7 @@ import VueAxios from "vue-axios";
 import { API } from "@/common/config";    //后端url
 
 const ApiService = {
-    init() {     //在main.js中记得 ApiService.init()
+    init() {
         Vue.use(VueAxios, axios)
         Vue.axios.defaults.baseURL = API
         this.setHeader()
@@ -14,7 +14,8 @@ const ApiService = {
     setHeader() {
         Vue.axios.defaults.headers.common[
             "Authorization"
-        ] = `Token ${window.localStorage.getItem(id_token)}`;
+        ] = `${localStorage.getItem('id_token')}`;
+        console.log(localStorage.getItem('id_token'))
     },
 
     // 封装axios
@@ -48,14 +49,14 @@ export default ApiService;
 
 export const ResultService = {
     enterGame() {
-        return ApiService.get(`${API}/getMy`)
+        return ApiService.get(`getMy`)
     },
 
     getSuccess() {
-        return ApiService.post(`${API}/success`, params)
+        return ApiService.post(`success`, params)
     },
     getRankList(params) {
-        return ApiService.get(`${API}/get?level=${params}`)
+        return ApiService.get(`get?level=${params}`)
     }
 
 }

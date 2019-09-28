@@ -95,7 +95,7 @@ const mutations = {
 
     },
 
-    [SET_MIDDLEWARE](state) {
+    [SET_MIDDLEWARE](state, data) {
         state.grade = data.MyList
         state.rank = data.rank
     },

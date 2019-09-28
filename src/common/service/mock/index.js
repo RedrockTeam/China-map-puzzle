@@ -1,8 +1,7 @@
-const getMy = require('./getMy.json')
-const success = require('./success.json')
-const get = require('./get.json')
+
 
 module.exports = {
+
 
     before(app) {
         app.get('/api/get', (req, res) => {
