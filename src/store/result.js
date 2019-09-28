@@ -19,7 +19,7 @@ import {
 
 const initialState = {
     first_flag: 'unlock',
-    second_flag: 'lock',
+    second_flag: 'unlock',
     third_flag: 'unlock',
     forth_flag: 'unlock',
 
