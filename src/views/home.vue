@@ -30,10 +30,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .main {
+  position: absolute;
   width: 750px;
-  height: 1207px;
+  // height: 1207px;
+  height: 100%;
   background-image: url("../assets/img/home/home_bg2.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: 0% 0%;
   background-size: contain;
   .btn {

@@ -36,6 +36,7 @@ export default {
       pieces: [{}, {}, {}, {}],
       firstId: null,
       change_flag: false,
+      finish_flag: false,
       activeName: null,
       time: 0,
       timer: null,
@@ -54,7 +55,7 @@ export default {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(2);
       // 随机打乱
-      for(var i=0;i<10;i++){
+      for(var i=0;i<5;i++){
         var a = Math.floor(Math.random()*4);
         var b = Math.floor(Math.random()*4);
         var c = Math.floor(Math.random()*4);
@@ -66,7 +67,6 @@ export default {
     // 开始
     start() {
       //时间重置
-      console.log("调用函数");
       if (this.timer) {
         clearInterval(this.timer);
         console.log(this.timer);
@@ -105,7 +105,11 @@ export default {
           for (var j = 0; j < this.num; j++, k++) {
             //二维长度为num
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            if ((chart[i][j] = k)) {
+            this.finish_flag = (chart[i][j] == k);
+          }
+        }
+        console.log(this.finish_flag)
+        if (this.finish_flag) {
               console.log("成功了")
               this.$store.commit(SET_FIRST);
               this.stop();
@@ -114,8 +118,6 @@ export default {
               this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
               this.$router.push("/result?pass=" + this.num - 1);
             }
-          }
-        }
       }
     }
   },

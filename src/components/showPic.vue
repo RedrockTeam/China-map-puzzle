@@ -39,28 +39,29 @@ export default {
     },
     //开始按
     gtouchstart() {
-      timeOutEvent = setTimeout(() => longPress(), 500); //这里设置定时器，定义长按500毫秒触发长按事件
+      console.log(this.timeOutEvent)
+      this.timeOutEvent = setTimeout(() => longPress(), 500); //这里设置定时器，定义长按500毫秒触发长按事件
       return false;
     },
     //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
     gtouchend() {
-      clearTimeout(timeOutEvent); //清除定时器
-      if (timeOutEvent != 0) {
+      clearTimeout(this.timeOutEvent); //清除定时器
+      if (this.timeOutEvent != 0) {
         // 点击也出现
-        this.showPic();
+        // this.showPic();
         console.log("这是点击");
       }
       return false;
     },
     //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
     gtouchmove() {
-      clearTimeout(timeOutEvent); //清除定时器
-      timeOutEvent = 0;
+      clearTimeout(this.timeOutEvent); //清除定时器
+      this.timeOutEvent = 0;
     },
 
     //真正长按后应该执行的内容
     longPress() {
-      timeOutEvent = 0;
+      this.timeOutEvent = 0;
       this.showPic();
       console.log("长按了");
     }

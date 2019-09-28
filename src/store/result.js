@@ -34,25 +34,21 @@ const mutations = {
 
     [SET_FIRST](state) {
         state.first_flag = 'success',
-            state.second_flag = 'unlock',
-            console.log('yiguan')
+            state.second_flag = 'unlock'
 
     },
     [SET_SECOND](state) {
         state.second_flag = 'success',
             state.third_flag = 'unlock'
-        console.log('erguan')
 
     },
     [SET_THIRD](state) {
         state.third_flag = 'success',
             state.forth_flag = 'unlock'
-        console.log('sanguan')
 
     },
     [SET_FOURTH](state) {
         state.forth_flag = 'success'
-        console.log('forthguan')
     },
     [CHECK_MINE](state, payload) {
         if (payload == 1) {
@@ -78,7 +74,7 @@ const mutations = {
 }
 const actions = {
     async [ACHECK_MINE](context) {
-        let passNum = ResultService.myGet(`/getMy`).length
+        let passNum = ResultService.myGet(`/getMy`).MyList.length
         context.commit(CHECK_MINE, passNum)
     }
 }
