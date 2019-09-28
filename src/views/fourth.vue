@@ -86,12 +86,12 @@ export default {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(5);
       // 随机打乱
-      for(var i=0;i<20;i++){
-        var a = Math.floor(Math.random()*25);
-        var b = Math.floor(Math.random()*25);
-        var c = Math.floor(Math.random()*25);
-        func.move(a,b,5);
-        func.move(a,c,5);
+      for (var i = 0; i < 20; i++) {
+        var a = Math.floor(Math.random() * 25);
+        var b = Math.floor(Math.random() * 25);
+        var c = Math.floor(Math.random() * 25);
+        func.move(a, b, 5);
+        func.move(a, c, 5);
       }
     },
 
@@ -133,14 +133,12 @@ export default {
           }
         }
         if (this.finish_flag) {
-          console.log("成功了");
           this.$store.commit(SET_FOURTH);
-          this.stop();
-          console.log(this.time);
-          // this.time把时间传给后端
+
           let data = new FormData();
           data.append("level", 4);
           data.append("second", this.time);
+          this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
           this.$router.push("/result?pass=" + this.num - 1);
         }

@@ -8,6 +8,14 @@ import Second from '../views/second.vue'
 import Third from '../views/third.vue'
 import Four from '../views/fourth.vue'
 
+
+//解决vue中的NavigationDuplicated {_name: "NavigationDuplicated", name: "NavigationDuplicated"}
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
+
 Vue.use(Router)
 
 export default new Router({

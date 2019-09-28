@@ -5,7 +5,6 @@
       <div class="title"></div>
     </div>
 
-
     <div class="body">
       <div @click="checked('first')">
         <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
@@ -74,14 +73,15 @@
     </div>
 
     <div class="end">
-      <div class="list" @click="toRankList"></div>
+      <div class="mylist" @click="toRankList"></div>
       <div class="begin" @click="toBegin"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { SET_CURRENT_PASS } from "../store/type/mutations";
+import { SET_CURRENT_PASS, SET_USER_GRADE } from "../store/type/mutations";
+import { FETCH_RANK } from "../store/type/actions";
 export default {
   computed: {
     //通关状态显示不同的图片
@@ -124,6 +124,19 @@ export default {
         this.$router.push(`/result?pass=${this.default_pass}`);
       } else {
         this.$router.push(`/result?pass=${this.current_pass}`);
+        if (this.current_pass == "first") {
+          this.$store.dispatch(FETCH_RANK, 1);
+          this.$store.commit(SET_USER_GRADE, 1);
+        } else if (this.current_pass == "second") {
+          this.$store.dispatch(FETCH_RANK, 2);
+          this.$store.commit(SET_USER_GRADE, 2);
+        } else if (this.current_pass == "third") {
+          this.$store.dispatch(FETCH_RANK, 3);
+          this.$store.commit(SET_USER_GRADE, 3);
+        } else if (this.current_pass == "four") {
+          this.$store.dispatch(FETCH_RANK, 4);
+          this.$store.commit(SET_USER_GRADE, 4);
+        }
       }
     }
   },

@@ -24,8 +24,8 @@
           </div>
           <div class="list">
             <!-- 这样可以吗 -->
-            <p class="list_item" v-for="item in items" :key="item.index" :class="'rank'+item.index">
-              <span class="icon"></span>
+            <p class="list_item" v-for="(item,index) in items" :key="item.index">
+              <span class="icon" :class="setClass(index)"></span>
               <span class="nickname">{{item.Nickname}}</span>
               <span class="time">{{item.Second}}</span>
             </p>
@@ -70,6 +70,11 @@ export default {
     }
   },
   methods: {
+    setClass(index) {
+      let obj = { rank: true };
+      obj[`rank${index}`] = true;
+      return obj;
+    },
     toHome() {
       this.$router.push("/pass");
     },
@@ -125,7 +130,6 @@ export default {
     width: 260px;
     height: 200px;
     background-size: 100%;
-    // margin-left: -40px;
   }
 
   .refresh_shadow {
@@ -146,12 +150,6 @@ export default {
     }
   }
 }
-
-// .head {
-//   display: flex;
-//   margin-top: 60px;
-//   margin-left: 50px;
-// }
 
 .front {
   background: url("../assets/img/ranking/front.png");
@@ -232,15 +230,15 @@ export default {
   height: 82px;
   margin: 15px 35px;
 }
-.rank1 .icon {
+.rank0 {
   background: url("../assets/img/ranking/first.png");
   background-size: cover;
 }
-.rank2 .icon {
+.rank1 {
   background: url("../assets/img/ranking/second.png");
   background-size: cover;
 }
-.rank3 .icon {
+.rank2 {
   background: url("../assets/img/ranking/third.png");
   background-size: cover;
 }

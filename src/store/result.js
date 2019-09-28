@@ -108,8 +108,8 @@ const mutations = {
         state.rankList = data
     },
     [SET_NEW_GRADE](state, data) {
-        state.user_time = state.Second
-        state.user_rank = state.rank
+        state.user_time = data.Second
+        state.user_rank = data.rank
 
     }
 }
@@ -126,6 +126,7 @@ const actions = {
         commit(SET_RANK, data)
     },
     async [FETCH_SUCCESS]({ commit }, params) {
+        console.log(params)
         let { data } = await ResultService.getSuccess(params)
         let rankList = data.List
         let grade = data.rank
