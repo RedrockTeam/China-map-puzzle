@@ -4,7 +4,6 @@ var d_direct = new Array();
 
 var initPuzzle = function initPuzzle(num) {
 
-    console.log('initing')
     // 拼图的数组
     // var chart = new Array();
 
@@ -31,7 +30,6 @@ var initPuzzle = function initPuzzle(num) {
     // var d_direct = new Array();
     for (var i = 0; i < num; i++) {
         for (var j = 0; j < num; j++) {
-            console.log(chart)
             var id = chart[i][j];
             d_direct[id] = new Array(4); //以每个拼图块的顺序号做为下标建立数组，存其可交换的位置
 
@@ -68,7 +66,7 @@ var initPuzzle = function initPuzzle(num) {
 
 // 移动拼图,传入的四个参数分别为第二次点击的拼图块的id，第一次点击的拼图块的firstId,拼图的行列数num，关卡的状态flag
 var move = function move(id, firstId, num) {
-    console.log(id, firstId, num)
+    console.log( firstId, id,num)
 
     let id_pos, first_id_pos;
     let m, n, x, y;
@@ -86,28 +84,23 @@ var move = function move(id, firstId, num) {
                 y = j;
             }
         }
-
-
     }
-    console.log(m, n, x, y)
-
-    console.log(first_id_pos, id_pos)
     if (canIf(first_id_pos, id_pos, d_direct)) {
         // 可以交换则交换两个拼图块所在位置对应的二维数组处所存储的id
         // 二维数组存储的数据为拼图块div的id
+        console.log(chart[m][n],chart[x][y])
         chart[m][n] = id;
         chart[x][y] = firstId;
 
+        console.log(chart[m][n],chart[x][y])
         // 交换两个拼图块,通过设置flex布局子元素的order改变位置
         document.getElementById("d" + id).style.order = first_id_pos;
         document.getElementById("d" + firstId).style.order = id_pos;
-        console.log(chart)
     }
 
 }
 
 function canIf(first_id_pos, id_pos, d_direct) {
-    console.log(first_id_pos, id_pos, d_direct)
     var move_flag = false;
     // 遍历id拼图块可交换位置，判断此次交换尝试是否可交换
     for (var j = 0; j < 4; j++) {

@@ -36,14 +36,11 @@ const mutations = {
     [SET_FIRST](state) {
         state.first_flag = 'success',
             state.second_flag = 'unlock'
-        state.default_pass = 'second'
 
     },
     [SET_SECOND](state) {
         state.second_flag = 'success',
             state.third_flag = 'unlock'
-        state.default_pass = 'third'
-
 
     },
     [SET_THIRD](state) {
@@ -83,7 +80,7 @@ const mutations = {
 }
 const actions = {
     async [ACHECK_MINE](context) {
-        let passNum = ResultService.myGet(`/getMy`).length
+        let passNum = ResultService.myGet(`/getMy`).MyList.length
         context.commit(CHECK_MINE, passNum)
     }
 }
