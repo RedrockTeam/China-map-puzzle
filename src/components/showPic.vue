@@ -1,21 +1,19 @@
 <template>
-  <div>
+  <div class="showpic_btn_line">
     <div class="showpic_shadow">
       <div
         class="showpic"
         @touchstart="gtouchstart()"
         @touchmove="gtouchmove()"
         @touchend="gtouchend()"
-      >
-        <!-- 暂时加点击事件 -->
-
-        <!-- 长按可看3s原图 -->
+      > 
         <img src="../assets/img/game/showpic_font.png" />
       </div>
     </div>
     <div class="dialogCon" v-show="isShow">
-      <div class="dialog"></div>
+      
     </div>
+    <div class="dialog" v-show="isShow"></div>
   </div>
 </template>
 <script>
@@ -67,55 +65,59 @@ export default {
 };
 </script>
 <style lang="scss">
-.showpic_shadow {
-  width: 560px;
-  height: 173px;
-  margin: 60px auto auto 145px;
-  background-image: url("../assets/img/game/showpic_sbg.png");
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  background-size: contain;
-
-  .showpic {
-    width: 458px;
-    height: 107px;
-    background-image: url("../assets/img/game/showpic_bg.png");
+.showpic_btn_line {
+  width: 100%;
+  .showpic_shadow {
+    width: 560px;
+    height: 173px;
+    margin: 60px auto auto 145px;
+    background-image: url("../assets/img/game/showpic_sbg.png");
     background-repeat: no-repeat;
     background-position: 0% 0%;
     background-size: contain;
-    text-align: center;
-    line-height: 107px;
-    font-family: "Cotton";
-    font-size: 50px;
-    color: #fffcad;
-    img {
-      width: 333px;
-      height: 46px;
+
+    .showpic {
+      width: 458px;
+      height: 107px;
+      background-image: url("../assets/img/game/showpic_bg.png");
+      background-repeat: no-repeat;
+      background-position: 0% 0%;
+      background-size: contain;
+      text-align: center;
+      line-height: 107px;
+      font-family: "Cotton";
+      font-size: 50px;
+      color: #fffcad;
+      img {
+        width: 333px;
+        height: 46px;
+      }
     }
   }
-}
-.dialogCon {
-  position: absolute;
-  // width: 100%;
-  // // height: 1208px;
-  // height: 100%;
-
-  background-color: rgba($color: #dd8e5e, $alpha: 0.4);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  .dialog {
-    background: url("../assets/img/common/dialog.png");
-    background-size: cover;
-    width: 741px;
-    height: 624px;
-    margin: auto auto;
+  .dialogCon {
+    width: 750px;
+    height: 100%;
     position: absolute;
-    top: 0;
-    transform: translate(0, 20%);
+    top: -100px;
+    left: -10;
+    right: -10;
+    bottom: -50;
+    transform: scale(2);
+
+    background-color: rgba($color: #dd8e5e, $alpha: 0.4);
+
   }
+  
+    .dialog {
+      background: url("../assets/img/common/dialog.png");
+      background-size: cover;
+      width: 750px;
+      height: 624px;
+      margin: auto auto;
+      position: absolute;
+      top: 0;
+      transform: translateX(-24px)
+    }
 }
 </style>
 

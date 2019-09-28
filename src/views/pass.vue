@@ -80,8 +80,8 @@
 </template>
 
 <script>
-import { SET_CURRENT_PASS, SET_USER_GRADE } from "../store/type/mutations";
-import { FETCH_RANK } from "../store/type/actions";
+import { SET_CURRENT_PASS } from "../store/type/mutations";
+import { FETCH_RANKPAGE } from "../store/type/actions";
 export default {
   computed: {
     //通关状态显示不同的图片
@@ -98,14 +98,11 @@ export default {
       return this.$store.state.result.forth_flag;
     },
     current_pass() {
-      return this.$store.state.pass.current_pass;
+      return this.$store.state.result.current_pass;
     },
     default_pass() {
       return this.$store.state.result.default_pass;
     }
-  },
-  mounted() {
-    this.$store.dispatch(ACHECK_MINE);
   },
 
   methods: {
@@ -125,23 +122,16 @@ export default {
       } else {
         this.$router.push(`/result?pass=${this.current_pass}`);
         if (this.current_pass == "first") {
-          this.$store.dispatch(FETCH_RANK, 1);
-          this.$store.commit(SET_USER_GRADE, 1);
+          this.$store.dispatch(FETCH_RANKPAGE, 1);
         } else if (this.current_pass == "second") {
-          this.$store.dispatch(FETCH_RANK, 2);
-          this.$store.commit(SET_USER_GRADE, 2);
+          this.$store.dispatch(FETCH_RANKPAGE, 2);
         } else if (this.current_pass == "third") {
-          this.$store.dispatch(FETCH_RANK, 3);
-          this.$store.commit(SET_USER_GRADE, 3);
+          this.$store.dispatch(FETCH_RANKPAGE, 3);
         } else if (this.current_pass == "four") {
-          this.$store.dispatch(FETCH_RANK, 4);
-          this.$store.commit(SET_USER_GRADE, 4);
+          this.$store.dispatch(FETCH_RANKPAGE, 4);
         }
       }
     }
-  },
-  mounted() {
-    console.log(this.$store.state.result);
   }
 };
 </script>

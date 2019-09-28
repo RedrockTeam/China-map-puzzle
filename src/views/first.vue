@@ -1,7 +1,7 @@
 <template>
   <div class="game">
     <div class="header">
-      <back-button></back-button>
+      <back-button class="back_btn"></back-button>
       <div class="title">
         <img src="../assets/img/game/one.png" />
       </div>
@@ -35,6 +35,7 @@ import showPic from "../components/showPic.vue";
 import { SET_FIRST } from "../store/type/mutations";
 import { FETCH_SUCCESS } from "../store/type/actions";
 export default {
+  
   data() {
     return {
       pieces: [{}, {}, {}, {}],
@@ -50,9 +51,6 @@ export default {
   mounted() {
     this.refresh();
     this.start();
-
-    // 监听离开页面则停止计时
-    // window.addEventListener("unload", this.stop());
   },
   destroyed() {
     if (this.timer) {
@@ -79,57 +77,49 @@ export default {
     // 开始
     start() {
       //时间重置
-      console.log("调用函数");
       if (this.timer) {
         clearInterval(this.timer);
-        // console.log(this.timer);
       }
-      let _timer = setInterval(() => {
+      this.timer = setInterval(() => {
         this.time++;
-        // console.log(this.time); // 作用域问题导致之前this指代有问题
       }, 1000);
-      this.timer = _timer;
     },
     //停止
     stop() {
-      // console.log(this.time); //获得此时的花费时间
       clearInterval(this.timer);
-      this.time = 0;
     },
     clickChange(id) {
       this.activeName = id;
       if (this.change_flag == false) {
-        console.log(this.change_flag);
         this.firstId = id;
         this.change_flag = true;
-        console.log(this.change_flag);
       } else {
         let func = require("../assets/js/puzzle.js");
         func.move(id, this.firstId, 2);
-        console.log("have changed");
         this.change_flag = false;
-        console.log(this.change_flag);
         this.activeName = null;
         var chart = func.chart;
         // 判断是否完成拼图
         console.log(chart);
         for (var i = 0, k = 0; i < this.num; i++) {
-          //一维长度为num
           for (var j = 0; j < this.num; j++, k++) {
-            //二维长度为num
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
             this.finish_flag = chart[i][j] == k;
           }
         }
-        console.log(this.finish_flag);
         if (this.finish_flag) {
           console.log("成功了");
+          // 改变关卡的状态
           this.$store.commit(SET_FIRST);
+          // 将关卡数字和通关时间以xxx-数据形式传到后端
           let data = new FormData();
           data.append("level", 1);
           data.append("time", this.time);
+          // 停止计时
           this.stop();
+          // 向后端发送请求，后端返回处理了用户当前成绩后的排行榜和用户自己本关卡的时间和名次，将返回的数据存在state里，便于下一个排行榜页面拿到数据
           this.$store.dispatch(FETCH_SUCCESS, data);
+          // 跳转到本关卡排行榜页面并显示本次用时和名次
           this.$router.push("/resultNew?pass=1");
         }
       }

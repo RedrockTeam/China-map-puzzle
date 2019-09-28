@@ -1,35 +1,30 @@
 <template>
   <div class="bg">
     <div class="head">
-      <back-button></back-button>
+      <back-button class="back_btn"></back-button>
       <div class="title"></div>
-      <div class="refresh_shadow">
-        <div class="refresh" @click="toNext"></div>
+      <div class="next_shadow">
+        <div class="next" @click="toNext"></div>
       </div>
     </div>
     <div class="beautify">
       <div class="center">
-        <div class="contain">
-          <div class="score">
-            <div>
-              <p>
-                <span class="clock"></span>
-                <span class="word">我的时间：{{this.user_time}}</span>
-              </p>
-              <p>
-                <i class="grade"></i>
-                <span class="word">我的成绩：{{this.user_rank}}</span>
-              </p>
-            </div>
-          </div>
-          <div class="list">
-            <!-- 这样可以吗 -->
-            <p class="list_item" v-for="(item,index) in items" :key="item.index">
-              <span class="icon" :class="setClass(index)"></span>
-              <span class="nickname">{{item.Nickname}}</span>
-              <span class="time">{{item.Second}}</span>
-            </p>
-          </div>
+        <div class="score">
+          <p>
+            <span class="clock"></span>
+            <span class="word">我的时间：{{this.user_time}}s</span>
+          </p>
+          <p>
+            <i class="grade"></i>
+            <span class="word">我的成绩：第{{this.user_rank}}名</span>
+          </p>
+        </div>
+        <div class="list">
+          <p class="list_item" v-for="(item,index) in items" :key="item.index">
+            <span class="icon" :class="setClass(index)">{{item.index+1}}</span>
+            <span class="nickname">{{item.Nickname}}</span>
+            <span class="time">{{item.Second}}s</span>
+          </p>
         </div>
         <div class="line"></div>
       </div>
@@ -48,25 +43,7 @@ export default {
       return this.$store.state.result.user_rank;
     },
     items() {
-      return this.$store.state.result.rankList; //get接口
-    }
-  },
-  mounted() {
-    let pass = this.$route.query.pass; // 当前路由参数
-    if (pass == 1) {
-      this.$store.dispatch(FETCH_RANK, 1);
-      this.$store.commit(SET_USER_GRADE, 1);
-    } else if (pass == 2) {
-      this.$store.dispatch(FETCH_RANK, 2);
-      this.$store.commit(SET_USER_GRADE, 2);
-    } else if (pass == 3) {
-      this.$store.dispatch(FETCH_RANK, 3);
-      this.$store.commit(SET_USER_GRADE, 3);
-    } else if (pass == 4) {
-      this.$store.dispatch(FETCH_RANK, 4);
-      this.$store.commit(SET_USER_GRADE, 4);
-    } else {
-      return false;
+      return this.$store.state.result.rankList;
     }
   },
   methods: {
@@ -74,9 +51,6 @@ export default {
       let obj = { rank: true };
       obj[`rank${index}`] = true;
       return obj;
-    },
-    toHome() {
-      this.$router.push("/pass");
     },
     toNext() {
       let pass = this.$route.query.pass; // 当前路由参数
@@ -96,120 +70,114 @@ export default {
 <style lang="scss" scoped>
 .bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  width: 750px;
   height: 100%;
-  width: 100%;
-  background: url("../assets/img/pass/background.png");
-  background-size: cover;
+  background-image: url("../assets/img/common/bg.jpg");
+  background-repeat: repeat-y;
+  background-position: 0% 0%;
+  background-size: 100% auto;
+
   padding-top: 66px;
-}
-.beautify {
-  position: absolute;
-  top: 200px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  .center {
-    transform: translate(0, -6%);
-  }
-}
-.head {
-  width: 95%;
-  height: 140px;
-  margin: 0 auto 24px 25px;
-  display: inline-flex;
-  justify-content: space-between;
+  text-align: center;
+  .head {
+    width: 100%;
+    height: 140px;
+    margin: 0 auto 24px auto;
+    display: inline-flex;
+    justify-content: space-between;
 
-  .title {
-    background: url("../assets/img/ranking/ranking_title.png") no-repeat;
-    width: 260px;
-    height: 200px;
-    background-size: 100%;
-  }
+    .back_btn {
+      translate: 50px;
+    }
+    .title {
+      background: url("../assets/img/rank/rank_title.png") no-repeat;
+      width: 249px;
+      height: 107px;
+      background-size: 100%;
+    }
 
-  .refresh_shadow {
-    width: 125px;
-    height: 139px;
-    background-image: url("../assets/img/common/btn_sbg.png");
-    background-repeat: no-repeat;
-    background-position: 0% 0%;
-    background-size: contain;
-
-    .refresh {
-      width: 92px;
-      height: 95px;
-      background-image: url("../assets/img/ranking/front.png");
+    .next_shadow {
+      width: 125px;
+      height: 139px;
+      background-image: url("../assets/img/common/btn_sbg.png");
       background-repeat: no-repeat;
       background-position: 0% 0%;
       background-size: contain;
+
+      .next {
+        width: 92px;
+        height: 95px;
+        background-image: url("../assets/img/common/front.png");
+        background-repeat: no-repeat;
+        background-position: 0% 0%;
+        background-size: contain;
+      }
+    }
+  }
+  .beautify {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .center {
+      transform: translate(0, -6%);
+      width: 590px;
+      height: 830px;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 24px #e8a991;
+      background-color: #ffae72;
+      border-bottom: 14px solid #e07668;
+      .score {
+        width: 590px;
+        height: 220px;
+        margin: -20px auto auto -10px;
+        background: url("../assets/img/rank/result.png");
+        background-repeat: no-repeat;
+        background-position: 0% 0%;
+        background-size: cover;
+
+        p {
+          color: #ffae72;
+          font-family: 'Cotton';
+          font-weight: bold;
+          font-size: 35px;
+          padding-top: 20px;
+          margin: 0 auto;
+          width: 250px;
+          margin-left: 50px;
+          margin-top: 10px;
+          .word {
+            letter-spacing: 5px;
+          }
+        }
+        .clock,
+        .grade {
+          width: 29px;
+          height: 29px;
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
 
-.front {
-  background: url("../assets/img/ranking/front.png");
-  width: 93px;
-  height: 97px;
-  background-size: cover;
-  margin-left: 80px;
-}
 
-.contain {
-  width: 650px;
-  height: 850px;
-  background: #ffae72;
-  margin: -15px auto 0;
-}
-
-.score {
-  width: 617px;
-  height: 206px;
-  background: url("../assets/img/ranking/result.png");
-  background-size: cover;
-  padding-top: 40px;
-}
-.score div {
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-.word {
-  letter-spacing: 5px;
-}
-
-.score p {
-  color: #ffae72;
-  font-weight: bold;
-  font-size: 35px;
-  padding-top: 20px;
-  margin: 0 auto;
-  width: 250px;
-  margin-left: 50px;
-  margin-top: 10px;
-}
-
-.clock,
-.grade {
-  width: 29px;
-  height: 29px;
-  display: inline-block;
-  margin-right: 10px;
-}
-.clock {
-  background: url("../assets/img/ranking/clock.png") no-repeat;
+.score .clock {
+  background: url("../assets/img/rank/clock.png") no-repeat;
   background-size: cover;
 }
 .grade {
-  background: url("../assets/img/ranking/list.png") no-repeat;
+  background: url("../assets/img/rank/rank.png") no-repeat;
   background-size: cover;
 }
 .list {
-  height: 520px;
+  height: 538px;
   overflow: auto;
   margin-top: 20px;
 }
@@ -217,9 +185,9 @@ export default {
   display: none;
 }
 .list_item {
-  background: url("../assets/img/ranking/box.png");
-  width: 580px;
-  height: 125px;
+  background: url("../assets/img/rank/box.png");
+  width: 532px;
+  height: 112px;
   background-size: cover;
   margin-left: 50px;
   display: flex;
@@ -231,15 +199,15 @@ export default {
   margin: 15px 35px;
 }
 .rank0 {
-  background: url("../assets/img/ranking/first.png");
+  background: url("../assets/img/rank/first.png");
   background-size: cover;
 }
 .rank1 {
-  background: url("../assets/img/ranking/second.png");
+  background: url("../assets/img/rank/second.png");
   background-size: cover;
 }
 .rank2 {
-  background: url("../assets/img/ranking/third.png");
+  background: url("../assets/img/rank/third.png");
   background-size: cover;
 }
 .nickname {
@@ -262,11 +230,11 @@ export default {
 }
 
 .line {
-  width: 570px;
-  height: 36px;
-  background: url("../assets/img/ranking/line.png");
+  width: 548px;
+  height: 23px;
+  background: url("../assets/img/rank/line.png");
   background-size: cover;
-  margin: -50px auto auto auto;
+  margin: auto auto;
 }
 </style>
 

@@ -7,7 +7,6 @@ import First from '../views/first.vue'
 import Second from '../views/second.vue'
 import Third from '../views/third.vue'
 import Four from '../views/fourth.vue'
-import resultNew from '../views/resultNew.vue'
 
 
 //解决vue中的NavigationDuplicated {_name: "NavigationDuplicated", name: "NavigationDuplicated"}
@@ -58,11 +57,6 @@ export default new Router({
     path: '/four',
     name: 'four',
     component: Four
-  },
-  {
-    path: '/resultNew',
-    name: 'resultNew',
-    component: resultNew,
   },
 
 
