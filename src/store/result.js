@@ -6,9 +6,7 @@ import {
     SET_ENTER_GAME,
     SET_USER_GRADE,
     SET_RANK,
-    SET_MIDDLEWARE,
     SET_NEW_GRADE
-
 
 } from './type/mutations'
 
@@ -95,11 +93,6 @@ const mutations = {
 
     },
 
-    [SET_MIDDLEWARE](state, data) {
-        state.grade = data.MyList
-        state.rank = data.rank
-    },
-
     [SET_USER_GRADE](state, level) {
         state.user_time = state.grade[level - 1].Second
         state.user_rank = state.rank[level - 1]
@@ -117,7 +110,8 @@ const actions = {
     async [FETCH_ENTER_GAME]({ commit }) {
         let { data } = await ResultService.enterGame()
         let pass_status = data.MyList.length
-        commit(SET_MIDDLEWARE, data)
+        state.grade = data.MyList
+        state.rank = data.rank
         commit(SET_ENTER_GAME, pass_status)
     },
     // 得到排行榜
@@ -129,7 +123,7 @@ const actions = {
         console.log(params)
         let { data } = await ResultService.getSuccess(params)
         let rankList = data.List
-        let grade = data.rank
+        let grade = data.Rank
         commit(SET_RANK, rankList)
         commit(SET_NEW_GRADE, grade)
 

@@ -209,18 +209,19 @@ export default {
 .first {
   left: 20px;
   top: 200px;
+  transform: scale(0.9);
 }
 .second {
   left: 350px;
   top: 200px;
 }
 .third {
-  left: 30px;
+  left: 50px;
   top: 530px;
 }
 .four {
-  left: 350px;
-  top: 530px;
+  left: 320px;
+  top: 550px;
 }
 
 .end {

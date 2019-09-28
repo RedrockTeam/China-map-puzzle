@@ -130,7 +130,7 @@ export default {
           data.append("time", this.time);
           this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
-          this.$router.push("/result?pass=1");
+          this.$router.push("/resultNew?pass=1");
         }
       }
     }

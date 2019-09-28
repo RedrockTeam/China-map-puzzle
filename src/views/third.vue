@@ -114,7 +114,7 @@ export default {
           data.append("second", this.time);
           this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
-          this.$router.push("/result?pass=3");
+          this.$router.push("/resultNew?pass=3");
         }
       }
     }
