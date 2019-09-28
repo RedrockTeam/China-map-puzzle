@@ -11,11 +11,11 @@
         <div>
           <p>
             <span class="clock"></span>
-            <span class="word">我的时间：{{$store.myTime}}</span>
+            <span class="word">我的时间：{{this.user_time}}</span>
           </p>
           <p>
             <i class="grade"></i>
-            <span class="word">我的成绩：{{$store.myRank}}</span>
+            <span class="word">我的成绩：{{this.user_rank}}</span>
           </p>
         </div>
       </div>
@@ -32,26 +32,34 @@
   </div>
 </template>
 <script>
+import { SET_USER_GRADE } from "../store/type/mutations";
+import { FETCH_RANK } from "../store/type/actions";
 export default {
-  data() {
-    return {
-      items: this.$store.rankList
-    };
+  computed: {
+    user_time() {
+      return this.$store.state.result.user_time;
+    },
+    user_rank() {
+      return this.$store.state.result.user_rank;
+    },
+    items() {
+      return this.$store.state.result.rankList; //get接口
+    }
   },
   mounted() {
     let pass = this.$route.query.pass; // 当前路由参数
     if (pass == 1) {
-      this.$store.dispatch(ACHECK_RANK, 1);
-      this.$store.dispatch(ACHECK_MYGRADE,1)
+      this.$store.dispatch(FETCH_RANK, 1);
+      this.$store.commit(ACHECK_MYGRADE, 1);
     } else if (pass == 2) {
-      this.$store.dispatch(ACHECK_RANK, 2);
-      this.$store.dispatch(ACHECK_MYGRADE,2)
+      this.$store.dispatch(FETCH_RANK, 2);
+      this.$store.commit(ACHECK_MYGRADE, 2);
     } else if (pass == 3) {
-      this.$store.dispatch(ACHECK_RANK, 3);
-      this.$store.dispatch(ACHECK_MYGRADE,3)
+      this.$store.dispatch(FETCH_RANK, 3);
+      this.$store.commit(ACHECK_MYGRADE, 3);
     } else if (pass == 4) {
-      this.$store.dispatch(ACHECK_RANK, 4);
-      this.$store.dispatch(ACHECK_MYGRADE,4)
+      this.$store.dispatch(FETCH_RANK, 4);
+      this.$store.commit(ACHECK_MYGRADE, 4);
     } else {
       return false;
     }

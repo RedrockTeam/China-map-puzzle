@@ -58,7 +58,7 @@
           @click="checked('forth')"
         />
         <img
-          class="third"
+          class="four"
           v-if="this.forth =='success' "
           src="../assets/img/pass/forthpass.png"
           @click="checked('forth')"

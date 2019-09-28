@@ -4,7 +4,7 @@ import VueAxios from "vue-axios";
 import { API } from "@/common/config";    //后端url
 
 const ApiService = {
-    init() {
+    init() {     //在main.js中记得 ApiService.init()
         Vue.use(VueAxios, axios)
         Vue.axios.defaults.baseURL = API
         this.setHeader()
@@ -47,15 +47,15 @@ const ApiService = {
 export default ApiService;
 
 export const ResultService = {
-    myPost(params) {
-        return ApiService.post(`answer`, params)
+    enterGame() {
+        return ApiService.get(`${API}/getMy`)
     },
 
-    mySpecialPost() {
-        return ApiService.post(`answered`)
+    getSuccess() {
+        return ApiService.post(`${API}/success`, params)
     },
-    myGet(){
-        return ApiService.get('geturl')
+    getRankList(params) {
+        return ApiService.get(`${API}/get?level=${params}`)
     }
 
 }

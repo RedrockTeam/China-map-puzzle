@@ -5,6 +5,8 @@ import {
 
 import {
 
+    ResultService
+
 } from '../common/service/api.js'
 
 import {
@@ -14,6 +16,7 @@ import {
 
 const initialState = {
     current_pass: null,
+
 
 }
 

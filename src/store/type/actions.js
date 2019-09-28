@@ -1,4 +1,3 @@
-export const APOST_GRADE = 'postGrade'
-export const ACHECK_MINE = 'checkMine'
-export const ACHECK_RANK = 'checkRank'
-export const ACHECK_MYGRADE = 'checkMyGrade'
+export const FETCH_ENTER_GAME = 'fetchEnterGame'
+export const FETCH_RANK = 'fetchRank'
+export const FETCH_SUCCESS = 'fetchSuccess'

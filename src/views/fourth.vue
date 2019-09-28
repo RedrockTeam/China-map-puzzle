@@ -33,8 +33,8 @@
 <script>
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
-import { SET_FOURTH, POST_GRADE } from "../store/type/mutations";
-import { APOST_GRADE } from "../store/type/actions";
+import { SET_FOURTH } from "../store/type/mutations";
+import { FETCH_SUCCESS } from "../store/type/actions";
 export default {
   data() {
     return {
@@ -134,11 +134,14 @@ export default {
         }
         if (this.finish_flag) {
           console.log("成功了");
-          this.$store.commit(SET_FIRST);
+          this.$store.commit(SET_FOURTH);
           this.stop();
           console.log(this.time);
           // this.time把时间传给后端
-          this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+          let data = new FormData();
+          data.append("level", 4);
+          data.append("second", this.time);
+          this.$store.dispatch(FETCH_SUCCESS, data);
           this.$router.push("/result?pass=" + this.num - 1);
         }
       }

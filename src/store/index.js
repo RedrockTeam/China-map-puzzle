@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import result from './result'
-import visit from './visit'
 import pass from './pass'
 
 
@@ -12,7 +11,6 @@ export default new Vuex.Store({
 
   modules: {
     result,
-    visit,
     pass
   },
   state: {
