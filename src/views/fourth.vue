@@ -74,7 +74,7 @@ export default {
       //时间重置
       if (this.timer) {
         clearInterval(this.timer);
-        console.log(this.timer);
+ 
       }
       let _timer = setInterval(() => {
         this.time++;
@@ -98,7 +98,7 @@ export default {
         this.activeName = null;
         var chart = func.chart;
         // 判断是否完成拼图
-        console.log(chart)
+      
         for (var i = 0, k = 0; i < this.num; i++) {
           //一维长度为num
           for (var j = 0; j < this.num; j++, k++) {
@@ -107,7 +107,6 @@ export default {
             this.finish_flag = (chart[i][j] == k);
           }
         }
-        console.log(this.finish_flag)
         if (this.finish_flag) {
               console.log("成功了")
               this.$store.commit(SET_FIRST);

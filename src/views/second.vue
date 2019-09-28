@@ -71,20 +71,19 @@ export default {
     // 开始
     start() {
       //时间重置
-      console.log("调用函数");
+
       if (this.timer) {
         clearInterval(this.timer);
-        console.log(this.timer);
+
       }
       let _timer = setInterval(() => {
         this.time++;
-        // console.log(this.time); // 作用域问题导致之前this指代有问题
+     
       }, 1000);
       this.timer = _timer;
     },
     //停止
     stop() {
-      //console.log(this.time); 获得此时的花费时间
       clearInterval(this.timer);
       this.time = 0;
     },
@@ -96,13 +95,13 @@ export default {
       } else {
         let func = require("../assets/js/puzzle.js");
         func.move(id, this.firstId, 3);
-        console.log("have changed");
+   
         this.change_flag = false;
-        console.log(this.change_flag);
+  
         this.activeName = null;
         var chart = func.chart;
         // 判断是否完成拼图
-        console.log(chart)
+    
         for (var i = 0, k = 0; i < this.num; i++) {
           //一维长度为num
           for (var j = 0; j < this.num; j++, k++) {
@@ -111,7 +110,7 @@ export default {
             this.finish_flag = (chart[i][j] == k);
           }
         }
-        console.log(this.finish_flag)
+   
         if (this.finish_flag) {
               console.log("成功了")
               this.$store.commit(SET_FIRST);

@@ -33,7 +33,7 @@ export default {
       setTimeout(() => {
         this.isShow = false;
         console.log("3s结束");
-        console.log(this.isShow);
+
       }, 3000);
     },
     //开始按
