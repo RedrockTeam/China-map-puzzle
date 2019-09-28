@@ -53,14 +53,14 @@ export default {
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.stop());
+    // window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(5);
       // 随机打乱
-      for(var i=0;i<10;i++){
+      for(var i=0;i<20;i++){
         var a = Math.floor(Math.random()*25);
         var b = Math.floor(Math.random()*25);
         var c = Math.floor(Math.random()*25);

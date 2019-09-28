@@ -4,73 +4,80 @@
       <back-button></back-button>
       <div class="title"></div>
     </div>
+    <!-- <div class="beautify">
+      <div class="center"> -->
+        <div class="body">
+          <div @click="startFirst">
+            <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
+            <img class="first" v-else src="../assets/img/pass/firstpass.png" />
+          </div>
+          <div>
+            <img
+              v-if="this.second =='unlock' "
+              class="second"
+              src="../assets/img/pass/second.png"
+              @click="startSecond"
+            />
+            <img
+              v-if="this.second =='success' "
+              class="second"
+              src="../assets/img/pass/secondpass.png"
+            />
+            <img
+              v-if="this.second =='lock'"
+              class="second"
+              v-on:click.prevent.self
+              src="../assets/img/pass/lock.png"
+            />
+          </div>
+          <div>
+            <img
+              class="third"
+              v-if="this.third =='unlock' "
+              src="../assets/img/pass/third.png"
+              @click="startThird"
+            />
+            <img
+              class="third"
+              v-if="this.third =='success' "
+              src="../assets/img/pass/thirdpass.png"
+              @click="startThird"
+            />
+            <img
+              class="third"
+              v-if="this.third =='lock'"
+              v-on:click.self.prevent
+              src="../assets/img/pass/lock.png"
+            />
+          </div>
+          <div>
+            <img
+              class="four"
+              v-if="this.forth=='unlock' "
+              src="../assets/img/pass/four.png"
+              @click="startFour"
+            />
+            <img
+              class="third"
+              v-if="this.forth =='success' "
+              src="../assets/img/pass/forthpass.png"
+              @click="startFour"
+            />
+            <img
+              class="four"
+              v-if="this.forth =='lock'"
+              v-on:click.self.prevent
+              src="../assets/img/pass/lock.png"
+            />
+          </div>
+        </div>
 
-    <div class="body">
-      <div @click="startFirst">
-        <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
-        <img class="first" v-else src="../assets/img/pass/firstpass.png" />
-      </div>
-      <div>
-        <img
-          v-if="this.second =='unlock' "
-          class="second"
-          src="../assets/img/pass/second.png"
-          @click="startSecond"
-        />
-        <img v-if="this.second =='success' " class="second" src="../assets/img/pass/secondpass.png" />
-        <img
-          v-if="this.second =='lock'"
-          class="second"
-          v-on:click.prevent.self
-          src="../assets/img/pass/lock.png"
-        />
-      </div>
-      <div>
-        <img
-          class="third"
-          v-if="this.third =='unlock' "
-          src="../assets/img/pass/third.png"
-          @click="startThird"
-        />
-        <img
-          class="third"
-          v-if="this.third =='success' "
-          src="../assets/img/pass/thirdpass.png"
-          @click="startThird"
-        />
-        <img
-          class="third"
-          v-if="this.third =='lock'"
-          v-on:click.self.prevent
-          src="../assets/img/pass/lock.png"
-        />
-      </div>
-      <div>
-        <img
-          class="four"
-          v-if="this.forth=='unlock' "
-          src="../assets/img/pass/four.png"
-          @click="startFour"
-        />
-        <img
-          class="third"
-          v-if="this.forth =='success' "
-          src="../assets/img/pass/forthpass.png"
-          @click="startFour"
-        />
-        <img
-          class="four"
-          v-if="this.forth =='lock'"
-          v-on:click.self.prevent
-          src="../assets/img/pass/lock.png"
-        />
-      </div>
-    </div>
-
-    <div class="end">
-      <div class="list"></div>
-      <div class="begin"></div>
-    </div>
+        <div class="end">
+          <div class="mylist"></div>
+          <div class="begin"></div>
+        </div>
+      <!-- </div>
+    </div> -->
   </div>
 </template>
 
@@ -91,8 +98,8 @@ export default {
       return this.$store.state.result.forth_flag;
     }
   },
-    mounted(){
-    this.$store.dispatch(ACHECK_MINE)
+  mounted() {
+    this.$store.dispatch(ACHECK_MINE);
   },
 
   methods: {
@@ -116,7 +123,21 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
+.beautify {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .center {
+    transform: translate(0, -6%);
+  }
+}
 .bg {
   position: absolute;
   width: 750px;
@@ -125,14 +146,21 @@ export default {
   background-repeat: repeat-y;
   background-position: 0% 0%;
   background-size: 100% auto;
-}
-.head,
-.end {
-  display: flex;
+  padding-top: 66px;
 }
 .head {
-  margin-top: 120px;
-  margin-left: 55px;
+  display: flex;
+}
+.end {
+  display: flex;
+  align-items: center;
+}
+.head {
+  width: 70%;
+  height: 140px;
+  margin: 0 auto 24px 25px;
+  display: inline-flex;
+  justify-content: space-around;
 }
 .title {
   width: 307px;
@@ -176,7 +204,7 @@ export default {
   position: relative;
   top: 790px;
 }
-.list {
+.mylist {
   background: url("../assets/img/pass/left.png");
   width: 272px;
   height: 105px;
@@ -187,7 +215,7 @@ export default {
   width: 337px;
   height: 140px;
   background-size: 100%;
-  margin-top: -5px;
+  /* margin-top: -5px; */
 }
 </style>
 

@@ -52,8 +52,16 @@ export default {
     this.start();
 
     // 监听离开页面则停止计时
-    window.addEventListener("unload", this.stop());
+    // window.addEventListener("unload", this.stop());
   },
+  destroyed() {
+    if (this.timer) {
+      //如果定时器在运行则关闭
+      clearInterval(this.timer);
+      console.log("定时器关闭")
+    }
+  },
+
   methods: {
     refresh() {
       let func = require("../assets/js/puzzle.js");
@@ -83,7 +91,7 @@ export default {
     },
     //停止
     stop() {
-      //console.log(this.time); 获得此时的花费时间
+      // console.log(this.time); //获得此时的花费时间
       clearInterval(this.timer);
       this.time = 0;
     },

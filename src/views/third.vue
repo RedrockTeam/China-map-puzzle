@@ -59,7 +59,7 @@ export default {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(4);
       // 随机打乱
-      for(var i=0;i<10;i++){
+      for(var i=0;i<15;i++){
         var a = Math.floor(Math.random()*16);
         var b = Math.floor(Math.random()*16);
         var c = Math.floor(Math.random()*16);

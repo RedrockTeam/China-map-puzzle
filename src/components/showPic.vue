@@ -103,6 +103,9 @@ export default {
   background-color: rgba($color: #dd8e5e, $alpha: 0.4);
   position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   .dialog {
     background: url("../assets/img/common/dialog.png");
     background-size: cover;
@@ -111,7 +114,7 @@ export default {
     margin: auto auto;
     position: absolute;
     top: 0;
-    transform: translate(0, 40%);
+    transform: translate(0, 20%);
   }
 }
 </style>

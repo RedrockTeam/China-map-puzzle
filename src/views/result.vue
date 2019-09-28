@@ -1,11 +1,14 @@
 <template>
   <div class="bg">
     <div class="head">
-      <div class="back" @click="toHome"></div>
+      <back-button></back-button>
       <div class="title"></div>
-      <div class="front" @click="toNext"></div>
+      <div class="refresh_shadow">
+        <div class="refresh" @click="toNext"></div>
+      </div>
     </div>
-
+<div class="beautify">
+      <div class="center">
     <div class="contain">
       <div class="score">
         <div>
@@ -29,6 +32,8 @@
       </div>
     </div>
     <div class="line"></div>
+      </div>
+</div>
   </div>
 </template>
 <script>
@@ -42,16 +47,16 @@ export default {
     let pass = this.$route.query.pass; // 当前路由参数
     if (pass == 1) {
       this.$store.dispatch(ACHECK_RANK, 1);
-      this.$store.dispatch(ACHECK_MYGRADE,1)
+      this.$store.dispatch(ACHECK_MYGRADE, 1);
     } else if (pass == 2) {
       this.$store.dispatch(ACHECK_RANK, 2);
-      this.$store.dispatch(ACHECK_MYGRADE,2)
+      this.$store.dispatch(ACHECK_MYGRADE, 2);
     } else if (pass == 3) {
       this.$store.dispatch(ACHECK_RANK, 3);
-      this.$store.dispatch(ACHECK_MYGRADE,3)
+      this.$store.dispatch(ACHECK_MYGRADE, 3);
     } else if (pass == 4) {
       this.$store.dispatch(ACHECK_RANK, 4);
-      this.$store.dispatch(ACHECK_MYGRADE,4)
+      this.$store.dispatch(ACHECK_MYGRADE, 4);
     } else {
       return false;
     }
@@ -75,7 +80,7 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
 .bg {
   position: absolute;
   top: 0;
@@ -84,27 +89,62 @@ export default {
   width: 100%;
   background: url("../assets/img/pass/background.png");
   background-size: cover;
+  padding-top: 66px;
+}
+.beautify {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .center {
+    transform: translate(0, -6%);
+  }
 }
 .head {
-  display: flex;
-  margin-top: 60px;
-  margin-left: 50px;
+  width: 95%;
+  height: 140px;
+  margin: 0 auto 24px 25px;
+  display: inline-flex;
+  justify-content: space-between;
+
+  .title {
+    background: url("../assets/img/ranking/ranking_title.png") no-repeat;
+    width: 260px;
+    height: 200px;
+    background-size: 100%;
+    // margin-left: -40px;
+  }
+
+  .refresh_shadow {
+    width: 125px;
+    height: 139px;
+    background-image: url("../assets/img/common/btn_sbg.png");
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-size: contain;
+
+    .refresh {
+      width: 92px;
+      height: 95px;
+      background-image: url("../assets/img/ranking/front.png");
+      background-repeat: no-repeat;
+      background-position: 0% 0%;
+      background-size: contain;
+    }
+  }
 }
 
-.back {
-  background: url("../assets/img/ranking/back.png");
-  width: 93px;
-  height: 97px;
-  background-size: cover;
-  margin-right: 120px;
-}
-.title {
-  background: url("../assets/img/ranking/ranking_title.png") no-repeat;
-  width: 260px;
-  height: 200px;
-  background-size: 100%;
-  margin-left: -40px;
-}
+// .head {
+//   display: flex;
+//   margin-top: 60px;
+//   margin-left: 50px;
+// }
+
 .front {
   background: url("../assets/img/ranking/front.png");
   width: 93px;
@@ -220,8 +260,7 @@ export default {
   height: 36px;
   background: url("../assets/img/ranking/line.png");
   background-size: cover;
-  margin-left: 100px;
-  margin-top: -50px;
+  margin: -50px auto auto auto;
 }
 </style>
 
