@@ -32,8 +32,8 @@
 <script>
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
-import { SET_FIRST, POST_GRADE } from "../store/type/mutations";
-import { APOST_GRADE } from "../store/type/actions";
+import { SET_FIRST } from "../store/type/mutations";
+import { FETCH_SUCCESS } from "../store/type/actions";
 export default {
   data() {
     return {
@@ -79,13 +79,14 @@ export default {
     // 开始
     start() {
       //时间重置
+      console.log("调用函数");
       if (this.timer) {
         clearInterval(this.timer);
-        console.log(this.timer);
+        // console.log(this.timer);
       }
       let _timer = setInterval(() => {
         this.time++;
-        // console.log(this.time); // 作用域问题导致之前this指代有问题
+        console.log(this.time); // 作用域问题导致之前this指代有问题
       }, 1000);
       this.timer = _timer;
     },
@@ -127,7 +128,10 @@ export default {
           this.stop();
           console.log(this.time);
           // this.time把时间传给后端
-          this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+          let data = new FormData();
+          data.append("level", 1);
+          data.append("second", this.time);
+          this.$store.dispatch(FETCH_SUCCESS, data);
           this.$router.push("/result?pass=" + this.num - 1);
         }
       }

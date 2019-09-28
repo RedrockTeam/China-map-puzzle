@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { FETCH_ENTER_GAME } from "../store/type/actions";
 export default {
   data() {
     return {
@@ -24,6 +25,7 @@ export default {
     startJoin() {
       this.isShow = false;
       this.$router.push("/pass");
+      this.$store.dispatch(FETCH_ENTER_GAME);
     }
   }
 };

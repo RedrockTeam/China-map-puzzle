@@ -3,11 +3,19 @@ import {
     SET_SECOND,
     SET_THIRD,
     SET_FOURTH,
-    CHECK_MINE,
+    SET_ENTER_GAME,
+    SET_USER_GRADE,
+    SET_RANK,
+    SET_MIDDLEWARE,
+    SET_NEW_GRADE
+
+
 } from './type/mutations'
 
 import {
-    ACHECK_MINE,
+    FETCH_ENTER_GAME,
+    FETCH_RANK,
+    FETCH_SUCCESS
 } from './type/actions'
 
 import {
@@ -22,7 +30,14 @@ const initialState = {
     second_flag: 'lock',
     third_flag: 'lock',
     forth_flag: 'lock',
-    default_pass: 'four'
+    default_pass: 'first',
+    grade: Array,
+    rank: Array,
+    user_time: Number,
+    user_rank: Number,
+    rankList: Array,
+
+
 
 
 }
@@ -56,7 +71,9 @@ const mutations = {
 
 
     },
-    [CHECK_MINE](state, payload) {
+
+    //通关状态
+    [SET_ENTER_GAME](state, payload) {
         if (payload == 1) {
             state.first_flag = 'success';
             state.second_flag = 'unlock';
@@ -76,12 +93,45 @@ const mutations = {
             state.forth_flag = 'success'
         }
 
+    },
+
+    [SET_MIDDLEWARE](state, data) {
+        state.grade = data.MyList
+        state.rank = data.rank
+    },
+
+    [SET_USER_GRADE](state, level) {
+        state.user_time = state.grade[level - 1].Second
+        state.user_rank = state.rank[level - 1]
+    },
+    [SET_RANK](state, data) {
+        state.rankList = data
+    },
+    [SET_NEW_GRADE](state, data) {
+        state.user_time = state.Second
+        state.user_rank = state.rank
+
     }
 }
 const actions = {
-    async [ACHECK_MINE](context) {
-        let passNum = ResultService.myGet(`/getMy`).MyList.length
-        context.commit(CHECK_MINE, passNum)
+    async [FETCH_ENTER_GAME]({ commit }) {
+        let { data } = await ResultService.enterGame()
+        let pass_status = data.MyList.length
+        commit(SET_MIDDLEWARE, data)
+        commit(SET_ENTER_GAME, pass_status)
+    },
+    // 得到排行榜
+    async [FETCH_RANK]({ commit }, level) {
+        let { data } = await ResultService.getRankList(level)
+        commit(SET_RANK, data)
+    },
+    async [FETCH_SUCCESS]({ commit }, params) {
+        let { data } = await ResultService.getSuccess(params)
+        let rankList = data.List
+        let grade = data.rank
+        commit(SET_RANK, rankList)
+        commit(SET_NEW_GRADE, grade)
+
     }
 }
 

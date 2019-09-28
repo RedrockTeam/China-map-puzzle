@@ -14,7 +14,8 @@ const ApiService = {
     setHeader() {
         Vue.axios.defaults.headers.common[
             "Authorization"
-        ] = `Token ${window.localStorage.getItem(id_token)}`;
+        ] = `${localStorage.getItem('id_token')}`;
+        console.log(localStorage.getItem('id_token'))
     },
 
     // 封装axios
@@ -47,15 +48,15 @@ const ApiService = {
 export default ApiService;
 
 export const ResultService = {
-    myPost(params) {
-        return ApiService.post(`answer`, params)
+    enterGame() {
+        return ApiService.get(`getMy`)
     },
 
-    mySpecialPost() {
-        return ApiService.post(`answered`)
+    getSuccess() {
+        return ApiService.post(`success`, params)
     },
-    myGet(){
-        return ApiService.get('geturl')
+    getRankList(params) {
+        return ApiService.get(`get?level=${params}`)
     }
 
 }
