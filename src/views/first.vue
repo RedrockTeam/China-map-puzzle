@@ -28,7 +28,8 @@
 <script>
 import "../assets/js/puzzle.js";
 import showPic from "../components/showPic.vue";
-import { SET_FIRST } from "../store/type/mutations";
+import { SET_FIRST, POST_GRADE } from "../store/type/mutations";
+import { ASET_FIRST, APOST_GRADE } from "../store/type/actions";
 export default {
   data() {
     return {
@@ -99,7 +100,7 @@ export default {
               this.$store.commit(SET_FIRST);
               this.stop();
               // this.time把时间传给后端
-              this.$.dispatch(APOST_GRADE,{level:2,time:this.time})
+              this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
               this.$router.push("/result?pass=" + this.num - 1);
             }
           }
