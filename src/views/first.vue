@@ -91,20 +91,21 @@ export default {
         console.log(this.change_flag);
         this.activeName = null;
         var chart = func.chart;
-        for (var i = 0, k = 0; i < this.num; i++) {
-          //一维长度为num
-          for (var j = 0; j < this.num; j++, k++) {
-            //二维长度为num
-            // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            if ((chart[i][j] = k)) {
-              this.$store.commit(SET_FIRST);
-              this.stop();
-              // this.time把时间传给后端
-              this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
-              this.$router.push("/result?pass=" + this.num - 1);
-            }
-          }
-        }
+        // 判断是否完成拼图
+        // for (var i = 0, k = 0; i < this.num; i++) {
+        //   //一维长度为num
+        //   for (var j = 0; j < this.num; j++, k++) {
+        //     //二维长度为num
+        //     // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
+        //     if ((chart[i][j] = k)) {
+        //       this.$store.commit(SET_FIRST);
+        //       this.stop();
+        //       // this.time把时间传给后端
+        //       this.$store.dispatch(APOST_GRADE, { level: 2, time: this.time });
+        //       this.$router.push("/result?pass=" + this.num - 1);
+        //     }
+        //   }
+        // }
       }
     }
   },
