@@ -86,12 +86,12 @@ export default {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(5);
       // 随机打乱
-      for (var i = 0; i < 10; i++) {
-        var a = Math.floor(Math.random() * 25);
-        var b = Math.floor(Math.random() * 25);
-        var c = Math.floor(Math.random() * 25);
-        func.move(a, b, 5);
-        func.move(a, c, 5);
+      for(var i=0;i<20;i++){
+        var a = Math.floor(Math.random()*25);
+        var b = Math.floor(Math.random()*25);
+        var c = Math.floor(Math.random()*25);
+        func.move(a,b,5);
+        func.move(a,c,5);
       }
     },
 

@@ -5,6 +5,7 @@
       <div class="title"></div>
     </div>
 
+
     <div class="body">
       <div @click="checked('first')">
         <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
@@ -133,7 +134,21 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
+.beautify {
+  position: absolute;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  .center {
+    transform: translate(0, -6%);
+  }
+}
 .bg {
   position: absolute;
   width: 750px;
@@ -142,14 +157,21 @@ export default {
   background-repeat: repeat-y;
   background-position: 0% 0%;
   background-size: 100% auto;
-}
-.head,
-.end {
-  display: flex;
+  padding-top: 66px;
 }
 .head {
-  margin-top: 120px;
-  margin-left: 55px;
+  display: flex;
+}
+.end {
+  display: flex;
+  align-items: center;
+}
+.head {
+  width: 70%;
+  height: 140px;
+  margin: 0 auto 24px 25px;
+  display: inline-flex;
+  justify-content: space-around;
 }
 .title {
   width: 307px;
@@ -193,7 +215,7 @@ export default {
   position: relative;
   top: 790px;
 }
-.list {
+.mylist {
   background: url("../assets/img/pass/left.png");
   width: 272px;
   height: 105px;
@@ -204,7 +226,7 @@ export default {
   width: 337px;
   height: 140px;
   background-size: 100%;
-  margin-top: -5px;
+  /* margin-top: -5px; */
 }
 </style>
 

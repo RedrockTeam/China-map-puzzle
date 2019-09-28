@@ -108,7 +108,6 @@ export default {
             this.finish_flag = chart[i][j] == k;
           }
         }
-
         if (this.finish_flag) {
           console.log("成功了");
           this.$store.commit(SET_SECOND);

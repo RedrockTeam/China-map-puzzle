@@ -1,8 +1,7 @@
 <template>
   <div class="main">
     <div class="btn">
-      <img class="one" v-if="isShow" src="../assets/img/home/home_btn1.png" @click="startJoin" />
-      <img class="two" v-if="!isShow" src="../assets/img/home/home_btn2.png" />
+      <img class="one" src="../assets/img/home/home_btn1.png" @click="startJoin" />
     </div>
     <div class="msg">
       <p>点两块交换位置</p>
@@ -20,6 +19,7 @@ export default {
   },
 
   computed: {},
+  mounted() {},
   methods: {
     startJoin() {
       this.isShow = false;
@@ -31,11 +31,12 @@ export default {
 <style lang="scss" scoped>
 .main {
   position: absolute;
-  width: 750px;
+  // width: 750px;
+  width: 100%;
   // height: 1207px;
   height: 100%;
-  background-image: url("../assets/img/home/home_bg2.jpg");
-  background-repeat: repeat;
+  background-image: url("../assets/img/home/home_bg.jpg");
+  background-repeat: repeat-y;
   background-position: 0% 0%;
   background-size: contain;
   .btn {
@@ -43,11 +44,6 @@ export default {
       width: 567px;
       height: 561px;
       margin: 650px auto auto 210px;
-    }
-    .two {
-      width: 577px;
-      height: 581px;
-      margin: 610px auto auto 172px;
     }
   }
   .msg {
@@ -58,6 +54,21 @@ export default {
     p {
       text-align: center;
     }
+  }
+}
+@media only screen and (min-height: 690px) {
+  .main {
+    background-image: url("../assets/img/home/home_bg2.jpg");
+    .btn {
+      .one {
+        width: 567px;
+        height: 561px;
+        margin: 730px auto auto 210px;
+      }
+    }
+    // .msg{
+    //   margin-top: 10px;
+    // }
   }
 }
 </style>
