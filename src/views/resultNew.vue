@@ -51,24 +51,7 @@ export default {
       return this.$store.state.result.rankList; //get接口
     }
   },
-  mounted() {
-    let pass = this.$route.query.pass; // 当前路由参数
-    if (pass == 1) {
-      this.$store.dispatch(FETCH_RANK, 1);
-      this.$store.commit(SET_USER_GRADE, 1);
-    } else if (pass == 2) {
-      this.$store.dispatch(FETCH_RANK, 2);
-      this.$store.commit(SET_USER_GRADE, 2);
-    } else if (pass == 3) {
-      this.$store.dispatch(FETCH_RANK, 3);
-      this.$store.commit(SET_USER_GRADE, 3);
-    } else if (pass == 4) {
-      this.$store.dispatch(FETCH_RANK, 4);
-      this.$store.commit(SET_USER_GRADE, 4);
-    } else {
-      return false;
-    }
-  },
+
   methods: {
     setClass(index) {
       let obj = { rank: true };

@@ -58,7 +58,7 @@ export default {
     if (this.timer) {
       //如果定时器在运行则关闭
       clearInterval(this.timer);
-      console.log("定时器关闭")
+      console.log("定时器关闭");
     }
   },
 
@@ -86,7 +86,7 @@ export default {
       }
       let _timer = setInterval(() => {
         this.time++;
-        console.log(this.time); // 作用域问题导致之前this指代有问题
+        // console.log(this.time); // 作用域问题导致之前this指代有问题
       }, 1000);
       this.timer = _timer;
     },
@@ -125,14 +125,12 @@ export default {
         if (this.finish_flag) {
           console.log("成功了");
           this.$store.commit(SET_FIRST);
-          this.stop();
-          console.log(this.time);
-          // this.time把时间传给后端
           let data = new FormData();
           data.append("level", 1);
-          data.append("second", this.time);
+          data.append("time", this.time);
+          this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
-          this.$router.push("/result?pass=" + this.num - 1);
+          this.$router.push("/resultNew?pass=1");
         }
       }
     }

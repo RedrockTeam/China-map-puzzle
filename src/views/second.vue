@@ -109,16 +109,13 @@ export default {
           }
         }
         if (this.finish_flag) {
-          console.log("成功了");
           this.$store.commit(SET_SECOND);
-          this.stop();
-          console.log(this.time);
-          // this.time把时间传给后端
           let data = new FormData();
           data.append("level", 2);
           data.append("second", this.time);
+          this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
-          this.$router.push("/result?pass=" + this.num - 1);
+          this.$router.push("/resultNew?pass=2");
         }
       }
     }

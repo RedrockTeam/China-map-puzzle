@@ -50,16 +50,13 @@ export default {
   mounted() {
     this.refresh();
     this.start();
-
-    // 监听离开页面则停止计时
-    // window.addEventListener("unload", this.stop());
   },
   methods: {
     refresh() {
       let func = require("../assets/js/puzzle.js");
       func.initPuzzle(4);
       // 随机打乱
-      for (var i = 0; i < 15; i++) {
+      for (var i = 0; i < 2; i++) {
         var a = Math.floor(Math.random() * 16);
         var b = Math.floor(Math.random() * 16);
         var c = Math.floor(Math.random() * 16);
@@ -110,14 +107,14 @@ export default {
         }
 
         if (this.finish_flag) {
+          console.log("3");
           this.$store.commit(SET_THIRD);
-          this.stop();
-          // this.time把时间传给后端
           let data = new FormData();
           data.append("level", 3);
           data.append("second", this.time);
+          this.stop();
           this.$store.dispatch(FETCH_SUCCESS, data);
-          this.$router.push("/result?pass=" + this.num - 1);
+          this.$router.push("/resultNew?pass=3");
         }
       }
     }

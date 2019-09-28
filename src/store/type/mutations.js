@@ -8,4 +8,4 @@ export const SET_CURRENT_PASS = 'setCurrentPass'
 export const SET_USER_GRADE = 'setUserGrade'
 export const SET_RANK = 'setRank'
 export const SET_NEW_GRADE = 'setNewGrade'
-export const SET_MIDDLEWARE = 'setMiddleware'
+

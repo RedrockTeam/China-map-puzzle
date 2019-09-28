@@ -8,7 +8,7 @@
         @touchend="gtouchend()"
       >
         <!-- 暂时加点击事件 -->
-        
+
         <!-- 长按可看3s原图 -->
         <img src="../assets/img/game/showpic_font.png" />
       </div>
@@ -33,12 +33,11 @@ export default {
       setTimeout(() => {
         this.isShow = false;
         console.log("3s结束");
-
       }, 3000);
     },
     //开始按
     gtouchstart() {
-      console.log(this.timeOutEvent)
+      console.log(this.timeOutEvent);
       this.timeOutEvent = setTimeout(() => this.longPress(), 500); //这里设置定时器，定义长按500毫秒触发长按事件
       return false;
     },
@@ -96,9 +95,10 @@ export default {
   }
 }
 .dialogCon {
-  width: 100%;
-  // height: 1208px;
-  height: 100%;
+  position: absolute;
+  // width: 100%;
+  // // height: 1208px;
+  // height: 100%;
 
   background-color: rgba($color: #dd8e5e, $alpha: 0.4);
   position: absolute;
