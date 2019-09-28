@@ -78,7 +78,7 @@ const mutations = {
 }
 const actions = {
     async [ACHECK_MINE](context) {
-        let passNum = ResultService.myget(`/getMy`).length
+        let passNum = ResultService.myGet(`/getMy`).length
         context.commit(CHECK_MINE, passNum)
     }
 }

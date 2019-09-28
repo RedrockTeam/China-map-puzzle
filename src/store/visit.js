@@ -52,8 +52,8 @@ const actions = {
     },
     // 得到本人成绩排名
     async [ACHECK_MYGRADE](context, level) {
-        let myTime = ResultService.get(`/getMy`)[level - 1].Second;
-        let myRank = ResultService.get(`/getMy`)[level - 1].rank;
+        let myTime = ResultService.myGet(`/getMy`)[level - 1].Second;
+        let myRank = ResultService.myGet(`/getMy`)[level - 1].rank;
         context.commit(CHECK_MINE, {myTime,myRank})
     }
 }
