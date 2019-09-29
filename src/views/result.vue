@@ -161,7 +161,6 @@ export default {
           margin: auto auto;
 
           color: #ffae72;
-          font-family: "Cotton";
           font-weight: bold;
           font-size: 35px;
           .word {
@@ -200,7 +199,7 @@ export default {
               color: #ff8a5c;
               font-size: 35px;
               font-weight: bold;
-              font-family: "Cotton";
+    
             }
             .rank0 {
               background: url("../assets/img/rank/first.png");
@@ -220,7 +219,7 @@ export default {
               font-weight: bold;
               display: inline-block;
               margin-top: 30px;
-              font-family: "Cotton";
+        
             }
           }
 
@@ -232,7 +231,7 @@ export default {
             margin-top: 20px;
             color: #ff8a5c;
             font-size: 50px;
-            font-family: "Cotton";
+      
           }
         }
       }
