@@ -126,7 +126,7 @@ const actions = {
         let {
             data
         } = await ResultService.getRankList(level)
-        let grade = data.MyList[level - 1]
+        let grade = data.MyList[0]
         let myRank = data.MyRank
         let rankList = data.List
         // 修改state里的排行榜，名次
