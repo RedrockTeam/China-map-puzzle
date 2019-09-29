@@ -10,21 +10,28 @@
     <div class="beautify">
       <div class="center">
         <div class="score">
-          <p>
-            <span class="clock"></span>
-            <span class="word">我的时间：{{this.user_time}}s</span>
-          </p>
-          <p>
-            <i class="grade"></i>
-            <span class="word">我的成绩：第{{this.user_rank}}名</span>
-          </p>
+          <div class="mylist">
+            <div class="des">
+              <span class="clock"></span>
+              <span class="word">我的时间：</span>
+            </div>
+
+            <span>{{this.$store.user_time}}s</span>
+            <div class="des">
+              <i class="grade"></i>
+              <span class="word">我的成绩：</span>
+            </div>
+            <span>第{{this.$store.user_rank}}名</span>
+          </div>
         </div>
         <div class="list">
-          <p class="list_item" v-for="(item,index) in items" :key="item.index">
-            <span class="icon" :class="setClass(index)">{{item.index+1}}</span>
-            <span class="nickname">{{item.Nickname}}</span>
-            <span class="time">{{item.Second}}s</span>
-          </p>
+          <div class="list_item" v-for="(item,index) in items" :key="item.index"> -->
+            <div class="user">
+              <span class="icon" :class="setClass(index)">{{item.index+1}}</span>
+            <span class="nickname">{{item.Nickname}}name</span>
+            </div>
+          <span class="time">{{item.Second}}s</span>
+          </div>
         </div>
         <div class="line"></div>
       </div>
@@ -135,26 +142,33 @@ export default {
       .score {
         width: 590px;
         height: 220px;
-        margin: -20px auto auto -10px;
+        margin: auto auto;
         background: url("../assets/img/rank/result.png");
         background-repeat: no-repeat;
-        background-position: 0% 0%;
+        background-position: 50% 50%;
         background-size: cover;
+        display: flex;
+        align-content: center;
+        align-items: center;
 
-        p {
+        .mylist {
+          width: 458px;
+          height: 124px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+          margin: auto auto;
+
           color: #ffae72;
-          font-family: 'Cotton';
+          font-family: "Cotton";
           font-weight: bold;
           font-size: 35px;
-          padding-top: 20px;
-          margin: 0 auto;
-          width: 250px;
-          margin-left: 50px;
-          margin-top: 10px;
           .word {
             letter-spacing: 5px;
           }
         }
+
         .clock,
         .grade {
           width: 29px;
@@ -163,10 +177,75 @@ export default {
           margin-right: 10px;
         }
       }
+      .list {
+        width: 552px;
+        height: 538px;
+        overflow: auto;
+        margin: 30px auto 0 30px;
+
+        .list_item {
+          width: 552px;
+          height: 125px;
+          background: url("../assets/img/rank/box.png");
+          background-size: cover;
+
+          display: flex;
+          justify-content: space-between;
+          .user {
+            .icon {
+              display: inline-block;
+              width: 81px;
+              height: 82px;
+              margin: 15px 25px 15px 35px;
+              color: #ff8a5c;
+              font-size: 35px;
+              font-weight: bold;
+              font-family: "Cotton";
+            }
+            .rank0 {
+              background: url("../assets/img/rank/first.png");
+              background-size: cover;
+            }
+            .rank1 {
+              background: url("../assets/img/rank/second.png");
+              background-size: cover;
+            }
+            .rank2 {
+              background: url("../assets/img/rank/third.png");
+              background-size: cover;
+            }
+            .nickname {
+              color: #ff8a5c;
+              font-size: 35px;
+              font-weight: bold;
+              display: inline-block;
+              margin-top: 30px;
+              font-family: "Cotton";
+            }
+          }
+
+          .time {
+            margin-left: auto;
+            margin-right: 80px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            color: #ff8a5c;
+            font-size: 50px;
+            font-family: "Cotton";
+          }
+        }
+      }
+      .line {
+        width: 548px;
+        height: 23px;
+        background: url("../assets/img/rank/line.png");
+        background-size: cover;
+        margin: auto auto auto 25px;
+      }
     }
   }
 }
-
 
 .score .clock {
   background: url("../assets/img/rank/clock.png") no-repeat;
@@ -176,65 +255,9 @@ export default {
   background: url("../assets/img/rank/rank.png") no-repeat;
   background-size: cover;
 }
-.list {
-  height: 538px;
-  overflow: auto;
-  margin-top: 20px;
-}
+
 ::-webkit-scrollbar {
   display: none;
-}
-.list_item {
-  background: url("../assets/img/rank/box.png");
-  width: 532px;
-  height: 112px;
-  background-size: cover;
-  margin-left: 50px;
-  display: flex;
-}
-.icon {
-  display: inline-block;
-  width: 81px;
-  height: 82px;
-  margin: 15px 35px;
-}
-.rank0 {
-  background: url("../assets/img/rank/first.png");
-  background-size: cover;
-}
-.rank1 {
-  background: url("../assets/img/rank/second.png");
-  background-size: cover;
-}
-.rank2 {
-  background: url("../assets/img/rank/third.png");
-  background-size: cover;
-}
-.nickname {
-  color: #ffae72;
-  font-size: 35px;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 30px;
-  font-family: Tanuki;
-}
-.time,
-.normal {
-  margin-left: auto;
-  margin-right: 80px;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 20px;
-  color: #ff7b5c;
-  font-size: 50px;
-}
-
-.line {
-  width: 548px;
-  height: 23px;
-  background: url("../assets/img/rank/line.png");
-  background-size: cover;
-  margin: auto auto;
 }
 </style>
 
