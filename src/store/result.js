@@ -117,7 +117,7 @@ const actions = {
         commit(SET_ENTER_GAME, pass_status)
     },
 
-    // 缺个用户该关卡信息
+    
     // 为排行榜页面请求数据(用户可能从选择页挑选自己已经通关页面查看目前排行榜)
     // 传关卡数字得到排行榜，get请求，返回排行榜List数组，目前用户名次MyRank，用户通关情况数组MyList
     async [FETCH_RANKPAGE]({
@@ -128,9 +128,11 @@ const actions = {
         } = await ResultService.getRankList(level)
         let grade = data.MyList[level - 1]
         let myRank = data.MyRank
+        let rankList = data.List
         // 修改state里的排行榜，名次
         commit(SET_RANK, myRank)
         commit(SET_TIME, grade.Second)
+        commit(SET_RANKLIST,rankList)
     },
 
     // 通关某一关卡后访问的接口，后端返回处理了用户当前成绩后的排行榜和用户自己本关卡的时间和名次，params传post参数（包含level\time)
