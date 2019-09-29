@@ -52,19 +52,19 @@
       </div>
       <div>
         <img
-          class="four"
+          class="fourth"
           v-if="this.forth=='unlock' "
-          src="../assets/img/pass/four.png"
+          src="../assets/img/pass/fourth.png"
           @click="checked('forth')"
         />
         <img
-          class="four"
+          class="fourth"
           v-if="this.forth =='success' "
           src="../assets/img/pass/forthpass.png"
           @click="checked('forth')"
         />
         <img
-          class="four"
+          class="fourth"
           v-if="this.forth =='lock'"
           v-on:click.self.prevent
           src="../assets/img/pass/lock.png"
@@ -191,7 +191,7 @@ export default {
 .first,
 .second,
 .third,
-.four {
+.fourth {
   width: 500px;
   height: 580px;
   position: absolute;
@@ -209,7 +209,7 @@ export default {
   left: 50px;
   top: 530px;
 }
-.four {
+.fourth {
   left: 320px;
   top: 550px;
 }
