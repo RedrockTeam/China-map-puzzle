@@ -44,7 +44,7 @@
 </template>
 <script>
 import { SET_USER_GRADE } from "../store/type/mutations";
-import { FETCH_RANK } from "../store/type/actions";
+import { FETCH_RANK,FETCH_ENTER_GAME } from "../store/type/actions";
 export default {
   computed: {
     user_time() {
@@ -76,6 +76,7 @@ export default {
     },
     toNext() {
       let pass = this.$route.query.pass; // 当前路由参数
+      console.log(this.$route.query.pass)
       if (pass == 1 || pass == "first") {
         this.$router.push("/second");
       } else if (pass == 2 || pass == "second") {
@@ -122,8 +123,9 @@ export default {
         background-repeat: no-repeat;
         background-position: 0% 0%;
         background-size: contain;
-        translate: 50px;
+        
       }
+       transform: translate(50px,0)
     }
 
     .title {
@@ -162,7 +164,7 @@ export default {
     justify-content: center;
     align-items: center;
     .center {
-      transform: translate(0, -6%);
+      transform: translate(0, -10%);
       width: 590px;
       height: 830px;
       box-sizing: border-box;

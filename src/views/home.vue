@@ -4,7 +4,7 @@
       <img class="one" src="../assets/img/home/home_btn1.png" @click="startJoin" />
     </div>
     <div class="msg">
-      <p>点两块交换位置</p>
+      <p>点相邻两块交换位置</p>
       <p>用最短时间完成拼图</p>
     </div>
   </div>

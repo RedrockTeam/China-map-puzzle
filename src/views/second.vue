@@ -64,12 +64,24 @@ export default {
       let func = require("@/assets/js/puzzle.js");
       func.initPuzzle(3);
       // 随机打乱
-      for (var i = 0; i < 10; i++) {
-        var a = Math.floor(Math.random() * 4);
-        var b = Math.floor(Math.random() * 4);
-        var c = Math.floor(Math.random() * 4);
+      for (var m = 0; m < 30; m++) {
+        var a = Math.floor(Math.random() * 9);
+        var b = Math.floor(Math.random() * 9);
+        var c = Math.floor(Math.random() * 9);
         func.move(a, b, 3);
         func.move(a, c, 3);
+      }
+      // 如果随机打乱结果仍然为原图，再次打乱
+      var chart = func.chart;
+      let successArray = new Array();
+      for (var i = 0, k = 0; i < this.num; i++) {
+        successArray[i] = new Array();
+        for (var j = 0; j < this.num; j++, k++) {
+          successArray[i][j] = k;
+        }
+      }
+      if (this.successIF(successArray, chart)) {
+        this.refresh();
       }
     },
 
@@ -80,7 +92,7 @@ export default {
         clearInterval(this.timer);
       }
       this.timer = setInterval(() => {
-        this.time = this.time +1000;
+        this.time = this.time + 1000;
       }, 1000);
     },
     //停止
@@ -125,7 +137,7 @@ export default {
         }
       }
     },
-        successIF(a, b) {
+    successIF(a, b) {
       for (var i = 0; i < this.num; i++) {
         for (var j = 0; j < this.num; j++) {
           if (!(a[i][j] === b[i][j])) {

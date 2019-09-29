@@ -64,12 +64,24 @@ export default {
       let func = require("@/assets/js/puzzle.js");
       func.initPuzzle(2);
       // 随机打乱
-      for (var i = 0; i < 5; i++) {
+      for (var m = 0; m < 10; m++) {
         var a = Math.floor(Math.random() * 4);
         var b = Math.floor(Math.random() * 4);
         var c = Math.floor(Math.random() * 4);
         func.move(a, b, 2);
         func.move(a, c, 2);
+      }
+      // 如果随机打乱结果仍然为原图，再次打乱
+      var chart = func.chart;
+      let successArray = new Array();
+      for (var i = 0, k = 0; i < this.num; i++) {
+        successArray[i] = new Array();
+        for (var j = 0; j < this.num; j++, k++) {
+          successArray[i][j] = k;
+        }
+      }
+      if (this.successIF(successArray, chart)) {
+        this.refresh();
       }
     },
 
@@ -80,7 +92,7 @@ export default {
         clearInterval(this.timer);
       }
       this.timer = setInterval(() => {
-        this.time = this.time +1000;
+        this.time = this.time + 1000;
       }, 1000);
     },
     //停止
@@ -104,7 +116,6 @@ export default {
         for (var i = 0, k = 0; i < this.num; i++) {
           successArray[i] = new Array();
           for (var j = 0; j < this.num; j++, k++) {
-            // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
             successArray[i][j] = k;
           }
         }
@@ -127,6 +138,7 @@ export default {
         }
       }
     },
+    // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
     successIF(a, b) {
       for (var i = 0; i < this.num; i++) {
         for (var j = 0; j < this.num; j++) {

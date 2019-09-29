@@ -46,23 +46,26 @@ const mutations = {
     [SET_FIRST](state) {
         state.first_flag = 'success'
         state.second_flag = 'unlock'
+        state.default_pass = 'second'
 
     },
     [SET_SECOND](state) {
         state.second_flag = 'success'
         state.third_flag = 'unlock'
+        state.default_pass = 'third'
 
     },
     [SET_THIRD](state) {
         state.third_flag = 'success'
         state.forth_flag = 'unlock'
-        state.default_pass = 'four'
+        state.default_pass = 'fourth'
 
 
     },
     [SET_FOURTH](state) {
         state.forth_flag = 'success'
-        state.default_pass = 'four'
+        state.default_pass = 'fourth'
+        
     },
 
     // 修改current_pass
@@ -119,7 +122,8 @@ const actions = {
 
     
     // 为排行榜页面请求数据(用户可能从选择页挑选自己已经通关页面查看目前排行榜)
-    // 传关卡数字得到排行榜，get请求，返回排行榜List数组，目前用户名次MyRank，用户通关情况数组MyList
+    // 传关卡数字得到排行榜，get请求，返回排行榜List数组，目前用户名次MyRank，用户通关情况数组MyList（实际只有本关卡的)
+    // /get?level=1,2,3,4
     async [FETCH_RANKPAGE]({
         commit
     }, level) {

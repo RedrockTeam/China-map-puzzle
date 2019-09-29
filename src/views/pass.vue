@@ -60,7 +60,7 @@
         <img
           class="fourth"
           v-if="this.fourth =='success' "
-          src="../assets/img/pass/forthpass.png"
+          src="../assets/img/pass/fourthpass.png"
            @click="checked('fourth',$event)"
         />
         <img
@@ -104,7 +104,9 @@ export default {
       return this.$store.state.result.default_pass;
     }
   },
-
+mounted(){
+console.log(this.default_pass)
+},
   methods: {
     checked(params,e) {
       this.$store.commit(SET_CURRENT_PASS, params);
@@ -125,6 +127,16 @@ export default {
     toRankList() {
       if (this.current_pass == null) {
         this.$router.push(`/result?pass=${this.default_pass}`);
+        if(this.default_pass == "first") {
+          this.$store.dispatch(FETCH_RANKPAGE, 1);
+        } else if (this.default_pass == "second") {
+          this.$store.dispatch(FETCH_RANKPAGE, 2);
+        } else if (this.default_pass == "third") {
+          this.$store.dispatch(FETCH_RANKPAGE, 3);
+        } else if (this.default_pass == "four") {
+          this.$store.dispatch(FETCH_RANKPAGE, 4);
+        }
+        console.log(this.default_pass)
       } else {
         this.$router.push(`/result?pass=${this.current_pass}`);
         if (this.current_pass == "first") {
