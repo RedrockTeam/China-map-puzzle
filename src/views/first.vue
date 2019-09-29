@@ -35,7 +35,6 @@ import showPic from "../components/showPic.vue";
 import { SET_FIRST } from "../store/type/mutations";
 import { FETCH_SUCCESS } from "../store/type/actions";
 export default {
-  
   data() {
     return {
       pieces: [{}, {}, {}, {}],
@@ -142,12 +141,14 @@ export default {
     }
   }
   .main {
+    transition: all 4s ease;
     .piece {
       width: 328px;
       height: 306px;
       background-size: 656px 598px; //200%
       background-size: 200%; //200%
       background-origin: padding-box; //设置背景图片的位置从padding（内边距）开始放置
+      // transition: all 4s ease;
     }
   }
 }

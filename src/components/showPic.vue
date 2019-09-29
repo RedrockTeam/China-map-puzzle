@@ -85,7 +85,6 @@ export default {
       background-size: contain;
       text-align: center;
       line-height: 107px;
-      font-family: "Cotton";
       font-size: 50px;
       color: #fffcad;
       img {

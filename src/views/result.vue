@@ -63,11 +63,11 @@ export default {
     },
     toNext() {
       let pass = this.$route.query.pass; // 当前路由参数
-      if (pass == 1 || pass == 'first') {
+      if (pass == 1 || pass == "first") {
         this.$router.push("/second");
-      } else if (pass == 2|| pass == 'second') {
+      } else if (pass == 2 || pass == "second") {
         this.$router.push("/third");
-      } else if (pass == 3|| pass == 'third') {
+      } else if (pass == 3 || pass == "third") {
         this.$router.push("/four");
       } else {
         return false;
@@ -163,7 +163,6 @@ export default {
           margin: auto auto;
 
           color: #ffae72;
-          font-family: "Cotton";
           font-weight: bold;
           font-size: 35px;
           .word {
@@ -240,10 +239,18 @@ export default {
               // margin-right: 80px;
               font-weight: bold;
               display: inline-block;
-              color: #ff8a5c;
-              font-size: 50px;
-              font-family: "Cotton";
+              margin-top: 30px;
             }
+          }
+
+          .time {
+            margin-left: auto;
+            margin-right: 80px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            color: #ff8a5c;
+            font-size: 50px;
           }
         }
       }

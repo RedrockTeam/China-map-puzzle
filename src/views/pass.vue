@@ -198,20 +198,20 @@ export default {
 }
 .first {
   left: 20px;
-  top: 200px;
+  top: 160px;
   transform: scale(0.9);
 }
 .second {
   left: 350px;
-  top: 200px;
+  top: 160px;
 }
 .third {
   left: 50px;
-  top: 530px;
+  top: 490px;
 }
 .fourth {
   left: 320px;
-  top: 550px;
+  top: 510px;
 }
 
 .end {
