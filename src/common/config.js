@@ -1,1 +1,1 @@
-export const API = 'https://cyxbsmobile.redrock.team/234/puzzleofthemap/'
+export const API = 'https://wx.redrock.team/wxapi/puzzleofthemap/api'

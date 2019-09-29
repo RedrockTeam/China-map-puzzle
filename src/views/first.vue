@@ -61,7 +61,7 @@ export default {
 
   methods: {
     refresh() {
-      let func = require("../assets/js/puzzle.js");
+      let func = require("@/assets/js/puzzle.js");
       func.initPuzzle(2);
       // 随机打乱
       for (var i = 0; i < 5; i++) {
@@ -93,7 +93,7 @@ export default {
         this.firstId = id;
         this.change_flag = true;
       } else {
-        let func = require("../assets/js/puzzle.js");
+        let func = require("@/assets/js/puzzle.js");
         func.move(id, this.firstId, 2);
         this.change_flag = false;
         this.activeName = null;
@@ -103,7 +103,8 @@ export default {
         for (var i = 0, k = 0; i < this.num; i++) {
           for (var j = 0; j < this.num; j++, k++) {
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            this.finish_flag = chart[i][j] == k;
+            let flag = chart[i][j] == k
+            this.finish_flag = flag;
           }
         }
         if (this.finish_flag) {
@@ -114,6 +115,8 @@ export default {
           let data = new FormData();
           data.append("level", 1);
           data.append("time", this.time);
+          console.log(this.time);
+          console.log(data);
           // 停止计时
           this.stop();
           // 向后端发送请求，后端返回处理了用户当前成绩后的排行榜和用户自己本关卡的时间和名次，将返回的数据存在state里，便于下一个排行榜页面拿到数据
