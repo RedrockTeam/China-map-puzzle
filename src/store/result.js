@@ -31,8 +31,8 @@ const initialState = {
     forth_flag: 'lock',
     current_pass: null,
     default_pass: 'first',
-    user_time: Number,
-    user_rank: Number,
+    user_time: 0,
+    user_rank: 0,
     rankList: Array,
 }
 
