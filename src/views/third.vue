@@ -115,7 +115,7 @@ export default {
           // 将关卡数字和通关时间以xxx-数据形式传到后端
           let data = new FormData();
           data.append("level", 3);
-          data.append("time", this.time);
+          data.append("second", this.time);
           // 停止计时
           this.stop();
           // 向后端发送请求，后端返回处理了用户当前成绩后的排行榜和用户自己本关卡的时间和名次，将返回的数据存在state里，便于下一个排行榜页面拿到数据

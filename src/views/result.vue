@@ -28,7 +28,7 @@
           <div class="list_item" v-for="(item,index) in items" :key="item.index">
             <div class="content">
               <div class="user">
-                <span class="icon" :class="setClass(index)">{{item.index}}</span>
+                <span class="icon" :class="setClass(index)">{{setNumber(index)}}</span>
                 <span class="nickname">{{item.Nickname}}</span>
               </div>
               <span class="time">{{item.Second}}s</span>
@@ -61,6 +61,13 @@ export default {
       obj[`rank${index}`] = true;
       return obj;
     },
+    setNumber(index) {
+      if (index == 0 || index == 1 || index == 2) {
+        return "";
+      } else {
+        return index + 1;
+      }
+    },
     toNext() {
       let pass = this.$route.query.pass; // 当前路由参数
       if (pass == 1 || pass == "first") {
@@ -68,7 +75,7 @@ export default {
       } else if (pass == 2 || pass == "second") {
         this.$router.push("/third");
       } else if (pass == 3 || pass == "third") {
-        this.$router.push("/four");
+        this.$router.push("/fourth");
       } else {
         return false;
       }
@@ -207,9 +214,9 @@ export default {
                 display: inline-block;
                 width: 81px;
                 height: 82px;
-                margin: 0 25px 0 0;
+                margin: 10px 25px 0 0;
                 color: #ff8a5c;
-                font-size: 35px;
+                font-size: 45px;
                 font-weight: bold;
                 font-family: "Cotton";
               }
@@ -235,22 +242,14 @@ export default {
             }
 
             .time {
-              // margin-left: auto;
-              // margin-right: 80px;
+              margin-left: auto;
+              margin-right: 50px;
               font-weight: bold;
               display: inline-block;
-              margin-top: 30px;
+              margin-top: 0;
+              color: #ff8a5c;
+              font-size: 50px;
             }
-          }
-
-          .time {
-            margin-left: auto;
-            margin-right: 80px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-            color: #ff8a5c;
-            font-size: 50px;
           }
         }
       }
