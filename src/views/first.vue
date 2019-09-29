@@ -120,7 +120,7 @@ export default {
           // 向后端发送请求，后端返回处理了用户当前成绩后的排行榜和用户自己本关卡的时间和名次，将返回的数据存在state里，便于下一个排行榜页面拿到数据
           this.$store.dispatch(FETCH_SUCCESS, data);
           // 跳转到本关卡排行榜页面并显示本次用时和名次
-          this.$router.push("/resultNew?pass=1");
+          this.$router.push("/result?pass=1");
         }
       }
     }

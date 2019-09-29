@@ -16,21 +16,23 @@
               <span class="word">我的时间：</span>
             </div>
 
-            <span>{{this.$store.user_time}}s</span>
+            <span>{{user_time}}s</span>
             <div class="des">
               <i class="grade"></i>
               <span class="word">我的成绩：</span>
             </div>
-            <span>第{{this.$store.user_rank}}名</span>
+            <span>第{{user_rank}}名</span>
           </div>
         </div>
         <div class="list">
-          <div class="list_item" v-for="(item,index) in items" :key="item.index"> -->
-            <div class="user">
-              <span class="icon" :class="setClass(index)">{{item.index+1}}</span>
-            <span class="nickname">{{item.Nickname}}name</span>
+          <div class="list_item" v-for="(item,index) in items" :key="item.index">
+            <div class="content">
+              <div class="user">
+                <span class="icon" :class="setClass(index)">{{item.index}}</span>
+                <span class="nickname">{{item.Nickname}}</span>
+              </div>
+              <span class="time">{{item.Second}}s</span>
             </div>
-          <span class="time">{{item.Second}}s</span>
           </div>
         </div>
         <div class="line"></div>
@@ -61,11 +63,11 @@ export default {
     },
     toNext() {
       let pass = this.$route.query.pass; // 当前路由参数
-      if (pass == 1) {
+      if (pass == 1 || pass == 'first') {
         this.$router.push("/second");
-      } else if (pass == 2) {
+      } else if (pass == 2|| pass == 'second') {
         this.$router.push("/third");
-      } else if (pass == 3) {
+      } else if (pass == 3|| pass == 'third') {
         this.$router.push("/four");
       } else {
         return false;
@@ -190,49 +192,58 @@ export default {
           background-size: cover;
 
           display: flex;
-          justify-content: space-between;
-          .user {
-            .icon {
-              display: inline-block;
-              width: 81px;
-              height: 82px;
-              margin: 15px 25px 15px 35px;
-              color: #ff8a5c;
-              font-size: 35px;
-              font-weight: bold;
-              font-family: "Cotton";
+          // justify-content: center;
+          align-items: center;
+          .content {
+            width: 444px;
+            height: 94px;
+            margin: 0 auto 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .user {
+              display: flex;
+              align-items: center;
+              .icon {
+                display: inline-block;
+                width: 81px;
+                height: 82px;
+                margin: 0 25px 0 0;
+                color: #ff8a5c;
+                font-size: 35px;
+                font-weight: bold;
+                font-family: "Cotton";
+              }
+              .rank0 {
+                background: url("../assets/img/rank/first.png");
+                background-size: cover;
+              }
+              .rank1 {
+                background: url("../assets/img/rank/second.png");
+                background-size: cover;
+              }
+              .rank2 {
+                background: url("../assets/img/rank/third.png");
+                background-size: cover;
+              }
+              .nickname {
+                color: #ff8a5c;
+                font-size: 35px;
+                font-weight: bold;
+                display: inline-block;
+                font-family: "Cotton";
+              }
             }
-            .rank0 {
-              background: url("../assets/img/rank/first.png");
-              background-size: cover;
-            }
-            .rank1 {
-              background: url("../assets/img/rank/second.png");
-              background-size: cover;
-            }
-            .rank2 {
-              background: url("../assets/img/rank/third.png");
-              background-size: cover;
-            }
-            .nickname {
-              color: #ff8a5c;
-              font-size: 35px;
-              font-weight: bold;
-              display: inline-block;
-              margin-top: 30px;
-              font-family: "Cotton";
-            }
-          }
 
-          .time {
-            margin-left: auto;
-            margin-right: 80px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
-            color: #ff8a5c;
-            font-size: 50px;
-            font-family: "Cotton";
+            .time {
+              // margin-left: auto;
+              // margin-right: 80px;
+              font-weight: bold;
+              display: inline-block;
+              color: #ff8a5c;
+              font-size: 50px;
+              font-family: "Cotton";
+            }
           }
         }
       }
