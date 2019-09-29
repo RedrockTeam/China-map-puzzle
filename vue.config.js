@@ -9,8 +9,10 @@ module.exports = {
                 'views': '@/views',
 
             }
-        }
+        },
+
     },
+    publicPath: './',
     devServer: {
         // 设置代理
         proxy: {
