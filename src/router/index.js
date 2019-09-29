@@ -54,8 +54,8 @@ export default new Router({
     component: Third
   },
   {
-    path: '/four',
-    name: 'four',
+    path: '/fourth',
+    name: 'fourth',
     component: Four
   },
 

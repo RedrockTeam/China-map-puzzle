@@ -6,7 +6,7 @@
     </div>
 
     <div class="body">
-      <div @click="checked('first')">
+      <div @click="checked('first',$event)">
         <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
         <img class="first" v-else src="../assets/img/pass/firstpass.png" />
       </div>
@@ -15,13 +15,13 @@
           v-if="this.second =='unlock' "
           class="second"
           src="../assets/img/pass/second.png"
-          @click="checked('second')"
+          @click="checked('second',$event)"
         />
         <img
           v-if="this.second =='success' "
           class="second"
           src="../assets/img/pass/secondpass.png"
-          @click="checked('second')"
+          @click="checked('second',$event)"
         />
         <img
           v-if="this.second =='lock'"
@@ -35,13 +35,13 @@
           class="third"
           v-if="this.third =='unlock' "
           src="../assets/img/pass/third.png"
-          @click="checked('third')"
+           @click="checked('third',$event)"
         />
         <img
           class="third"
           v-if="this.third =='success' "
           src="../assets/img/pass/thirdpass.png"
-          @click="checked('third')"
+           @click="checked('third',$event)"
         />
         <img
           class="third"
@@ -53,19 +53,19 @@
       <div>
         <img
           class="fourth"
-          v-if="this.forth=='unlock' "
+          v-if="this.fourth=='unlock' "
           src="../assets/img/pass/fourth.png"
-          @click="checked('forth')"
+          @click="checked('fourth',$event)"
         />
         <img
           class="fourth"
-          v-if="this.forth =='success' "
+          v-if="this.fourth =='success' "
           src="../assets/img/pass/forthpass.png"
-          @click="checked('forth')"
+           @click="checked('fourth',$event)"
         />
         <img
           class="fourth"
-          v-if="this.forth =='lock'"
+          v-if="this.fourth =='lock'"
           v-on:click.self.prevent
           src="../assets/img/pass/lock.png"
         />
@@ -94,7 +94,7 @@ export default {
     third() {
       return this.$store.state.result.third_flag;
     },
-    forth() {
+    fourth() {
       return this.$store.state.result.forth_flag;
     },
     current_pass() {
@@ -106,8 +106,14 @@ export default {
   },
 
   methods: {
-    checked(params) {
+    checked(params,e) {
       this.$store.commit(SET_CURRENT_PASS, params);
+      var that = e.currentTarget;
+      e.currentTarget.style.transform = "scale(0.9)"
+      setTimeout(()=>{
+        that.style.transform = "scale(1)"
+      },3000)
+
     },
     toBegin() {
       if (this.current_pass == null) {
@@ -186,7 +192,7 @@ export default {
 
 .body {
   position: relative;
-  top: -200px;
+  top: -220px;
 }
 .first,
 .second,
@@ -199,14 +205,14 @@ export default {
 .first {
   left: 20px;
   top: 160px;
-  transform: scale(0.9);
+  // transform: scale(0.9);
 }
 .second {
   left: 350px;
   top: 160px;
 }
 .third {
-  left: 50px;
+  // left: 44px;
   top: 490px;
 }
 .fourth {
@@ -217,7 +223,7 @@ export default {
 .end {
   margin-left: 60px;
   position: relative;
-  top: 790px;
+  top: 730px;
 }
 .mylist {
   background: url("../assets/img/pass/left.png");

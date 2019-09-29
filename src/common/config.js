@@ -1,1 +1,1 @@
-export const API = 'http://localhost:8080/api'
+export const API = 'http://202.202.43.234/puzzleofthemap/api'
