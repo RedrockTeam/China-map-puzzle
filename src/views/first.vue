@@ -103,7 +103,7 @@ export default {
         for (var i = 0, k = 0; i < this.num; i++) {
           for (var j = 0; j < this.num; j++, k++) {
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            let flag = chart[i][j] == k
+            let flag = chart[i][j] == k;
             this.finish_flag = flag;
           }
         }
@@ -114,7 +114,7 @@ export default {
           // 将关卡数字和通关时间以xxx-数据形式传到后端
           let data = new FormData();
           data.append("level", 1);
-          data.append("time", this.time);
+          data.append("second", this.time);
           console.log(this.time);
           console.log(data);
           // 停止计时
