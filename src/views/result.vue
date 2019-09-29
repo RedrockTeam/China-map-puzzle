@@ -1,7 +1,9 @@
 <template>
   <div class="bg">
     <div class="head">
-      <back-button class="back_btn"></back-button>
+      <div class="back_shadow">
+        <div class="back" @click="toPass"></div>
+      </div>
       <div class="title"></div>
       <div class="next_shadow">
         <div class="next" @click="toNext"></div>
@@ -56,6 +58,10 @@ export default {
     }
   },
   methods: {
+    toPass() {
+      this.$router.push("/pass");
+      this.$store.dispatch(FETCH_ENTER_GAME);
+    },
     setClass(index) {
       let obj = { rank: true };
       obj[`rank${index}`] = true;
@@ -101,10 +107,25 @@ export default {
     margin: 0 auto 24px auto;
     display: inline-flex;
     justify-content: space-between;
+    .back_shadow {
+      width: 125px;
+      height: 139px;
+      background-image: url("../assets/img/common/btn_sbg.png");
+      background-repeat: no-repeat;
+      background-position: 0% 0%;
+      background-size: contain;
 
-    .back_btn {
-      translate: 50px;
+      .back {
+        width: 92px;
+        height: 95px;
+        background-image: url("../assets/img/common/back.png");
+        background-repeat: no-repeat;
+        background-position: 0% 0%;
+        background-size: contain;
+        translate: 50px;
+      }
     }
+
     .title {
       background: url("../assets/img/rank/rank_title.png") no-repeat;
       width: 249px;
@@ -243,7 +264,7 @@ export default {
 
             .time {
               margin-left: auto;
-              margin-right: 50px;
+              // margin-right: 30px;
               font-weight: bold;
               display: inline-block;
               margin-top: 0;

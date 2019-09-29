@@ -107,7 +107,7 @@ export default {
         clearInterval(this.timer);
       }
       this.timer = setInterval(() => {
-        this.time++;
+        this.time = this.time +1000;
       }, 1000);
     },
     //停止
