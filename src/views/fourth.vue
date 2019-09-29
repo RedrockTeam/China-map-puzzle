@@ -96,6 +96,7 @@ export default {
         var c = Math.floor(Math.random() * 4);
         func.move(a, b, 5);
         func.move(a, c, 5);
+        console.log(a, b, c);
       }
     },
 
@@ -126,14 +127,17 @@ export default {
         var chart = func.chart;
         // 判断是否完成拼图
         console.log(chart);
+
+        let successArray = new Array();
         for (var i = 0, k = 0; i < this.num; i++) {
+          successArray[i] = new Array();
           for (var j = 0; j < this.num; j++, k++) {
             // 当二维数组每个位置存储的数据即拼图块的id正好为原始状态即按行优先编写的序号相等时，即表示拼图完成
-            let flag = chart[i][j] == k;
-            this.finish_flag = flag;
+            successArray[i][j] = k;
           }
         }
-        if (this.finish_flag) {
+
+        if (this.successIF(successArray, chart)) {
           console.log("成功了");
           // 改变关卡的状态
           this.$store.commit(SET_FOURTH);
@@ -149,6 +153,16 @@ export default {
           this.$router.push("/result?pass=4");
         }
       }
+    },
+    successIF(a, b) {
+      for (var i = 0; i < this.num; i++) {
+        for (var j = 0; j < this.num; j++) {
+          if (!(a[i][j] === b[i][j])) {
+            return false;
+          }
+        }
+      }
+      return true;
     }
   },
   components: {

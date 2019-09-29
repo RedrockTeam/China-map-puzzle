@@ -203,7 +203,7 @@ export default {
   position: absolute;
 }
 .first {
-  left: 20px;
+  left: 16px;
   top: 160px;
   // transform: scale(0.9);
 }
@@ -212,7 +212,7 @@ export default {
   top: 160px;
 }
 .third {
-  // left: 44px;
+  left: 20px;
   top: 490px;
 }
 .fourth {
