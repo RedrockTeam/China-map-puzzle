@@ -91,9 +91,9 @@ export default {
       func.initPuzzle(5);
       // 随机打乱
       for (var i = 0; i < 50; i++) {
-        var a = Math.floor(Math.random() * 25);
-        var b = Math.floor(Math.random() * 25);
-        var c = Math.floor(Math.random() * 25);
+        var a = Math.floor(Math.random() * 15);
+        var b = Math.floor(Math.random() * 15);
+        var c = Math.floor(Math.random() * 15);
         func.move(a, b, 5);
         func.move(a, c, 5);
         // console.log(a, b, c);
@@ -167,12 +167,9 @@ export default {
       }
     },
     successIF(a, b) {
-      if(!(a[0][3] === b[0][3])){
-        return false;
-      }
       for (var i = 0; i < this.num; i++) { 
-        for (var j = 5; j < this.num; j++) {
-          if (!(i==2&&j==4)&&!(a[i][j] === b[i][j])) {
+        for (var j = 0; j < this.num; j++) {
+          if (!(i==0&&j==1)&&!(i==0&&j==2)&&!(i==0&&j==0)&&!(i==0&&j==4)&&!(i==2&&j==4)&&!(a[i][j] === b[i][j])) {
             return false;
           }
         }
