@@ -28,7 +28,7 @@ const initialState = {
     first_flag: 'unlock',
     second_flag: 'lock',
     third_flag: 'lock',
-    forth_flag: 'lock',
+    fourth_flag: 'lock',
     current_pass: null,
     default_pass: 'first',
     user_time: 0,
@@ -57,13 +57,13 @@ const mutations = {
     },
     [SET_THIRD](state) {
         state.third_flag = 'success'
-        state.forth_flag = 'unlock'
+        state.fourth_flag = 'unlock'
         state.default_pass = 'fourth'
 
 
     },
     [SET_FOURTH](state) {
-        state.forth_flag = 'success'
+        state.fourth_flag = 'success'
         state.default_pass = 'fourth'
         
     },
@@ -78,20 +78,24 @@ const mutations = {
         if (pass_status == 1) {
             state.first_flag = 'success';
             state.second_flag = 'unlock';
+            state.default_pass = 'first'
         } else if (pass_status == 2) {
             state.first_flag = 'success';
             state.second_flag = 'success';
             state.third_flag = 'unlock'
+            state.default_pass = 'second'
         } else if (pass_status == 3) {
             state.first_flag = 'success';
             state.second_flag = 'success';
             state.third_flag = 'success';
-            state.forth_flag = 'unlock'
+            state.fourth_flag = 'unlock'
+            state.default_pass = 'third'
         } else if (pass_status == 4) {
             state.first_flag = 'success';
             state.second_flag = 'success';
             state.third_flag = 'success';
-            state.forth_flag = 'success'
+            state.fourth_flag = 'success'
+            state.default_pass = 'fourth'
         }
 
     },

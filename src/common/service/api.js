@@ -14,8 +14,8 @@ const ApiService = {
     setHeader() {
         Vue.axios.defaults.headers.common[
             "Authorization"
-        ] = `${localStorage.getItem('id_token')}`
-        console.log(localStorage.getItem('id_token'))
+        ] = `${localStorage.getItem('id_token_puzzle')}`
+        console.log(localStorage.getItem('id_token_puzzle'))
     },
 
     // 封装axios

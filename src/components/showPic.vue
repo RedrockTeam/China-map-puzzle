@@ -6,13 +6,13 @@
         @touchstart="gtouchstart()"
         @touchmove="gtouchmove()"
         @touchend="gtouchend()"
-      > 
-        <img src="../assets/img/game/showpic_font.png" />
+      >
+        <div class="f">
+          <img src="../assets/img/game/showpic_font.png" />
+        </div>
       </div>
     </div>
-    <div class="dialogCon" v-show="isShow">
-      
-    </div>
+    <div class="dialogCon" v-show="isShow"></div>
     <div class="dialog" v-show="isShow"></div>
   </div>
 </template>
@@ -87,9 +87,15 @@ export default {
       line-height: 107px;
       font-size: 50px;
       color: #fffcad;
-      img {
-        width: 333px;
-        height: 46px;
+      .f {
+        img {
+          width: 333px;
+          height: 46px;
+          pointer-events: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
       }
     }
   }
@@ -104,19 +110,22 @@ export default {
     transform: scale(2);
 
     background-color: rgba($color: #dd8e5e, $alpha: 0.4);
-
   }
-  
-    .dialog {
-      background: url("../assets/img/common/dialog.png");
-      background-size: cover;
-      width: 750px;
-      height: 624px;
-      margin: auto auto;
-      position: absolute;
-      top: 0;
-      transform: translateX(-24px)
-    }
+
+  .dialog {
+    background: url("../assets/img/common/dialog.png");
+    background-size: cover;
+    width: 750px;
+    height: 624px;
+    margin: auto auto;
+    position: absolute;
+    top: 0;
+    transform: translateX(-24px);
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
 }
 </style>
 

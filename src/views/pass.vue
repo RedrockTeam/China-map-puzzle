@@ -6,9 +6,19 @@
     </div>
 
     <div class="body">
-      <div @click="checked('first',$event)">
-        <img class="first" v-if="this.first =='unlock'" src="../assets/img/pass/first.png" />
-        <img class="first" v-else src="../assets/img/pass/firstpass.png" />
+      <div>
+        <img
+          class="first"
+          v-if="this.first =='unlock'"
+          src="../assets/img/pass/first.png"
+          @click="checked('first',$event)"
+        />
+        <img
+          class="first"
+          v-else
+          src="../assets/img/pass/firstpass.png"
+          @click="checked('first',$event)"
+        />
       </div>
       <div>
         <img
@@ -35,13 +45,13 @@
           class="third"
           v-if="this.third =='unlock' "
           src="../assets/img/pass/third.png"
-           @click="checked('third',$event)"
+          @click="checked('third',$event)"
         />
         <img
           class="third"
           v-if="this.third =='success' "
           src="../assets/img/pass/thirdpass.png"
-           @click="checked('third',$event)"
+          @click="checked('third',$event)"
         />
         <img
           class="third"
@@ -61,7 +71,7 @@
           class="fourth"
           v-if="this.fourth =='success' "
           src="../assets/img/pass/fourthpass.png"
-           @click="checked('fourth',$event)"
+          @click="checked('fourth',$event)"
         />
         <img
           class="fourth"
@@ -95,7 +105,7 @@ export default {
       return this.$store.state.result.third_flag;
     },
     fourth() {
-      return this.$store.state.result.forth_flag;
+      return this.$store.state.result.fourth_flag;
     },
     current_pass() {
       return this.$store.state.result.current_pass;
@@ -104,18 +114,17 @@ export default {
       return this.$store.state.result.default_pass;
     }
   },
-mounted(){
-console.log(this.default_pass)
-},
+  mounted() {
+    console.log(this.$store.state);
+  },
   methods: {
-    checked(params,e) {
+    checked(params, e) {
       this.$store.commit(SET_CURRENT_PASS, params);
       var that = e.currentTarget;
-      e.currentTarget.style.transform = "scale(0.9)"
-      setTimeout(()=>{
-        that.style.transform = "scale(1)"
-      },3000)
-
+      e.currentTarget.style.transform = "scale(0.9)";
+      setTimeout(() => {
+        that.style.transform = "scale(1)";
+      }, 1500);
     },
     toBegin() {
       if (this.current_pass == null) {
@@ -125,28 +134,35 @@ console.log(this.default_pass)
       }
     },
     toRankList() {
+      // 用户没有选择
       if (this.current_pass == null) {
         this.$router.push(`/result?pass=${this.default_pass}`);
-        if(this.default_pass == "first") {
+        if (this.default_pass == "second") {
           this.$store.dispatch(FETCH_RANKPAGE, 1);
-        } else if (this.default_pass == "second") {
-          this.$store.dispatch(FETCH_RANKPAGE, 2);
         } else if (this.default_pass == "third") {
+          this.$store.dispatch(FETCH_RANKPAGE, 2);
+        } else if (this.default_pass == "four" && this.fourth == "unlock") {
           this.$store.dispatch(FETCH_RANKPAGE, 3);
-        } else if (this.default_pass == "four") {
+        } else if (this.default_pass == "four" && this.fourth == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 4);
         }
-        console.log(this.default_pass)
+        console.log(this.default_pass);
       } else {
-        this.$router.push(`/result?pass=${this.current_pass}`);
-        if (this.current_pass == "first") {
+        // 用户选择了，但只能查看已过关卡的排行榜
+        if (this.current_pass == "first" && this.first == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 1);
-        } else if (this.current_pass == "second") {
+          this.$router.push(`/result?pass=${this.current_pass}`);
+        } else if (this.current_pass == "second" && this.second == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 2);
-        } else if (this.current_pass == "third") {
+          this.$router.push(`/result?pass=${this.current_pass}`);
+        } else if (this.current_pass == "third" && this.third == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 3);
-        } else if (this.current_pass == "four") {
+          this.$router.push(`/result?pass=${this.current_pass}`);
+        } else if (this.current_pass == "four" && this.fourth == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 4);
+          this.$router.push(`/result?pass=${this.current_pass}`);
+        } else {
+          alert("请通过该关卡才可查看排行榜");
         }
       }
     }
@@ -217,7 +233,7 @@ console.log(this.default_pass)
 .first {
   left: 20px;
   top: 160px;
-  // transform: scale(0.9);
+  transform: scale(1);
 }
 .second {
   left: 330px;
