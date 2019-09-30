@@ -141,9 +141,9 @@ export default {
           this.$store.dispatch(FETCH_RANKPAGE, 1);
         } else if (this.default_pass == "third") {
           this.$store.dispatch(FETCH_RANKPAGE, 2);
-        } else if (this.default_pass == "four" && this.fourth == "unlock") {
+        } else if (this.default_pass == "fourth" && this.fourth == "unlock") {
           this.$store.dispatch(FETCH_RANKPAGE, 3);
-        } else if (this.default_pass == "four" && this.fourth == "success") {
+        } else if (this.default_pass == "fourth" && this.fourth == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 4);
         }
         console.log(this.default_pass);
@@ -158,7 +158,7 @@ export default {
         } else if (this.current_pass == "third" && this.third == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 3);
           this.$router.push(`/result?pass=${this.current_pass}`);
-        } else if (this.current_pass == "four" && this.fourth == "success") {
+        } else if (this.current_pass == "fourth" && this.fourth == "success") {
           this.$store.dispatch(FETCH_RANKPAGE, 4);
           this.$router.push(`/result?pass=${this.current_pass}`);
         } else {
