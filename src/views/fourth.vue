@@ -167,9 +167,12 @@ export default {
       }
     },
     successIF(a, b) {
-      for (var i = 0; i < this.num; i++) {
-        for (var j = 0; j < this.num; j++) {
-          if (!(a[i][j] === b[i][j])) {
+      if(!(a[0][3] === b[0][3])){
+        return false;
+      }
+      for (var i = 0; i < this.num; i++) { 
+        for (var j = 5; j < this.num; j++) {
+          if (!(i==2&&j==4)&&!(a[i][j] === b[i][j])) {
             return false;
           }
         }

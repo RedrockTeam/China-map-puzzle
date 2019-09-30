@@ -28,7 +28,7 @@ const initialState = {
     first_flag: 'unlock',
     second_flag: 'lock',
     third_flag: 'lock',
-    fourth_flag: 'lock',
+    fourth_flag: 'unlock',
     current_pass: null,
     default_pass: 'first',
     user_time: 0,

@@ -38,7 +38,7 @@ export default {
   // height: 1207px;
   height: 100%;
   background-image: url("../assets/img/home/home_bg.jpg");
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   background-position: 0% 0%;
   background-size: contain;
   .btn {
