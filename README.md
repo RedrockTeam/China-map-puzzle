@@ -27,7 +27,7 @@
 
 <!-- 5. 排行榜 -->
 <!-- ![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/rankList.jpg) -->
-<img src="https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/home.jpg" width="150" height="300" alt="排行榜">
+<img src="https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/rankList.jpg" width="150" height="300" alt="排行榜">
 
 </div>
 
@@ -59,6 +59,7 @@ $ yarn run build
 
 ## 目录结构
 
+```
 ├─common
 │  ├─config
 │  └─service
@@ -82,6 +83,7 @@ $ yarn run build
     ├─store
     │  └─type
     └─views
+```
 
 ## 接口文档
 [接口文档](链接：https://easydoc.xyz/#/s/39808233)
