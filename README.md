@@ -86,5 +86,5 @@ $ yarn run build
 ```
 
 ## 接口文档
-[接口文档](链接：https://easydoc.xyz/#/s/39808233)
+[接口文档](https://easydoc.xyz/#/s/39808233)
 
