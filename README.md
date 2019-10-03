@@ -8,7 +8,11 @@
 3. 只有通过前一关卡才能选择下一关卡，每一关卡计时，可重复闯关，用时短者排名靠前
 
 **项目截图**
-
+1. 首页
+![Image text](https://github.com/RedrockTeam/China-map-puzzle.git)
+2. 关卡选择
+3. 查看原图
+4. 排行榜
 
 ## 使用方法
 #### 开发环境
@@ -35,12 +39,33 @@ $ yarn run build
 * webpack
 * axios
 
-## 实现情况
-
-- [x] 基本页面切图动效
-- [ ] 
 
 ## 目录结构
 
-## 备注
-1. 用FECS统一代码风格(考虑，暂时舍弃)
+├─common
+│  ├─config
+│  └─service
+├─public
+├─README-img
+└─src
+    ├─assets
+    │  ├─font
+    │  ├─img
+    │  │  ├─common
+    │  │  ├─game
+    │  │  ├─home
+    │  │  ├─pass
+    │  │  └─rank
+    │  ├─js
+    │  └─styles
+    ├─common
+    │  └─service
+    ├─components
+    ├─router
+    ├─store
+    │  └─type
+    └─views
+
+## 接口文档
+[接口文档](链接：https://easydoc.xyz/#/s/39808233)
+
