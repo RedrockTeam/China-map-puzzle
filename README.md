@@ -9,10 +9,15 @@
 
 **项目截图**
 1. 首页
-![Image text](https://github.com/RedrockTeam/China-map-puzzle.git)
+![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/home.jpg)
 2. 关卡选择
-3. 查看原图
-4. 排行榜
+![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/pass.jpg)
+3. 游戏页面
+![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/game.jpg)
+4. 查看原图
+![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/pic.jpg)
+5. 排行榜
+![Image text](https://github.com/RedrockTeam/China-map-puzzle/blob/master/README-img/rankList.jpg)
 
 ## 使用方法
 #### 开发环境
