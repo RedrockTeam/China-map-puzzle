@@ -88,15 +88,13 @@ $ yarn run build
 ## 拼图逻辑
 
 ```
-// 传入的参数为拼图的行列数num
+// 拼图的数组
 var chart = new Array();
+// 存储每个位置的相邻位置，即可移动到的（可交换的）位置，此数组初始化后将不会发生改变
 var d_direct = new Array();
 
+// 传入的参数为拼图的行列数num
 var initPuzzle = function initPuzzle(num) {
-
-    // 拼图的数组
-    // var chart = new Array();
-
     // 初始化二维数组并按顺序赋值
     for (var i = 0, k = 0; i < num; i++) { //一维长度为num
         chart[i] = new Array(); //再声明二维 
@@ -117,7 +115,6 @@ var initPuzzle = function initPuzzle(num) {
     }
 
     // 存储每个位置的相邻位置，即可移动到的（可交换的）位置，此数组初始化后将不会发生改变
-    // var d_direct = new Array();
     for (var i = 0; i < num; i++) {
         for (var j = 0; j < num; j++) {
             var id = chart[i][j];
@@ -153,12 +150,13 @@ var initPuzzle = function initPuzzle(num) {
 }
 
 
-// 移动拼图,传入的四个参数分别为第二次点击的拼图块的id，第一次点击的拼图块的firstId,拼图的行列数num，关卡的状态flag
+// 移动拼图,传入的四个参数分别为第二次点击的拼图块的id，第一次点击的拼图块的firstId,拼图的行列数num
 var move = function move(id, firstId, num) {
     // 假设需要移动的为第0的位置和第3个位置，2*2，现在在第0个位置的先点击firstId为1，在第3个位置的id为1
 
     let id_pos, first_id_pos;
     let m, n, x, y;
+
     // 找到存储的数据为id的位置
     for (var i = 0; i < num; i++) {
         for (var j = 0; j < num; j++) {
@@ -168,7 +166,7 @@ var move = function move(id, firstId, num) {
                 m = i;
                 n = j;
             }
-// [1][1]的位置为为第二次点击拼图块的位置,x=1,y=1，同时第二次点击的位置的序列号为id_pos=3
+            // [1][1]的位置为为第二次点击拼图块的位置,x=1,y=1，同时第二次点击的位置的序列号为id_pos=3
             if (chart[i][j] == id) {
                 id_pos = num * i + j; //通过二维数组的下标计算出存储id的位置序列
                 x = i;
@@ -176,10 +174,10 @@ var move = function move(id, firstId, num) {
             }
         }
     }
+    
     if (canIf(first_id_pos, id_pos, d_direct)) {
         // 可以交换则交换两个拼图块所在位置对应的二维数组处所存储的id
         // 二维数组存储的数据为拼图块div的id
-
         chart[m][n] = id;
         chart[x][y] = firstId;
 
@@ -190,6 +188,7 @@ var move = function move(id, firstId, num) {
     }
 
 }
+// 判断是否可以交换
 // first_id_pos=0  id_pos=3
 function canIf(first_id_pos, id_pos, d_direct) {
     var move_flag = false;
