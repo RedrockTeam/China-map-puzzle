@@ -7,6 +7,10 @@
 2. 一共四个关卡，拼图个数分别为`2*2`、`3*3`、`4*4`、`5*5`，拼好图即闯关成功
 3. 只有通过前一关卡才能选择下一关卡，每一关卡计时，可重复闯关，用时短者排名靠前
 
+url：https://wx.redrock.team/game/puzzle2019/
+
+主机：119.29.6.11
+
 **项目截图**
 <div display = "flex" flex-wrap = "wrap" width="400" height="700" justify-centent = "center" align-items = "center">
 <!-- 1. 首页 -->
