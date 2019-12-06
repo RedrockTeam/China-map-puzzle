@@ -9,9 +9,6 @@
 
 url：https://wx.redrock.team/game/puzzle2019/
 
-主机：119.29.6.11
-端口号：2022
-
 **项目截图**
 <div display = "flex" flex-wrap = "wrap" width="400" height="700" justify-centent = "center" align-items = "center">
 <!-- 1. 首页 -->
